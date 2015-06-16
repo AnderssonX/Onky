@@ -105,26 +105,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
 
                     }
                 });
-           /*     if(go == true) {
-                    Log.i("go, ", "is true");
-                    createUser newUser = new createUser(eTUser.getText().toString(), eTPW.getText().toString());
-                    Firebase fb = new Firebase("https://blinding-inferno-6351.firebaseio.com/").child("users/" + newUser.getUsername().toString().toLowerCase());
-
-                    Map<String, createUser> addNewUser = new HashMap<String, createUser>();
-                    addNewUser.put("userInfo", newUser);
-                    fb.setValue(addNewUser);
-
-                    FragmentManager fm;
-                    fm = getFragmentManager();
-                    FragmentTransaction ft = fm.beginTransaction();
-                    ft.replace(R.id.container, new LoginFragment());
-                    ft.commit();
-
-                }if(go == false) {
-                    Log.i("go, ", "is false");
-                    isTaken = false;
-                    go = false;
-                }*/
+         
         }
     }
 }
