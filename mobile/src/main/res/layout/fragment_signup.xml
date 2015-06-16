@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.SignupFragment"
+    android:background="#ff5bd469">
+
+    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:paddingTop="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="@string/signupUser"
+        android:ems="10"
+        android:id="@+id/signupUser"
+        android:textColor="#ffffffff"
+        android:typeface="normal"
+        android:textStyle="bold"
+
+  android:layout_centerHorizontal="true"
+         />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="Choose a password"
+        android:id="@+id/signupPw"
+        android:textColor="#ffffffff"
+        android:textColorHint="#ffffffff"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/signupUser"
+    />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/loginSignup"
+        android:id="@+id/signupCreate"
+        android:textColor="#ff373737"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
