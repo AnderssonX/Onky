@@ -1,46 +1,70 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="mattias.andersson.onky.SignupFragment"
-    android:background="#ff5bd469">
+    android:layout_height="match_parent"
+    android:background="#E65100"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity$PlaceholderFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <EditText
-        android:paddingTop="75dp"
+
+    <TextView
+        android:id="@+id/signupHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="@string/signupUser"
-        android:ems="10"
-        android:id="@+id/signupUser"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="@string/createUser"
         android:textColor="#ffffffff"
-        android:typeface="normal"
+        android:textSize="56sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/signupUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/signupUser"
+        android:inputType="textPersonName"
+        android:paddingTop="120dp"
+        android:textColor="#ffffffff"
+        android:textColorHint="#ffffffff"
         android:textStyle="bold"
 
-  android:layout_centerHorizontal="true"
+        android:typeface="normal"
          />
 
     <EditText
+        android:id="@+id/signupPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:layout_below="@id/signupUser"
+        android:layout_centerHorizontal="true"
         android:ems="10"
         android:hint="Choose a password"
-        android:id="@+id/signupPw"
+        android:inputType="textPassword"
+        android:paddingTop="18dp"
         android:textColor="#ffffffff"
         android:textColorHint="#ffffffff"
         android:textStyle="bold"
         android:typeface="serif"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/signupUser"
     />
 
     <Button
+        android:id="@+id/signupCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loginSignup"
-        android:id="@+id/signupCreate"
-        android:textColor="#ff373737"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:text="@string/signupRegister"
+
+        android:textColor="#ff373737" />
+
 
 </RelativeLayout>

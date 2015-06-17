@@ -4,9 +4,12 @@
     <string name="action_settings">Settings</string>
     <string name="loginUser">Username</string>
     <string name="loginPw">Password</string>
-    <string name="loginSignup">Create user</string>
+    <string name="loginSignup">Signup</string>
     <string name="signupUser">Pick a name</string>
-
+    <string name="logo">ONKY</string>
+    <string name="loginLogin">Play!</string>
+    <string name="createUser">Create User</string>
+    <string name="signupRegister">Create!</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
