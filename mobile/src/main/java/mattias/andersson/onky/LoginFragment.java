@@ -115,7 +115,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                             fm = getFragmentManager();
                             ft = fm.beginTransaction();
-                            ft.replace(R.id.container, new GameFragment());
+                            ft.replace(R.id.container, new Store());
                             ft.commit();
                         }
                         if (match == false) {
