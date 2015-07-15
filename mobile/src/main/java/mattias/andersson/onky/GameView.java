@@ -77,7 +77,10 @@ public class GameView extends SurfaceView {
             }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 1b7b20f... canvas cleanup
 =======
 >>>>>>> parent of 1b7b20f... canvas cleanup
 
@@ -92,7 +95,10 @@ public class GameView extends SurfaceView {
     @Override
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 1b7b20f... canvas cleanup
 =======
 >>>>>>> parent of 1b7b20f... canvas cleanup
 
