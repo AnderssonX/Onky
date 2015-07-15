@@ -2,7 +2,9 @@ package mattias.andersson.onky;
 
 
 import android.app.Fragment;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +17,17 @@ public class GameFragment extends Fragment {
 
 
     public GameFragment() {
-        // Required empty public constructor
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        Canvas GameArea = new Canvas();
+        GameArea.setDensity((int)metrics.density);
+
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
