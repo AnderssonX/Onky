@@ -14,62 +14,92 @@ import android.view.SurfaceView;
 public class GameView extends SurfaceView {
 
     private Bitmap bmp;
+
     private SurfaceHolder holder;
-    private GameThread gameLoopThread;
-    private int x = 0, xSpeed = 1;
+
+    private Thread gameLoopThread;
+
+    private int x = 0;
+
+    private int xSpeed = 1;
+
 
 
     public GameView(Context context) {
+
         super(context);
+
         gameLoopThread = new GameThread(this);
+
         holder = getHolder();
+
         holder.addCallback(new SurfaceHolder.Callback() {
+
 
 
             @Override
 
             public void surfaceDestroyed(SurfaceHolder holder) {
+
                 boolean retry = true;
-                gameLoopThread.setRunning(false);
+
+                //gameLoopThread.setRunning(false);
 
                 while (retry) {
+
                     try {
+
                         gameLoopThread.join();
+
                         retry = false;
+
                     } catch (InterruptedException e) {
                     }
                 }
             }
 
 
+
             @Override
 
             public void surfaceCreated(SurfaceHolder holder) {
-                gameLoopThread.setRunning(true);
+
+                //gameLoopThread.setRunning(true);
                 gameLoopThread.start();
 
             }
+
 
             @Override
 
             public void surfaceChanged(SurfaceHolder holder, int format,
                                        int width, int height) {
             }
+
         });
       //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
     }
 
 
     @Override
+
     protected void onDraw(Canvas canvas) {
         if (x == getWidth() - bmp.getWidth()) {
+
             xSpeed = -1;
+
         }
+
         if (x == 0) {
+
             xSpeed = 1;
+
         }
+
         x = x + xSpeed;
+
         canvas.drawColor(Color.BLACK);
+
         //canvas.drawBitmap(bmp, x , 10, null);
 
     }
