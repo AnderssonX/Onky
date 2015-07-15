@@ -75,11 +75,6 @@ public class GameView extends SurfaceView {
             public void surfaceChanged(SurfaceHolder holder, int format,
                                        int width, int height) {
             }
-<<<<<<< HEAD
-=======
-
-        });
->>>>>>> parent of 1b7b20f... canvas cleanup
 
         });
       //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
@@ -87,11 +82,6 @@ public class GameView extends SurfaceView {
 
 
     @Override
-<<<<<<< HEAD
-=======
-
-    protected void onDraw(Canvas canvas) {
->>>>>>> parent of 1b7b20f... canvas cleanup
 
     protected void onDraw(Canvas canvas) {
         if (x == getWidth() - bmp.getWidth()) {

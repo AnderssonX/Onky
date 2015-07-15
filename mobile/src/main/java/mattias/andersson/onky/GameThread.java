@@ -15,24 +15,9 @@ public class GameThread extends Thread {
 
 
     public GameThread(GameView view) {
-<<<<<<< HEAD
-=======
 
         this.view = view;
 
-    }
-
->>>>>>> parent of 1b7b20f... canvas cleanup
-
-        this.view = view;
-
-<<<<<<< HEAD
-=======
-    public void setRunning(boolean run) {
-
-        running = run;
-
->>>>>>> parent of 1b7b20f... canvas cleanup
     }
     public void setRunning(boolean run) {
 
