@@ -56,16 +56,12 @@ public class GameView extends SurfaceView {
                                        int width, int height) {
             }
         });
-
       //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
-
     }
-
 
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         if (x == getWidth() - bmp.getWidth()) {
             xSpeed = -1;
         }
