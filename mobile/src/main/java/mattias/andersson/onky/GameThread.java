@@ -9,9 +9,12 @@ import android.graphics.Canvas;
 
 public class GameThread extends Thread {
 
-    static final long FPS = 30;
+    static final long FPS = 10;
+
     private GameView view;
+
     private boolean running = false;
+
 
 
     public GameThread(GameView view) {
@@ -19,11 +22,16 @@ public class GameThread extends Thread {
         this.view = view;
 
     }
+
+
+
     public void setRunning(boolean run) {
 
         running = run;
 
     }
+
+
 
     @Override
 
