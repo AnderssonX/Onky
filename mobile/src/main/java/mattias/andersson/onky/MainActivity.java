@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
             FragmentManager fm;
             fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.container, new LoginFragment());
+            ft.replace(R.id.container, new Store());
             ft.commit();
         }
     }
