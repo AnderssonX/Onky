@@ -26,6 +26,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Button createUser;
     private FragmentManager fm;
     private Button play;
+    private String pw;
+    private String currentUser;
     private FragmentTransaction ft;
     private boolean match;
     private EditText eTUser;
@@ -84,17 +86,32 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                             if (eTUser.getText().toString().toLowerCase().equals(fbUC.getKey().toString())) {
                                 Log.i("check", " Match? = " + fbUC.getKey());
-
-
+                                currentUser = fbCheck.getKey().toString();
+                                Log.i("login ", "datasnapshot is +" + fbUC.getValue());
+                                Log.i("login ", "pw is: " + pw);
                                 match = true;
+                                final Firebase fbCheckPw = CONSTANTS.fbRef.child("users/" + currentUser);
+                                fbCheckPw.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        pw = dataSnapshot.child("userInfo/password").getValue().toString();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(FirebaseError firebaseError) {
+
+                                    }
+                                });
                                 break;
                             }
                             Log.i("check", " no match!");
                         }
-                        if (match == true) {
+                        if (match == true && pw.equals(eTPW.getText())) {
+
                             Toast toat = Toast.makeText(view.getContext(), "Logged in", Toast.LENGTH_SHORT);
                             toat.show();
-                            //Firebase fb = new Firebase("https://blinding-inferno-6351.firebaseio.com/").child("users/" + newUser.getUsername().toString().toLowerCase());
+
+//                            Firebase fb = new Firebase("https://blinding-inferno-6351.firebaseio.com/").child("users/" + newUser.getUsername().toString().toLowerCase());
 
                             fm = getFragmentManager();
                             ft = fm.beginTransaction();
