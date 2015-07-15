@@ -76,10 +76,7 @@ public class GameView extends SurfaceView {
                                        int width, int height) {
             }
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of 1b7b20f... canvas cleanup
 
         });
 >>>>>>> parent of 1b7b20f... canvas cleanup
@@ -91,10 +88,7 @@ public class GameView extends SurfaceView {
 
     @Override
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of 1b7b20f... canvas cleanup
 
     protected void onDraw(Canvas canvas) {
 >>>>>>> parent of 1b7b20f... canvas cleanup
