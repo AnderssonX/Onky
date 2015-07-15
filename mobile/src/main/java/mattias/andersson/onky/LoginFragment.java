@@ -4,6 +4,7 @@ package mattias.andersson.onky;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private boolean match;
     private EditText eTUser;
     private EditText eTPW;
+
 
     public LoginFragment() {
         // Required empty public constructor
@@ -86,15 +88,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                             if (eTUser.getText().toString().toLowerCase().equals(fbUC.getKey().toString())) {
                                 Log.i("check", " Match? = " + fbUC.getKey());
-                                currentUser = fbCheck.getKey().toString();
+                                currentUser = fbUC.getKey().toString();
                                 Log.i("login ", "datasnapshot is +" + fbUC.getValue());
                                 Log.i("login ", "pw is: " + pw);
                                 match = true;
+
                                 final Firebase fbCheckPw = CONSTANTS.fbRef.child("users/" + currentUser);
                                 fbCheckPw.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         pw = dataSnapshot.child("userInfo/password").getValue().toString();
+                                        Log.i("user" + dataSnapshot.toString() + "pw is", pw);
                                     }
 
                                     @Override
@@ -106,20 +110,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                             }
                             Log.i("check", " no match!");
                         }
-                        if (match == true && pw.equals(eTPW.getText())) {
-
-                            Toast toat = Toast.makeText(view.getContext(), "Logged in", Toast.LENGTH_SHORT);
-                            toat.show();
+                        if (match == true) {
+                            CheckPassword cp = new CheckPassword();
+                            cp.checkPassword(currentUser, eTPW.getText().toString(), view.getContext());
+                            {
+                            }
 
 //                            Firebase fb = new Firebase("https://blinding-inferno-6351.firebaseio.com/").child("users/" + newUser.getUsername().toString().toLowerCase());
 
-                            fm = getFragmentManager();
-                            ft = fm.beginTransaction();
-                            ft.replace(R.id.container, new GameFragment());
-                            ft.commit();
+                            //  fm = getFragmentManager();
+                            //  ft = fm.beginTransaction();
+                            //   ft.replace(R.id.container, new GameFragment());
+                            //    ft.commit();
                         }
                         if (match == false) {
-                            Toast toat = Toast.makeText(view.getContext(), "Sorry no such user or wrong password", Toast.LENGTH_SHORT);
+                            Toast toat = Toast.makeText(view.getContext(), "No such user", Toast.LENGTH_SHORT);
                             toat.show();
 
 
@@ -135,7 +140,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
+    public void doLogin(Context context) {
+        Toast toat = Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT);
+        toat.show();
+
+
+    }
+
 }
+
 
 
 
