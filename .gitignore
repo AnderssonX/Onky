@@ -4,6 +4,3 @@
 /.idea/libraries
 .DS_Store
 /build
-mobile/mobile.iml
-mobile/src/main/java/mattias/andersson/onky/GameThread.java
-mobile/src/main/java/mattias/andersson/onky/GameView.java

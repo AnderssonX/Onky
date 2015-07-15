@@ -17,10 +17,7 @@ public class GameThread extends Thread {
     public GameThread(GameView view) {
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
-=======
->>>>>>> parent of 1b7b20f... canvas cleanup
 =======
 >>>>>>> parent of 1b7b20f... canvas cleanup
 
@@ -39,9 +36,6 @@ public class GameThread extends Thread {
         running = run;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 1b7b20f... canvas cleanup
-=======
 >>>>>>> parent of 1b7b20f... canvas cleanup
 =======
 >>>>>>> parent of 1b7b20f... canvas cleanup
