@@ -2,9 +2,7 @@ package mattias.andersson.onky;
 
 
 import android.app.Fragment;
-import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +15,9 @@ public class GameFragment extends Fragment {
 
 
     public GameFragment() {
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        Canvas GameArea = new Canvas();
-        GameArea.setDensity((int)metrics.density);
+//         DisplayMetrics metrics = getResources().getDisplayMetrics();
+        //       Canvas GameArea = new Canvas();
+        //      GameArea.setDensity((int)metrics.density);
 
 
     }

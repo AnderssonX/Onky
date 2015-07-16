@@ -145,6 +145,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         Toast toat = Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT);
         toat.show();
 
+        LoginFragment lf = new LoginFragment();
+        GameFragment gf = new GameFragment();
+        lf.getFragmentManager().beginTransaction().replace(R.id.loginLogin, gf).commit();
 
     }
 
