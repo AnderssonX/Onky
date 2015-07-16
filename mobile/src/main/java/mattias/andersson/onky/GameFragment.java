@@ -15,10 +15,6 @@ public class GameFragment extends Fragment {
 
 
     public GameFragment() {
-//         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        //       Canvas GameArea = new Canvas();
-        //      GameArea.setDensity((int)metrics.density);
-
 
     }
 

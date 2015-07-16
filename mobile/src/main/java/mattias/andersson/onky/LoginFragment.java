@@ -4,7 +4,6 @@ package mattias.andersson.onky;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,6 +23,8 @@ import com.firebase.client.ValueEventListener;
  * A simple {@link Fragment} subclass.
  */
 public class LoginFragment extends Fragment implements View.OnClickListener {
+    public FragmentManager fragmentManager;
+    public FragmentTransaction fragmentTransaction;
     private Button createUser;
     private FragmentManager fm;
     private Button play;
@@ -112,7 +113,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         }
                         if (match == true) {
                             CheckPassword cp = new CheckPassword();
-                            cp.checkPassword(currentUser, eTPW.getText().toString(), view.getContext());
+                            cp.checkPassword(getActivity(), view, currentUser, eTPW.getText().toString(), view.getContext());
                             {
                             }
 
@@ -141,15 +142,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    public void doLogin(Context context) {
-        Toast toat = Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT);
-        toat.show();
 
-        LoginFragment lf = new LoginFragment();
-        GameFragment gf = new GameFragment();
-        lf.getFragmentManager().beginTransaction().replace(R.id.loginLogin, gf).commit();
-
-    }
 
 }
 

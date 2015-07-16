@@ -1,7 +1,11 @@
 package mattias.andersson.onky;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -18,9 +22,14 @@ public class CheckPassword {
     final Firebase fbCheck = CONSTANTS.fbRef;
     public boolean match;
     LoginFragment lf = new LoginFragment();
+    private View v;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
 
-    public void checkPassword(String currentUser, final String enteredPassword, final Context context) {
+    public void checkPassword(final Activity activity, View v, String currentUser, final String enteredPassword, final Context context) {
         Log.i("we're in", "checkPassword");
+        this.v = v;
+
         fbCheck.child("users/" + currentUser + "/userInfo").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -38,7 +47,7 @@ public class CheckPassword {
                     //    Log.i("login ", "datasnapshot is +" + fbUC.getValue());
                     //     Log.i("login ", "pw is: " + pw);
                     match = true;
-                    lf.doLogin(context);
+                    doLogin(context, activity);
 
 //                    final Firebase fbCheckPw = CONSTANTS.fbRef.child("users/" + currentUser);
                     //                   fbCheckPw.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -70,5 +79,14 @@ public class CheckPassword {
             }
         });
 
+    }
+
+    public void doLogin(Context context, Activity activity) {
+        Toast toat = Toast.makeText(v.getContext(), "Logged in", Toast.LENGTH_SHORT);
+        toat.show();
+        fm = activity.getFragmentManager();
+        ft = fm.beginTransaction();
+        ft.replace(R.id.container, new GameFragment());
+        ft.commit();
     }
 }

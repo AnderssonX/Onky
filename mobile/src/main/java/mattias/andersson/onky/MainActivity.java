@@ -3,16 +3,13 @@ package mattias.andersson.onky;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 import com.firebase.client.Firebase;
 
@@ -34,7 +31,7 @@ public class MainActivity extends Activity {
             FragmentManager fm;
             fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.container, new Store());
+            ft.replace(R.id.container, new LoginFragment(), "tagFrag");
             ft.commit();
         }
     }
