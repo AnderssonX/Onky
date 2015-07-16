@@ -13,16 +13,14 @@ import android.view.ViewGroup;
  */
 public class GameFragment extends Fragment {
 
-
     public GameFragment() {
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_game, container, false);
+        View view= inflater.inflate(R.layout.fragment_game, container, false);
+        return  view;
     }
 
 
