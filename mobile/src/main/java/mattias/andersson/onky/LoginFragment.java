@@ -111,6 +111,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                             }
                             Log.i("check", " no match!");
                         }
+                        /* If User is found in the Firebase database, call on the CheckPassword class
+                        To see if the entered password is the same as saved in the db
+                         */
                         if (match == true) {
                             CheckPassword cp = new CheckPassword();
                             cp.checkPassword(getActivity(), view, currentUser, eTPW.getText().toString(), view.getContext());
