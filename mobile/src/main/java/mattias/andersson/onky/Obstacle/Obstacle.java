@@ -9,6 +9,7 @@ import java.util.Vector;
 public abstract class Obstacle {
     public Vector vectorXy;
     public Vector vectorWh;
+    public String signText;
     boolean dead, regenerating;
 
     public Obstacle() {
@@ -20,6 +21,14 @@ public abstract class Obstacle {
 
         this.vectorXy = vectorXy;
         this.vectorWh = vectorWh;
+
+    }
+
+    public Obstacle(Vector vectorXy, Vector vectorWh, String signText) {
+
+        this.vectorXy = vectorXy;
+        this.vectorWh = vectorWh;
+        this.signText = signText;
 
     }
 
