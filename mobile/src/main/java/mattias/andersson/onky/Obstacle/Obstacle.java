@@ -30,6 +30,15 @@ public abstract class Obstacle {
         this.vectorWh = vectorWh;
         this.signText = signText;
 
+
+    }
+
+    public String getSignText() {
+        return signText;
+    }
+
+    public void setSignText(String signText) {
+        this.signText = signText;
     }
 
     public Vector getVectorXy() {
