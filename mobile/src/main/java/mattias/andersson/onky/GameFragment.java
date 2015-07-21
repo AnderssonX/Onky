@@ -31,6 +31,11 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.fragment_game, container, false);
+      //  GameView gameView=new GameView(this.getActivity());
+
+        GameView gameView=new GameView(view.getContext());
+
 
         fb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -73,10 +78,12 @@ public class GameFragment extends Fragment {
         });
         Log.i(jsonArray, "");
 
-        return inflater.inflate(R.layout.fragment_game, container, false);
+        return gameView;
 
         
     }
+
+
 
 
 }

@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
             FragmentManager fm;
             fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.container, new LoginFragment(), "tagFrag");
+            ft.replace(R.id.container, new GameFragment(), "tagFrag");
             ft.commit();
         }
     }

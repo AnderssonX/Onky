@@ -4,7 +4,7 @@ package mattias.andersson.onky;
  * Created by Alrik on 2015-07-15.
  */
 import android.graphics.Canvas;
-
+import android.util.Log;
 
 
 public class GameThread extends Thread {
@@ -25,12 +25,29 @@ public class GameThread extends Thread {
 
     @Override
     public void run() {
-        long ticksPS = 1000 / FPS;
-        long startTime;
-        long sleepTime;
+      //  long ticksPS = 1000 / FPS;
+      //  long startTime;
+      //  long sleepTime;
         while (running) {
+            Log.i("test", "loop");
+
             Canvas c = null;
-            startTime = System.currentTimeMillis();
+            try {
+                c = view.getHolder().lockCanvas();
+                synchronized (view.getHolder()) {
+                    view.onDraw(c);
+                }
+            } finally {
+                if (c != null) {
+                    view.getHolder().unlockCanvasAndPost(c);
+                }
+            }
+          //  view.draw(c);
+            try {
+                sleep(3);
+
+            } catch (Exception e) {}
+        /*    startTime = System.currentTimeMillis();
             try {
                 c = view.getHolder().lockCanvas();
                 synchronized (view.getHolder()) {
@@ -47,7 +64,7 @@ public class GameThread extends Thread {
                     sleep(sleepTime);
                 else
                     sleep(10);
-            } catch (Exception e) {}
+            } catch (Exception e) {}*/
         }
     }
 }
