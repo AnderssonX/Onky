@@ -34,7 +34,7 @@ public class GameView extends SurfaceView {
     public GameView(Context context) {
         super(context);
         this.setOnTouchListener(
-                new RelativeLayout.OnTouchListener() {
+                new OnTouchListener() {
                     public boolean onTouch(View v, MotionEvent m) {
 
                         int pointerCount = m.getPointerCount();
