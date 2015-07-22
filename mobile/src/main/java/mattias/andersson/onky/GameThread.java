@@ -12,6 +12,7 @@ public class GameThread extends Thread {
     static final long FPS = 30;
     private GameView view;
     private boolean running = false;
+    Canvas c = null;
 
     public GameThread(GameView view) {
         this.view = view;
@@ -31,7 +32,6 @@ public class GameThread extends Thread {
         while (running) {
             Log.i("test", "loop");
 
-            Canvas c = null;
             try {
                 c = view.getHolder().lockCanvas();
                 synchronized (view.getHolder()) {
@@ -44,7 +44,7 @@ public class GameThread extends Thread {
             }
           //  view.draw(c);
             try {
-                sleep(3);
+                sleep(1);
 
             } catch (Exception e) {}
         /*    startTime = System.currentTimeMillis();

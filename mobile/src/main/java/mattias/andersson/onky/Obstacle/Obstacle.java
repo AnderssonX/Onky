@@ -1,14 +1,23 @@
 package mattias.andersson.onky.Obstacle;
 
 
-import java.util.Vector;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+
+import java.util.Random;
+
+import mattias.andersson.onky.GameView;
 
 /**
  * Created by Alrik on 2015-07-20.
  */
-public abstract class Obstacle {
-    public Vector vectorXy;
-    public Vector vectorWh;
+public class Obstacle {
+    Random r=new Random();
+   Paint color=new Paint(Color.RED);
+    public Point2D coord;
+    public Point2D size;
+    public Point2D velocity =new Point2D();
     public String signText;
     boolean dead, regenerating;
 
@@ -17,21 +26,44 @@ public abstract class Obstacle {
 
     }
 
-    public Obstacle(Vector vectorXy, Vector vectorWh) {
-
-        this.vectorXy = vectorXy;
-        this.vectorWh = vectorWh;
-
+    public Obstacle(Point2D coord, Point2D Size) {
+        color.setColor(Color.rgb(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
+        this.coord = coord;
+        this.size = Size;
+        velocity.x=r.nextInt(20)-10;
+        velocity.y=r.nextInt(20)-10;
     }
 
-    public Obstacle(Vector vectorXy, Vector vectorWh, String signText) {
+    public Obstacle(Point2D coord, Point2D Size, String signText) {
 
-        this.vectorXy = vectorXy;
-        this.vectorWh = vectorWh;
+        this.coord = coord;
+        this.size = Size;
         this.signText = signText;
 
+    }
+
+
+    public void update(){
+        coord.add(velocity);
+        if(coord.x > GameView.width|| coord.x<0) velocity.x*=-1;
+        if(coord.y >GameView.height|| coord.y<0) velocity.y*=-1;
+
 
     }
+
+    public void display(Canvas c){
+
+        c.drawCircle(coord.x, coord.y, size.x, color );
+
+
+    }
+
+
+
+
+    public Point2D getVelocity() { return velocity; }
+
+    public void setVelocity(Point2D velocity) { this.velocity = velocity;}
 
     public String getSignText() {
         return signText;
@@ -41,19 +73,19 @@ public abstract class Obstacle {
         this.signText = signText;
     }
 
-    public Vector getVectorXy() {
-        return vectorXy;
+    public Point2D getCoord() {
+        return coord;
     }
 
-    public void setVectorXy(Vector vectorXy) {
-        this.vectorXy = vectorXy;
+    public void setCoord(Point2D coord) {
+        this.coord = coord;
     }
 
-    public Vector getVectorWh() {
-        return vectorWh;
+    public Point2D getSize() {
+        return size;
     }
 
-    public void setVectorWh(Vector vectorWh) {
-        this.vectorWh = vectorWh;
+    public void setSize(Point2D size) {
+        this.size = size;
     }
 }
