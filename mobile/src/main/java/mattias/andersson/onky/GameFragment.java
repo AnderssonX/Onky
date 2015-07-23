@@ -154,7 +154,7 @@ public class GameFragment extends Fragment {
                 Log.i("levels", "id: " + id);
 
                 GameView.obstacles.add(new Obstacle(new Point2D(200, 200), new Point2D(50, 50)));
-                Log.i("Obstacle size is " + GameView.obstacles.size(), " Adding bouncing ball!");
+                Log.i("Added ball! ", "obstacles.size is now " + GameView.obstacles.size());
             }
 
         }
