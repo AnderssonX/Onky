@@ -25,9 +25,8 @@ import com.firebase.client.ValueEventListener;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     public FragmentManager fragmentManager;
     public FragmentTransaction fragmentTransaction;
-    private Button createUser;
+    private Button createUser, play, playOffline;
     private FragmentManager fm;
-    private Button play, playOffline;
     private String pw;
     private String currentUser;
     private FragmentTransaction ft;
