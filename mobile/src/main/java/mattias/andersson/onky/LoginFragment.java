@@ -27,7 +27,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public FragmentTransaction fragmentTransaction;
     private Button createUser;
     private FragmentManager fm;
-    private Button play;
+    private Button play, playOffline;
     private String pw;
     private String currentUser;
     private FragmentTransaction ft;
@@ -52,6 +52,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         eTPW = (EditText) view.findViewById(R.id.loginPw);
         play = (Button) view.findViewById(R.id.loginLogin);
         play.setOnClickListener(this);
+        playOffline = (Button) view.findViewById(R.id.playOfflineButton);
+        playOffline.setOnClickListener(this);
+
 
         return view;
 
@@ -61,6 +64,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(final View view) {
         switch (view.getId()) {
+
+            case R.id.playOfflineButton:
+                Log.i("offline", "we're in case switch");
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new GameFragment());
+                ft.commit();
+
+                break;
+
 
             case R.id.loginSignup:
 

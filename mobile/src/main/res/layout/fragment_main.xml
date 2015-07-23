@@ -72,5 +72,13 @@
 
         android:text="@string/loginLogin" />
 
+    <Button
+        android:id="@+id/playOfflineButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/loginLogin"
+        android:layout_alignParentTop="true"
+        android:text="Play offline" />
+
 
 </RelativeLayout>
