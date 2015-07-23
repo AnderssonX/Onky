@@ -15,6 +15,9 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.Map;
 
+import mattias.andersson.onky.Obstacle.Obstacle;
+import mattias.andersson.onky.Obstacle.Point2D;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,13 +43,16 @@ public class GameFragment extends Fragment {
         GameView gameView = new GameView(view.getContext());
 
 
-        fb.child("levels/box").addListenerForSingleValueEvent(new ValueEventListener() {
+        fb.child("levels").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 obstacleCourses = (int) dataSnapshot.getChildrenCount();
                 Log.i("levels ", "Box0 has" + obstacleCourses + " children");
-
                 Iterable<DataSnapshot> firebaseLevels = dataSnapshot.getChildren();
+                for (DataSnapshot FBlevels : firebaseLevels) {
+                    addLevel(FBlevels);
+                }
+           /*     Iterable<DataSnapshot> firebaseLevels = dataSnapshot.getChildren();
                 for (DataSnapshot FBlevels : firebaseLevels) {
                     if (FBlevels.getKey() == "courseProperties") {
                         break;
@@ -70,30 +76,8 @@ public class GameFragment extends Fragment {
                         Log.i("levels", "ycoord: " + y);
                         Log.i("levels", "id: " + id);
                     }
-                }
-
-                    /* HERE boolean match = false;
-
-                    for (int i = 0; i < usedWords.size(); i++) {
-                        if (usedWords.get(i).getWordId().contains(FBUWC.getKey())) {
-                            Log.i("check", " Match! = " + FBUWC.getKey());
-                            // usedWords.get(i).setFirebaseRef(dataSnapshot.getRef());
-                            match = true;
-                        }
-                    }
-                    if (!match) {
-                        Log.i("check, datasnpshot = ", " " + FBUWC.getRef());
-                        Log.i("check, used", "MATCH! children count = " + FBUWC.getChildrenCount());
-                        if (FBUWC.getChildrenCount() > 4) {
-                            // if(FBUWC.hasChild("Word"+FBUWC.getChildrenCount())){
-                            //  usedWords.add(new Word(true, FBUWC.child("text").getValue().toString(), FBUWC.getKey(), rootView.getContext()));
-
-                            //    assignWordAttributes((int) (Float.parseFloat(FBUWC.child("xRel").getValue().toString())) * width, (int) (Float.parseFloat(FBUWC.child("yRel").getValue().toString())) * height, p, usedWords.size() - 1, dataSnapshot.getKey());
-                            match = false;
-                        }
-
-                    }
-             HERE */
+                }/*
+*/
             }
 
 
@@ -143,5 +127,41 @@ public class GameFragment extends Fragment {
         return gameView;
     }
 
+    private void addLevel(DataSnapshot dataSnapshot) {
+        Log.i("levels", "Adding level: " + dataSnapshot.getKey());
+        Iterable<DataSnapshot> firebaseLevels = dataSnapshot.getChildren();
+        for (DataSnapshot FBlevels : firebaseLevels) {
+            if (FBlevels.getKey() == "courseProperties") {
+                break;
+            } else {
+                Log.i("looping, ref is:", "" + FBlevels);
 
+                Log.i("levels", " current dataSnapshot is " + dataSnapshot);
+                //Map<String, Object> value = (Map<String, Object>) dataSnapshot.child("Box0").getValue();
+                Map<String, Object> value = (Map<String, Object>) FBlevels.getValue();
+                classId = value.get("class").toString();
+                type = value.get("type").toString();
+                text = value.get("text").toString();
+                x = (Long) value.get("xCoord");
+                y = (Long) value.get("yCoord");
+                id = (Long) value.get("id");
+
+                Log.i("levels", "class: " + classId);
+                Log.i("levels", "type: " + type);
+                Log.i("levels", "text: " + text);
+                Log.i("levels", "xcoord: " + x);
+                Log.i("levels", "ycoord: " + y);
+                Log.i("levels", "id: " + id);
+
+                GameView.obstacles.add(new Obstacle(new Point2D(200, 200), new Point2D(50, 50)));
+                Log.i("Obstacle size is " + GameView.obstacles.size(), " Adding bouncing ball!");
+            }
+
+        }
+
+
+    }
 }
+
+
+
