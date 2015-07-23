@@ -1,18 +1,14 @@
 package mattias.andersson.onky;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -23,11 +19,11 @@ import mattias.andersson.onky.Obstacle.Point2D;
  * Created by Alrik on 2015-07-15.
  */
 public class GameView extends SurfaceView {
+    public static int width, height;
     static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
     private SurfaceHolder holder;
     private GameThread gameLoopThread;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
-    public static int width,height;
     private Paint redP;
 
 
@@ -192,7 +188,7 @@ public class GameView extends SurfaceView {
 
        // barrel.display(canvas);
 
-        Log.i("test", "size"+obstacles.size() );
+        // Log.i("test", "size"+obstacles.size() );
 
         for(int i=0; i<obstacles.size()-1;i++){
             obstacles.get(i).update();
