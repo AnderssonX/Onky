@@ -42,7 +42,6 @@ public class GameFragment extends Fragment {
         first=true;
         GameView gameView = new GameView(view.getContext());
 
-
         fb.child("levels").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -50,6 +49,8 @@ public class GameFragment extends Fragment {
                 Log.i("levels ", "Box0 has" + obstacleCourses + " children");
                 Iterable<DataSnapshot> firebaseLevels = dataSnapshot.getChildren();
                 for (DataSnapshot FBlevels : firebaseLevels) {
+
+
                     addLevel(FBlevels);
                 }
            /*     Iterable<DataSnapshot> firebaseLevels = dataSnapshot.getChildren();
@@ -134,8 +135,9 @@ public class GameFragment extends Fragment {
             if (FBlevels.getKey() == "courseProperties") {
                 break;
             } else {
-                Log.i("looping, ref is:", "" + FBlevels);
 
+
+                Log.i("looping, ref is:", "" + FBlevels);
                 Log.i("levels", " current dataSnapshot is " + dataSnapshot);
                 //Map<String, Object> value = (Map<String, Object>) dataSnapshot.child("Box0").getValue();
                 Map<String, Object> value = (Map<String, Object>) FBlevels.getValue();

@@ -190,7 +190,7 @@ public class GameView extends SurfaceView {
 
         // Log.i("test", "size"+obstacles.size() );
 
-        for(int i=0; i<obstacles.size()-1;i++){
+        for (int i = 0; i < obstacles.size(); i++) {
             obstacles.get(i).update();
             obstacles.get(i).display(canvas);
         }
