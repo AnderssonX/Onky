@@ -16,14 +16,18 @@ import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
+import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
 import mattias.andersson.onky.Obstacle.Point2D;
+import mattias.andersson.onky.Particle.Particle;
 
 /**
  * Created by Alrik on 2015-07-15.
  */
 public class GameView extends SurfaceView {
     static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
+    static ArrayList<Particle>  particles = new ArrayList<Particle>();
+
     private SurfaceHolder holder;
     private GameThread gameLoopThread;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
@@ -50,19 +54,24 @@ public class GameView extends SurfaceView {
                             switch (action) {
                                 case MotionEvent.ACTION_DOWN:
                                     actionString = "DOWN";
-                                    addObstacle(new Point2D(x,y));
+                                    addparticle(new Point2D(x, y));
+                                    addObstacle(new Point2D(x, y));
                                     break;
                                 case MotionEvent.ACTION_UP:
                                     actionString = "UP";
                                     break;
                                 case MotionEvent.ACTION_POINTER_DOWN:
                                     actionString = "PNTR DOWN";
+                                    addparticle(new Point2D(x, y));
+                                    addObstacle(new Point2D(x, y));
                                     break;
                                 case MotionEvent.ACTION_POINTER_UP:
                                     actionString = "PNTR UP";
                                     break;
                                 case MotionEvent.ACTION_MOVE:
                                     actionString = "MOVE";
+                                    addparticle(new Point2D(x, y));
+
                                     break;
                                 default:
                                     actionString = "";
@@ -128,56 +137,13 @@ public class GameView extends SurfaceView {
       //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return super.onTouchEvent(event);
-    }
-    public  void handleTouch(MotionEvent m)
-    {
-        int pointerCount = m.getPointerCount();
-
-        for (int i = 0; i < pointerCount; i++)
-        {
-            int x = (int) m.getX(i);
-            int y = (int) m.getY(i);
-            int id = m.getPointerId(i);
-            int action = m.getActionMasked();
-            int actionIndex = m.getActionIndex();
-            String actionString;
-
-
-            switch (action)
-            {
-                case MotionEvent.ACTION_DOWN:
-                    actionString = "DOWN";
-                    break;
-                case MotionEvent.ACTION_UP:
-                    actionString = "UP";
-                    break;
-                case MotionEvent.ACTION_POINTER_DOWN:
-                    actionString = "PNTR DOWN";
-                    break;
-                case MotionEvent.ACTION_POINTER_UP:
-                    actionString = "PNTR UP";
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    actionString = "MOVE";
-                    break;
-                default:
-                    actionString = "";
-            }
-
-            String touchStatus = "Action: " + actionString + " Index: " + actionIndex + " ID: " + id + " X: " + x + " Y: " + y;
-            if (id == 0)
-                Log.i("test","touchStatus"+touchStatus);  else
-                Log.i("test", "nottouch"+touchStatus);        }
-    }
 
     void addObstacle(Point2D coord){
-        for(int i=0; i<50;i++)obstacles. add(new Obstacle(new Point2D(200, 200), new Point2D(40, 40)));
+       obstacles. add(new Box(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
-
-
+    void addparticle(Point2D coord){
+        for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -192,11 +158,17 @@ public class GameView extends SurfaceView {
 
        // barrel.display(canvas);
 
-        Log.i("test", "size"+obstacles.size() );
+        Log.i("test", "obstacle size:"+particles.size() +"   particle size:"+particles.size() );
 
-        for(int i=0; i<obstacles.size()-1;i++){
+        for(int i=particles.size()-1 ; i>=0 ;i--){
+            particles.get(i).update();
+            particles.get(i).display(canvas);
+            if(particles.get(i).dead)particles.remove(particles.get(i));
+        }
+        for(int i=obstacles.size()-1 ; i>=0 ;i--){
             obstacles.get(i).update();
             obstacles.get(i).display(canvas);
+            if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
         }
 
        // redP.setColor(Color.RED);

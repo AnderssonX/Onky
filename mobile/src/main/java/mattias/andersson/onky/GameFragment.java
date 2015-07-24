@@ -17,6 +17,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.Iterator;
 import java.util.Map;
 
+import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
 import mattias.andersson.onky.Obstacle.Point2D;
 
@@ -65,7 +66,7 @@ public class GameFragment extends Fragment {
 
                     for (DataSnapshot fc : data) {
                         System.out.println("datasnapshot " + fc.getRef().toString() + " " + value);
-                        GameView.obstacles.add(new Obstacle(new Point2D(200, 200), new Point2D(50, 50)));
+                        GameView.obstacles.add(new Box(new Point2D(200, 200), new Point2D(50, 50)));
                     }
 
 

@@ -24,7 +24,7 @@ public class Point2D {
     public float getY(){
         return y;
     }
-  void add(Point2D point){
+    public void add(Point2D point){
       this.x+=point.x;
       this.y+=point.y;
   }
