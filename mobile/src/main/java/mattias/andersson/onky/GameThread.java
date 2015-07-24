@@ -3,16 +3,16 @@ package mattias.andersson.onky;
 /**
  * Created by Alrik on 2015-07-15.
  */
+
 import android.graphics.Canvas;
-import android.util.Log;
 
 
 public class GameThread extends Thread {
 
     static final long FPS = 30;
+    Canvas c = null;
     private GameView view;
     private boolean running = false;
-    Canvas c = null;
 
     public GameThread(GameView view) {
         this.view = view;
@@ -30,7 +30,7 @@ public class GameThread extends Thread {
       //  long startTime;
       //  long sleepTime;
         while (running) {
-            Log.i("test", "loop");
+            // Log.i("test", "loop");
 
             try {
                 c = view.getHolder().lockCanvas();

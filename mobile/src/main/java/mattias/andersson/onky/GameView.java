@@ -25,13 +25,13 @@ import mattias.andersson.onky.Particle.Particle;
  * Created by Alrik on 2015-07-15.
  */
 public class GameView extends SurfaceView {
+    public static int width, height;
     static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
     static ArrayList<Particle>  particles = new ArrayList<Particle>();
 
     private SurfaceHolder holder;
     private GameThread gameLoopThread;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
-    public static int width,height;
     private Paint redP;
 
 

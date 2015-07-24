@@ -31,6 +31,9 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
     private EditText eTPW;
     private boolean isTaken;
     private boolean go;
+    private Button backButton;
+    private FragmentTransaction ft;
+    private FragmentManager fm;
     private boolean match = false;
     public SignupFragment() {
         // Required empty public constructor
@@ -44,6 +47,8 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         createUser = (Button) view.findViewById(R.id.signupCreate);
         eTUser = (EditText) view.findViewById(R.id.signupUser);
         eTPW = (EditText) view.findViewById(R.id.signupPw);
+        backButton = (Button) view.findViewById(R.id.backButton);
+        backButton.setOnClickListener(this);
         createUser.setOnClickListener(this);
         Firebase.setAndroidContext(view.getContext());
         return view;
@@ -53,6 +58,14 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(final View view) {
         switch (view.getId()) {
+            case R.id.backButton:
+
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new LoginFragment());
+                ft.commit();
+                break;
+
             case R.id.signupCreate:
                 final Firebase fbCheck = CONSTANTS.fbRef;
 
