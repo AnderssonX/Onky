@@ -16,8 +16,12 @@ public class Sign extends  Obstacle {
    // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
     public Sign(Point2D coord, Point2D Size) {
        super(coord, Size);
-    color.setARGB(255,180, 140, 50);
+        color.setARGB(255, 180, 140, 50);
         textColor.setColor(Color.BLACK);
+        textColor.setColor(Color.WHITE);
+        textColor.setStyle(Paint.Style.FILL);
+
+
      //  image=C:\Users\Alrik\AndroidStudioProjects\Onky\mobile\src\main\assets\woodenBox.png
      //   Drawable d = Drawable.createFromStream(getAssets().open("woodenBox.png"), null);
      //  Drawable d=
@@ -31,7 +35,12 @@ public class Sign extends  Obstacle {
 
     public void display(Canvas c){
         c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
-        c.drawText(signText,coord.x,coord.x+size.x, textColor);
+        //  c.drawPaint(textColor);
+        textColor.setColor(Color.BLACK);
+        textColor.setTextSize(20);
+        c.drawText(signText, coord.x, coord.x + size.x, textColor);
+
+
        // c.drawBitmap(bMap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
       //  c.drawBitmap(bMap,(int)coord.x,(int)coord.y,color);
     }

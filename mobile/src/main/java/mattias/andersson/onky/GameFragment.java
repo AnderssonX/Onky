@@ -16,8 +16,10 @@ import com.firebase.client.ValueEventListener;
 import java.util.Map;
 
 import mattias.andersson.onky.Obstacle.Box;
+import mattias.andersson.onky.Obstacle.IronBox;
 import mattias.andersson.onky.Obstacle.Obstacle;
 import mattias.andersson.onky.Obstacle.Point2D;
+import mattias.andersson.onky.Obstacle.Sign;
 
 
 /**
@@ -27,10 +29,12 @@ public class GameFragment extends Fragment {
 
     boolean first;
     private String classId, type, text;
-    private Long x, y, id;
+    private Long x, y, id, xSize, ySize;
+
     private Firebase fb = CONSTANTS.fbRef;
     private String jsonArray;
     private int obstacleCourses;
+
     public GameFragment() {
 
     }
@@ -40,7 +44,7 @@ public class GameFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game, container, false);
         //  GameView gameView=new GameView(this.getActivity());
-        first=true;
+        first = true;
         GameView gameView = new GameView(view.getContext());
 
         fb.child("levels").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -90,41 +94,6 @@ public class GameFragment extends Fragment {
             }
         });
 
-        /*
-
-      fb.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-
-                    System.out.println("datasnapshot looped times !!!");
-
-                    Map<String, Object> value = (Map<String, Object>) dataSnapshot.getValue();
-
-                    Iterable<DataSnapshot> data = dataSnapshot.getChildren();
-
-                    for (DataSnapshot fc : data) {
-                        System.out.println("datasnapshot " + fc.getRef().toString() + " " + value);
-                        GameView.obstacles.add(new Box(new Point2D(200, 200), new Point2D(50, 50)));
-                    }
-
-
-
-
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-            }
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        }); */
         Log.i(jsonArray, "");
         return gameView;
     }
@@ -136,27 +105,86 @@ public class GameFragment extends Fragment {
             if (FBlevels.getKey() == "courseProperties") {
                 break;
             } else {
-
+                Map<String, Object> value = (Map<String, Object>) FBlevels.getValue();
 
                 Log.i("looping, ref is:", "" + FBlevels);
                 Log.i("levels", " current dataSnapshot is " + dataSnapshot);
-                //Map<String, Object> value = (Map<String, Object>) dataSnapshot.child("Box0").getValue();
-                Map<String, Object> value = (Map<String, Object>) FBlevels.getValue();
+
+
                 classId = value.get("class").toString();
                 type = value.get("type").toString();
-                text = value.get("text").toString();
+
                 x = (Long) value.get("xCoord");
                 y = (Long) value.get("yCoord");
                 id = (Long) value.get("id");
+                xSize = (Long) value.get("xSize");
+                ySize = (Long) value.get("ySize");
 
                 Log.i("levels", "class: " + classId);
                 Log.i("levels", "type: " + type);
-                Log.i("levels", "text: " + text);
+
                 Log.i("levels", "xcoord: " + x);
                 Log.i("levels", "ycoord: " + y);
                 Log.i("levels", "id: " + id);
+                Log.i("levels", "size " + xSize + "*" + ySize);
 
-                GameView.obstacles.add(new Box(new Point2D(x, y), new Point2D(50, 50)));
+                switch (classId) {
+
+
+                    case "Box":
+                        GameView.obstacles.add(new Box(new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "IronBox":
+                        GameView.obstacles.add(new IronBox(new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+
+                    case "Tire":
+
+                        break;
+
+                    case "Lumber":
+                        break;
+
+                    case "Glass":
+                        break;
+
+                    case "Block":
+                        break;
+
+                    case "Bush":
+                        break;
+
+                    case "Grass":
+                        break;
+
+                    case "Water":
+                        break;
+
+                    case "Sign":
+                        text = value.get("text").toString();
+                        Log.i("levels", "text: " + text);
+                        Obstacle temp = new Sign(new Point2D(x, y), new Point2D(xSize, ySize));
+                        temp.signText = text;
+                        Log.i("levels", "text: " + temp.getSignText());
+                        GameView.obstacles.add(temp);
+                        break;
+
+                    case "Snake":
+                        break;
+
+                    case "Barrel":
+                        break;
+
+                    case "Rock":
+                        break;
+
+                    case "StoneSign":
+                        break;
+
+
+                }
+
+
                 Log.i("Added ball! ", "obstacles.size is now " + GameView.obstacles.size());
             }
 
