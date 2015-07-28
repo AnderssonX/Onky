@@ -3,6 +3,7 @@ package mattias.andersson.onky;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //  image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);
 
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
