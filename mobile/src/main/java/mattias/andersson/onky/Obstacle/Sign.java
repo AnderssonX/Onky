@@ -1,9 +1,14 @@
 package mattias.andersson.onky.Obstacle;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+
+import mattias.andersson.onky.R;
 
 /**
  * Created by Alrik on 2015-07-23.
@@ -11,11 +16,19 @@ import android.graphics.drawable.Drawable;
 public class Sign extends  Obstacle {
    int defaultHealth,health=defaultHealth;
     Drawable image;
+    Context context;
+    Bitmap bitmap = null;
+    Bitmap scaledBitmap;
     Paint textColor=new Paint(Color.BLACK);
   //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
    // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    public Sign(Point2D coord, Point2D Size) {
+  public Sign(Context context, Point2D coord, Point2D Size) {
        super(coord, Size);
+
+      this.context = context;
+      bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.sign);
+      scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y, false);
+
         color.setARGB(255, 180, 140, 50);
         textColor.setColor(Color.BLACK);
         textColor.setColor(Color.WHITE);
@@ -34,7 +47,8 @@ public class Sign extends  Obstacle {
     }
 
     public void display(Canvas c){
-        c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
+        //c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
+        c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
         //  c.drawPaint(textColor);
         textColor.setColor(Color.BLACK);
         textColor.setTextSize(20);

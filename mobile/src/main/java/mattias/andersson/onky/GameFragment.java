@@ -15,11 +15,22 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.Map;
 
+import mattias.andersson.onky.Obstacle.Barrel;
+import mattias.andersson.onky.Obstacle.Block;
 import mattias.andersson.onky.Obstacle.Box;
+import mattias.andersson.onky.Obstacle.Bush;
+import mattias.andersson.onky.Obstacle.Glass;
+import mattias.andersson.onky.Obstacle.Grass;
 import mattias.andersson.onky.Obstacle.IronBox;
+import mattias.andersson.onky.Obstacle.Lumber;
 import mattias.andersson.onky.Obstacle.Obstacle;
 import mattias.andersson.onky.Obstacle.Point2D;
+import mattias.andersson.onky.Obstacle.Rock;
 import mattias.andersson.onky.Obstacle.Sign;
+import mattias.andersson.onky.Obstacle.Snake;
+import mattias.andersson.onky.Obstacle.StoneSign;
+import mattias.andersson.onky.Obstacle.Tire;
+import mattias.andersson.onky.Obstacle.Water;
 
 
 /**
@@ -135,50 +146,65 @@ public class GameFragment extends Fragment {
                         GameView.obstacles.add(new Box(view.getContext(),new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
                     case "IronBox":
-                        GameView.obstacles.add(new IronBox(new Point2D(x, y), new Point2D(xSize, ySize)));
+                        GameView.obstacles.add(new IronBox(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Tire":
-
+                        GameView.obstacles.add(new Tire(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Lumber":
+                        GameView.obstacles.add(new Lumber(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Glass":
+                        GameView.obstacles.add(new Glass(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Block":
+                        GameView.obstacles.add(new Block(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Bush":
+                        GameView.obstacles.add(new Bush(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Grass":
+                        GameView.obstacles.add(new Grass(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Water":
+                        GameView.obstacles.add(new Water(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Sign":
                         text = value.get("text").toString();
                         Log.i("levels", "text: " + text);
-                        Obstacle temp = new Sign(new Point2D(x, y), new Point2D(xSize, ySize));
+                        Obstacle temp = new Sign(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize));
                         temp.signText = text;
                         Log.i("levels", "text: " + temp.getSignText());
                         GameView.obstacles.add(temp);
                         break;
 
                     case "Snake":
+                        GameView.obstacles.add(new Snake(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Barrel":
+                        GameView.obstacles.add(new Barrel(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Rock":
+                        GameView.obstacles.add(new Rock(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "StoneSign":
+                        text = value.get("text").toString();
+                        Log.i("levels", "text: " + text);
+                        Obstacle tempStoneSign = new StoneSign(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize));
+                        tempStoneSign.signText = text;
+                        Log.i("levels", "text: " + tempStoneSign.getSignText());
+                        GameView.obstacles.add(tempStoneSign);
                         break;
 
 
