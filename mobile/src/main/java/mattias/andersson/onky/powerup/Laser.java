@@ -1,16 +1,19 @@
-package mattias.andersson.onky.Obstacle;
+package mattias.andersson.onky.powerup;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 
+import mattias.andersson.onky.Obstacle.Point2D;
 import mattias.andersson.onky.R;
 
 /**
- * Created by Alrik on 2015-07-23.
+ * Created by Alrik on 2015-07-28.
  */
-public class Box extends Obstacle {
+
+public class Laser extends PowerUp {
+
     int defaultHealth, health = defaultHealth;
     Context context;
     // Drawable image;
@@ -19,17 +22,12 @@ public class Box extends Obstacle {
     Bitmap bitmap=null;
     Bitmap scaledBitmap;
     //  canvas.drawBitmap(bitmap, null, mRedPaddleRect, mPaint);
-    public Box(Context context, Point2D coord, Point2D Size) {
-        super(coord, Size);
+    public Laser(Context context, Point2D coord, Point2D Size) {
+        super();
         this.context = context;
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.woodenbox);
         scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y,false);
         color.setARGB(255, 180, 140, 50);
-        //image=C:\Users\Alrik\AndroidStudioProjects\Onky\mobile\src\main\assets\woodenBox.png
-        //Drawable d = Drawable.createFromStream(getAssets().open("woodenBox.png"), null);
-        //image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);
-        //d.setBounds((int)coord.x, (int)coord.y,(int) (coord.x+size.x),(int) (coord.y+size.y));
-        //d.draw(c);
     }
 
     public void update() {
@@ -41,4 +39,12 @@ public class Box extends Obstacle {
     }
 
 
+
+
+
+
+
+
+
 }
+

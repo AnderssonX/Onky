@@ -80,10 +80,7 @@ public class GameView extends SurfaceView {
                                 Log.i("test", "touchStatus" + touchStatus);
                             else
                                 Log.i("test", "nottouch" + touchStatus);
-                        }
-
-
-
+                            }
 
                             Log.i("test","ok");
 
@@ -114,19 +111,15 @@ public class GameView extends SurfaceView {
                 }
             }
 
-
-
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 gameLoopThread.setRunning(true);
                 gameLoopThread.start();
                 Log.i("test", "canvas start");
-
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder holder, int format,
-                                       int width, int height) {
+            public void surfaceChanged(SurfaceHolder holder, int format,int width, int height) {
             }
         });
       //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
@@ -143,16 +136,12 @@ public class GameView extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-     /*   x+=1*xSpeed;
+     /* x+=1*xSpeed;
         y+=1*ySpeed;
         if(x >getWidth()|| x<0) xSpeed*=-1;
         if(y >getHeight() || y<0) ySpeed*=-1;*/
-
         canvas.drawColor(Color.WHITE);
-
        // barrel.display(canvas);
-
         Log.i("test", "obstacle size:"+particles.size() +"   particle size:"+particles.size() );
 
         for(int i=particles.size()-1 ; i>=0 ;i--){
@@ -165,11 +154,9 @@ public class GameView extends SurfaceView {
             obstacles.get(i).display(canvas);
             if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
         }
-
        // redP.setColor(Color.RED);
        // canvas.drawCircle(x , y , 10, redP);
-
-        //canvas.drawBitmap(bmp, x , 10, null);
+       // canvas.drawBitmap(bmp, x , 10, null);
     }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
