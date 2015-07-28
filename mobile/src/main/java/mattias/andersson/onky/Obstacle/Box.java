@@ -1,47 +1,49 @@
 package mattias.andersson.onky.Obstacle;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 
-import mattias.andersson.onky.GameView;
 import mattias.andersson.onky.R;
 
 /**
  * Created by Alrik on 2015-07-23.
  */
-public class Box extends  Obstacle {
-   int defaultHealth,health=defaultHealth;
-    Drawable image;
-  //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
-   // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    public Box(Point2D coord, Point2D Size) {
-       super(coord, Size);
-    color.setARGB(255,180, 140, 50);
-     //  image=C:\Users\Alrik\AndroidStudioProjects\Onky\mobile\src\main\assets\woodenBox.png
+public class Box extends Obstacle {
+    int defaultHealth, health = defaultHealth;
+    Context context;
+    // Drawable image;
+    //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
+    // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
+    Bitmap bitmap=null;
+    Bitmap scaledBitmap;
+    //  canvas.drawBitmap(bitmap, null, mRedPaddleRect, mPaint);
 
-    //   Drawable d = Drawable.createFromStream(getAssets().open("woodenBox.png"), null);
+    public Box(Context context, Point2D coord, Point2D Size) {
+        super(coord, Size);
+        this.context = context;
+        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.woodenbox);
+        scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y,false);
+        color.setARGB(255, 180, 140, 50);
 
-    //  Drawable d=
+        //image=C:\Users\Alrik\AndroidStudioProjects\Onky\mobile\src\main\assets\woodenBox.png
+        //Drawable d = Drawable.createFromStream(getAssets().open("woodenBox.png"), null);
+        //image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);
+        //d.setBounds((int)coord.x, (int)coord.y,(int) (coord.x+size.x),(int) (coord.y+size.y));
+        //d.draw(c);
+    }
 
-      //// d.setBounds((int)coord.x, (int)coord.y,(int) (coord.x+size.x),(int) (coord.y+size.y));
-
-      // d.draw(c);
-   }
-
-    public void update(){
+    public void update() {
 
     }
 
-    public void display(Canvas c){
+    public void display(Canvas c) {
         c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
-       // c.drawBitmap(bMap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
-      //  c.drawBitmap(bMap,(int)coord.x,(int)coord.y,color);
-    }
+       //c.drawBitmap(bitmap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
+       c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
 
+    }
 
 
 }

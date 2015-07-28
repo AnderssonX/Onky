@@ -49,8 +49,6 @@ public class GameView extends SurfaceView {
                             int action = m.getActionMasked();
                             int actionIndex = m.getActionIndex();
                             String actionString;
-
-
                             switch (action) {
                                 case MotionEvent.ACTION_DOWN:
                                     actionString = "DOWN";
@@ -71,7 +69,6 @@ public class GameView extends SurfaceView {
                                 case MotionEvent.ACTION_MOVE:
                                     actionString = "MOVE";
                                     addparticle(new Point2D(x, y));
-
                                     break;
                                 default:
                                     actionString = "";
@@ -94,8 +91,6 @@ public class GameView extends SurfaceView {
                     }
                 }
         );
-
-
 
 
         Log.i("test","canvasdraw11");
@@ -139,7 +134,7 @@ public class GameView extends SurfaceView {
 
 
     void addObstacle(Point2D coord){
-       obstacles. add(new Box(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+       obstacles. add(new Box(this.getContext(),new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
     void addparticle(Point2D coord){
         for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));

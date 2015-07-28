@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.Image;
+import android.view.View;
 
 import java.util.Random;
 
@@ -25,6 +26,7 @@ public abstract class Obstacle {
     public boolean dead, regenerating;
 
     public Obstacle() {
+       // super();
     }
 
     public Obstacle(Point2D coord, Point2D Size) {

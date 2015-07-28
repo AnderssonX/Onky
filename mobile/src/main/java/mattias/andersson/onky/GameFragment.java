@@ -26,7 +26,7 @@ import mattias.andersson.onky.Obstacle.Sign;
  * A simple {@link Fragment} subclass.
  */
 public class GameFragment extends Fragment {
-
+   static View view;
     boolean first;
     private String classId, type, text;
     private Long x, y, id, xSize, ySize;
@@ -42,7 +42,7 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_game, container, false);
+         view = inflater.inflate(R.layout.fragment_game, container, false);
         //  GameView gameView=new GameView(this.getActivity());
         first = true;
         GameView gameView = new GameView(view.getContext());
@@ -132,7 +132,7 @@ public class GameFragment extends Fragment {
 
 
                     case "Box":
-                        GameView.obstacles.add(new Box(new Point2D(x, y), new Point2D(xSize, ySize)));
+                        GameView.obstacles.add(new Box(view.getContext(),new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
                     case "IronBox":
                         GameView.obstacles.add(new IronBox(new Point2D(x, y), new Point2D(xSize, ySize)));
