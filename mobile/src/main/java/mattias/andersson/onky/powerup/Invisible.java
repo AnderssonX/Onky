@@ -12,21 +12,22 @@ import mattias.andersson.onky.R;
  * Created by Alrik on 2015-07-28.
  */
 
-public class Laser extends PowerUp {
+public class Invisible extends PowerUp {
 
     int defaultHealth, health = defaultHealth;
     Context context;
     // Drawable image;
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
     // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    Bitmap bitmap=null;
+    Bitmap bitmap = null;
     Bitmap scaledBitmap;
+
     //  canvas.drawBitmap(bitmap, null, mRedPaddleRect, mPaint);
-    public Laser(Context context, Point2D coord, Point2D Size) {
+    public Invisible(Context context, Point2D coord, Point2D Size) {
         super(coord, Size);
         this.context = context;
-        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.laserpower2);
-        scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y,false);
+        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.speedpower);
+        scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y, false);
         color.setARGB(255, 180, 140, 50);
     }
 
@@ -37,8 +38,6 @@ public class Laser extends PowerUp {
         // c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
     }
-
-
 
 
 }

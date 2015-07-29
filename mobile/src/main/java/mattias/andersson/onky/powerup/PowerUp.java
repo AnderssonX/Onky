@@ -1,7 +1,5 @@
 package mattias.andersson.onky.powerup;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -24,8 +22,10 @@ public abstract class PowerUp {
     public PowerUp() {
 
     }
-    public PowerUp(Context context,Point2D coord) {
 
+    public PowerUp(Point2D coord, Point2D size) {
+        this.coord = coord;
+        this.size = size;
     }
     public void update() {
 

@@ -14,6 +14,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.Map;
+import java.util.Random;
 
 import mattias.andersson.onky.Obstacle.Barrel;
 import mattias.andersson.onky.Obstacle.Block;
@@ -31,14 +32,25 @@ import mattias.andersson.onky.Obstacle.Snake;
 import mattias.andersson.onky.Obstacle.StoneSign;
 import mattias.andersson.onky.Obstacle.Tire;
 import mattias.andersson.onky.Obstacle.Water;
+import mattias.andersson.onky.powerup.Invisible;
+import mattias.andersson.onky.powerup.Laser;
+import mattias.andersson.onky.powerup.Life;
+import mattias.andersson.onky.powerup.Magnet;
+import mattias.andersson.onky.powerup.Poison;
+import mattias.andersson.onky.powerup.RandomPower;
+import mattias.andersson.onky.powerup.Slow;
+import mattias.andersson.onky.powerup.Teleport;
+import mattias.andersson.onky.powerup.Token;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class GameFragment extends Fragment {
-   static View view;
+    static View view;
     boolean first;
+    Random r = new Random();
+    private int randomPower;
     private String classId, type, text;
     private Long x, y, id, xSize, ySize;
 
@@ -53,7 +65,7 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         view = inflater.inflate(R.layout.fragment_game, container, false);
+        view = inflater.inflate(R.layout.fragment_game, container, false);
         //  GameView gameView=new GameView(this.getActivity());
         first = true;
         GameView gameView = new GameView(view.getContext());
@@ -143,7 +155,7 @@ public class GameFragment extends Fragment {
 
 
                     case "Box":
-                        GameView.obstacles.add(new Box(view.getContext(),new Point2D(x, y), new Point2D(xSize, ySize)));
+                        GameView.obstacles.add(new Box(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
                     case "IronBox":
                         GameView.obstacles.add(new IronBox(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
@@ -205,6 +217,46 @@ public class GameFragment extends Fragment {
                         tempStoneSign.signText = text;
                         Log.i("levels", "text: " + tempStoneSign.getSignText());
                         GameView.obstacles.add(tempStoneSign);
+                        break;
+
+
+                    // PowerUps below
+                    case "TokenPowerup":
+
+                        GameView.powerups.add(new Token(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "InvisPowerup":
+                        GameView.powerups.add(new Invisible(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "LaserPowerup":
+                        GameView.powerups.add(new Laser(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "SlowPowerup":
+                        GameView.powerups.add(new Slow(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "LifePowerup":
+                        GameView.powerups.add(new Life(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "TeleportPowerup":
+                        GameView.powerups.add(new Teleport(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "MagnetPowerup":
+                        GameView.powerups.add(new Magnet(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        break;
+                    case "RandomPowerup":
+                        GameView.powerups.add(new RandomPower(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        /*for (int i=0; i<1; i++){
+                            randomPower = r.nextInt(5);
+                            switch (randomPower) {
+
+
+                                case 0:
+
+
+                        }*/
+                        break;
+                    case "PoisonPowerdown":
+                        GameView.powerups.add(new Poison(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
 

@@ -36,7 +36,7 @@ public class Box extends Obstacle {
     }
 
     public void display(Canvas c) {
-        c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
+        //c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
     }
 
