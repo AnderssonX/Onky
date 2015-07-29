@@ -22,6 +22,7 @@ import mattias.andersson.onky.Obstacle.Obstacle;
 import mattias.andersson.onky.Obstacle.Point2D;
 import mattias.andersson.onky.Particle.Particle;
 import mattias.andersson.onky.Particle.TriangleParticle;
+import mattias.andersson.onky.powerup.PowerUp;
 
 /**
  * Created by Alrik on 2015-07-15.
@@ -30,6 +31,7 @@ public class GameView extends SurfaceView {
     public static int width, height;
     static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
     static ArrayList<Particle>  particles = new ArrayList<Particle>();
+    static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
 
     private SurfaceHolder holder;
     private GameThread gameLoopThread;
@@ -159,6 +161,11 @@ public class GameView extends SurfaceView {
             obstacles.get(i).update();
             obstacles.get(i).display(canvas);
             if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
+        }
+        for (int i = powerups.size() - 1; i >= 0; i--) {
+            powerups.get(i).update();
+            powerups.get(i).display(canvas);
+            //if(powerups.get(i).dead)obstacles.remove(obstacles.get(i));
         }
        // redP.setColor(Color.RED);
        // canvas.drawCircle(x , y , 10, redP);

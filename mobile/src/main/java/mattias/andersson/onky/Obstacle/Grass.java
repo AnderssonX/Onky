@@ -39,7 +39,7 @@ public class Grass extends Obstacle {
     }
 
     public void display(Canvas c) {
-        c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
+        //   c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         //c.drawBitmap(bitmap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
         c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
 

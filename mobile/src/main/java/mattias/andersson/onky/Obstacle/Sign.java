@@ -48,7 +48,7 @@ public class Sign extends  Obstacle {
         //  c.drawPaint(textColor);
         textColor.setColor(Color.BLACK);
         textColor.setTextSize(20);
-        c.drawText(signText, coord.x, coord.x + size.x, textColor);
+        c.drawText(signText, coord.x + (size.x / 5), coord.y + (size.y / 3), textColor);
 
 
        // c.drawBitmap(bMap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
