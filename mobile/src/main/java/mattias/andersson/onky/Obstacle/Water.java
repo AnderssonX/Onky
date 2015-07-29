@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import mattias.andersson.onky.R;
 
@@ -41,6 +43,7 @@ public class Water extends Obstacle {
     public void display(Canvas c) {
         //c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         //c.drawBitmap(bitmap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
+        c.drawRect(coord.x, coord.y + 100, coord.x + size.x, coord.y + size.y + 100, new Paint(Color.rgb(81, 104, 151)));
         c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
 
     }
