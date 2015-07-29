@@ -15,11 +15,13 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
 import mattias.andersson.onky.Obstacle.Point2D;
 import mattias.andersson.onky.Particle.Particle;
+import mattias.andersson.onky.Particle.TriangleParticle;
 
 /**
  * Created by Alrik on 2015-07-15.
@@ -130,7 +132,11 @@ public class GameView extends SurfaceView {
        obstacles. add(new Box(this.getContext(),new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
     void addparticle(Point2D coord){
-        for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+        if(CONSTANTS.MAX_PARTICLES>particles.size()) {
+            Random r = new Random();
+            for (int i = 0; i < 2; i++)particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(60, 60), new Paint(Color.RED)));
+        }
+       // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
 
     @Override
@@ -146,7 +152,7 @@ public class GameView extends SurfaceView {
 
         for(int i=particles.size()-1 ; i>=0 ;i--){
             particles.get(i).update();
-            particles.get(i).display(canvas);
+            particles.get(i).display();
             if(particles.get(i).dead)particles.remove(particles.get(i));
         }
         for(int i=obstacles.size()-1 ; i>=0 ;i--){

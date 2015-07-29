@@ -7,6 +7,7 @@ import android.media.Image;
 
 import java.util.Random;
 
+import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
 import mattias.andersson.onky.Obstacle.Point2D;
 
@@ -54,8 +55,13 @@ public class Particle {
         if(coord.y >GameView.height|| coord.y<0) velocity.y*=-1;
     }
 
-    public void display(Canvas c){
+    public void display(){
         //opacity
-        c.drawCircle(coord.x, coord.y, size.x, color );
+        GameThread.c.drawCircle(coord.x, coord.y, size.x, color);
+    }
+
+    public void death(){
+        dead=true;
     }
 }
+

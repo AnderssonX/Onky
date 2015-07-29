@@ -12,15 +12,11 @@ public class Point2D {
         this.x=x;
         this.y=y;
     }
-
     public void set(float x,float y){
         this.x=x;
         this.y=y;
     }
-    public float getX(){
-        return x;
-
-    }
+    public float getX(){return x; }
     public float getY(){
         return y;
     }
@@ -28,4 +24,12 @@ public class Point2D {
       this.x+=point.x;
       this.y+=point.y;
   }
+    public void multi(Point2D point){
+        this.x*=point.x;
+        this.y*=point.y;
+    }
+    public void multi(float factor){
+        this.x*=factor;
+        this.y*=factor;
+    }
 }
