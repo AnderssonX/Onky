@@ -9,21 +9,21 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-
-import com.google.android.gms.games.Player;
-
 import java.util.ArrayList;
 import java.util.Random;
 
 import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
-import mattias.andersson.onky.Particle.Particle;
-import mattias.andersson.onky.Particle.TriangleParticle;
 import mattias.andersson.onky.helper.CONSTANTS;
 import mattias.andersson.onky.helper.Point2D;
+import mattias.andersson.onky.Particle.Particle;
+import mattias.andersson.onky.Particle.TriangleParticle;
+import mattias.andersson.onky.player.Onky;
+import mattias.andersson.onky.player.Qwerty;
 import mattias.andersson.onky.powerup.PowerUp;
 import mattias.andersson.onky.projectile.LaserProjectile;
 import mattias.andersson.onky.projectile.Projectile;
+import mattias.andersson.onky.player.Player;
 
 /**
  * Created by Alrik on 2015-07-15.
@@ -35,14 +35,19 @@ public class GameView extends SurfaceView {
     public static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
     public static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     public static ArrayList<Player> players = new ArrayList<Player>();
+
     public static GameThread gameLoopThread;
     private SurfaceHolder holder;
+    public static Point2D offset = new Point2D(),transCoord= new Point2D(),scaleFactor= new Point2D(.5f,.5f);
+    public float screenAngle=-6;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
     private Paint redP;
 
 
     public GameView(Context context) {
         super(context);
+        players.add(new Qwerty());
+
         this.setOnTouchListener(
                 new OnTouchListener() {
                     public boolean onTouch(View v, MotionEvent m) {
@@ -86,9 +91,9 @@ public class GameView extends SurfaceView {
                                 Log.i("test", "touchStatus" + touchStatus);
                             else
                                 Log.i("test", "nottouch" + touchStatus);
-                            }
+                        }
 
-                            Log.i("test","ok");
+                        Log.i("test", "ok");
 
                         return true;
                     }
@@ -96,13 +101,11 @@ public class GameView extends SurfaceView {
         );
 
 
-        Log.i("test","canvasdraw11");
+        Log.i("test", "canvasdraw11");
 
         gameLoopThread = new GameThread(this);
         holder = getHolder();
         holder.addCallback(new SurfaceHolder.Callback() {
-
-
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
                 boolean retry = true;
@@ -133,12 +136,16 @@ public class GameView extends SurfaceView {
 
 
     void addObstacle(Point2D coord){
-        projectiles. add( new  LaserProjectile (new Point2D(coord.x,coord.y),new Point2D(20,0)));
-       obstacles. add(new Box(this.getContext(),new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+        coord.div(scaleFactor);
+        coord.sub(transCoord);
+        projectiles. add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(20, 0)));
+        obstacles. add(new Box(this.getContext(),new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
     void addparticle(Point2D coord){
         if(CONSTANTS.MAX_PARTICLES>particles.size()) {
             Random r = new Random();
+            coord.div(scaleFactor);
+            coord.sub(transCoord);
             for (int i = 0; i < 2; i++)particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(60, 60), new Paint(Color.RED)));
         }
        // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
@@ -147,38 +154,47 @@ public class GameView extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-     /* x+=1*xSpeed;
-        y+=1*ySpeed;
-        if(x >getWidth()|| x<0) xSpeed*=-1;
-        if(y >getHeight() || y<0) ySpeed*=-1;*/
         canvas.drawColor(Color.WHITE);
-       // barrel.display(canvas);
-        Log.i("test", "obstacle size:"+particles.size() +"   particle size:"+particles.size() );
+        Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
 
-  //--------------------obstacle
+        transCoord.set(-players.get(0).coord.x, (float) (height*0.5));
+        canvas.scale(scaleFactor.x, scaleFactor.y);
+        canvas.rotate(screenAngle);
+        canvas.translate(transCoord.x, transCoord.y);
+
+     //--------------------obstacle---------------------
+
         for(int i=obstacles.size()-1 ; i>=0 ;i--){
             obstacles.get(i).update();
             obstacles.get(i).display();
             if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
         }
+
+        //--------------------player---------------------
+        for(int i=players.size()-1 ; i>=0 ;i--){
+            players.get(i).update();
+            players.get(i).display();
+            if(players.get(i).dead)players.remove(players.get(i));
+        }
+        //--------------------powerup---------------------
         for (int i = powerups.size() - 1; i >= 0; i--) {
             powerups.get(i).update();
             powerups.get(i).display();
             if(powerups.get(i).dead)powerups.remove(powerups.get(i));
         }
+        //--------------------particle---------------------
         for(int i=particles.size()-1 ; i>=0 ;i--){
             particles.get(i).update();
             particles.get(i).display();
             if(particles.get(i).dead)particles.remove(particles.get(i));
         }
+        //--------------------projectile---------------------
         for (int i = projectiles.size() - 1; i >= 0; i--) {
             projectiles.get(i).update();
             projectiles.get(i).display();
             if(projectiles.get(i).dead)projectiles.remove(projectiles.get(i));
         }
-       // redP.setColor(Color.RED);
-       // canvas.drawCircle(x , y , 10, redP);
-       // canvas.drawBitmap(bmp, x , 10, null);
+
     }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){

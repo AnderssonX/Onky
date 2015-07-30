@@ -27,7 +27,7 @@ import mattias.andersson.onky.helper.CONSTANTS;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     public FragmentManager fragmentManager;
     public FragmentTransaction fragmentTransaction;
-    private Button createUser, play, playOffline, storeButton;
+    private Button createUser, play, playOffline,storeButton;
     private FragmentManager fm;
     private String pw;
     private String currentUser;

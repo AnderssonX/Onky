@@ -59,18 +59,21 @@ public  class LaserProjectile extends Projectile {
         }
 
     public  void update() {
+        if(!dead) {
             coord.add(velocity);
             collision();
             //if ( x>p.x+width/scaleFactor) dead=true;  //off screen
-            if (time<=0) dead=true;  // timelimit
+            if (time <= 0) dead = true;  // timelimit
             else time--;
+         }
         }
 
         public void death() {
             super.death();
             dead=true;
            // entities.add(new LineParticle(int(x+w*0.5), int(y+h), 30, 0));
-            for (int i=0; i<3; i++) GameView.particles.add(new TriangleParticle(coord, new Point2D((float)(r.nextFloat()*(velocity.x*0.4+4)-velocity.x*0.20+2),(float)(r.nextFloat()*(velocity.x*0.4)-velocity.x*0.20)),new Point2D(60,60) , color));
+            //for (int i=0; i<2; i++)
+            GameView.particles.add(new TriangleParticle(coord, new Point2D((float)(r.nextFloat()*(velocity.x*0.4)-(velocity.x*0.20)),(float)(r.nextFloat()*(velocity.y*0.4+4)-(velocity.y*0.20+2))),new Point2D(60,60) , color));
            // strokeWeight(10);
            // stroke(projectileColor);
            // fill(255);

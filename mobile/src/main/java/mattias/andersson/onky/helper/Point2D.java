@@ -6,6 +6,12 @@ package mattias.andersson.onky.helper;
 public class Point2D {
     public float x,y;
 
+
+
+
+
+
+
     public Point2D(){
     }
     public Point2D(float x,float y){
@@ -31,5 +37,22 @@ public class Point2D {
     public void multi(float factor){
         this.x*=factor;
         this.y*=factor;
+    }
+    public void sub(Point2D point){
+        this.x-=point.x;
+        this.y-=point.y;
+    }
+    public void sub(float factor) {
+        this.x-=factor;
+        this.y-=factor;
+    }
+
+    public void div(Point2D point) {
+        this.x/=point.x;
+        this.y/=point.y;
+    }
+    public void div(float factor) {
+        this.x/=factor;
+        this.y/=factor;
     }
 }
