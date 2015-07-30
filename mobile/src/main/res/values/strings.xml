@@ -10,6 +10,7 @@
     <string name="loginLogin">Play!</string>
     <string name="createUser">Create User</string>
     <string name="signupRegister">Create!</string>
+    <string name="thanks">Thanks for playing!</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Welcome to the game fragment!</string>
 </resources>

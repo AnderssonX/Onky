@@ -3,8 +3,6 @@ package mattias.andersson.onky.Obstacle;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.util.DisplayMetrics;
 
 import mattias.andersson.onky.GameThread;
@@ -21,6 +19,8 @@ public class Grass extends Obstacle {
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
     // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
     Bitmap bitmap = null;
+    int margin = 25;
+
     Bitmap scaledBitmap;
     DisplayMetrics dm = new DisplayMetrics();
     int screenWidth = dm.widthPixels;
@@ -32,7 +32,7 @@ public class Grass extends Obstacle {
         this.context = context;
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.grasstile);
         scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y, false);
-        color.setARGB(255, 180, 140, 50);
+        color.setARGB(255, 128, 181, 113);
 
         //image=C:\Users\Alrik\AndroidStudioProjects\Onky\mobile\src\main\assets\woodenBox.png
         //Drawable d = Drawable.createFromStream(getAssets().open("woodenBox.png"), null);
@@ -48,8 +48,9 @@ public class Grass extends Obstacle {
     public void display() {
         //   c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         //c.drawBitmap(bitmap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
-        GameThread.c.drawRect(coord.x, coord.y + 100, coord.x + size.x, coord.y + size.y + 100, new Paint(Color.rgb(128, 181, 113)));
+        GameThread.c.drawRect(coord.x, coord.y + 100 - margin, coord.x + size.x, coord.y + size.y + 100, color);
         GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
+
 
     }
 

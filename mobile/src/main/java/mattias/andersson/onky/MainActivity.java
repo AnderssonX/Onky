@@ -1,11 +1,13 @@
 package mattias.andersson.onky;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,13 +16,16 @@ import android.view.ViewGroup;
 
 import com.firebase.client.Firebase;
 
+import mattias.andersson.onky.helper.CONSTANTS;
+
 
 public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);
+
+        //  image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);
 
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
@@ -38,6 +43,32 @@ public class MainActivity extends Activity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (CONSTANTS.currentFragment == "loginFragment") {
+
+            Log.i("currentFragment is ", "" + CONSTANTS.currentFragment);
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.container, new ExitFragment());
+            ft.addToBackStack(null);
+            ft.commit();
+        }
+        if (CONSTANTS.currentFragment == "gameFragment") {
+            Log.i("currentFragment is ", "" + CONSTANTS.currentFragment);
+            GameView.gameLoopThread.setRunning(false);
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            final Dialog dialog = new Dialog(this);
+            final PauseFragment pauseFragment = new PauseFragment();
+            pauseFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Theme_Transparent);
+            pauseFragment.show(getFragmentManager(), "Dialog");
+            /* ft.replace(R.id.container, new LoginFragment());
+            ft.addToBackStack(null);
+            ft.commit(); */
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

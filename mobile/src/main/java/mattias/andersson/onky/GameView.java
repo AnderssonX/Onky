@@ -17,10 +17,10 @@ import java.util.Random;
 
 import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
-import mattias.andersson.onky.helper.CONSTANTS;
-import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.Particle.Particle;
 import mattias.andersson.onky.Particle.TriangleParticle;
+import mattias.andersson.onky.helper.CONSTANTS;
+import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.powerup.PowerUp;
 import mattias.andersson.onky.projectile.LaserProjectile;
 import mattias.andersson.onky.projectile.Projectile;
@@ -35,8 +35,8 @@ public class GameView extends SurfaceView {
     public static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
     public static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     public static ArrayList<Player> players = new ArrayList<Player>();
+    public static GameThread gameLoopThread;
     private SurfaceHolder holder;
-    private GameThread gameLoopThread;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
     private Paint redP;
 

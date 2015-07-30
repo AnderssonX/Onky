@@ -27,7 +27,7 @@ import mattias.andersson.onky.helper.CONSTANTS;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     public FragmentManager fragmentManager;
     public FragmentTransaction fragmentTransaction;
-    private Button createUser, play, playOffline,storeButton;
+    private Button createUser, play, playOffline;
     private FragmentManager fm;
     private String pw;
     private String currentUser;
@@ -55,6 +55,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         play.setOnClickListener(this);
         playOffline = (Button) view.findViewById(R.id.playOfflineButton);
         playOffline.setOnClickListener(this);
+        CONSTANTS.currentFragment = "loginFragment";
+
         storeButton = (Button) view.findViewById(R.id.Store);
         storeButton.setOnClickListener(this);
 

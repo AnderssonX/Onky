@@ -25,14 +25,14 @@ import mattias.andersson.onky.Obstacle.Grass;
 import mattias.andersson.onky.Obstacle.IronBox;
 import mattias.andersson.onky.Obstacle.Lumber;
 import mattias.andersson.onky.Obstacle.Obstacle;
-import mattias.andersson.onky.helper.CONSTANTS;
-import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.Obstacle.Rock;
 import mattias.andersson.onky.Obstacle.Sign;
 import mattias.andersson.onky.Obstacle.Snake;
 import mattias.andersson.onky.Obstacle.StoneSign;
 import mattias.andersson.onky.Obstacle.Tire;
 import mattias.andersson.onky.Obstacle.Water;
+import mattias.andersson.onky.helper.CONSTANTS;
+import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.powerup.Invisible;
 import mattias.andersson.onky.powerup.Laser;
 import mattias.andersson.onky.powerup.Life;
@@ -70,7 +70,7 @@ public class GameFragment extends Fragment {
         //  GameView gameView=new GameView(this.getActivity());
         first = true;
         GameView gameView = new GameView(view.getContext());
-
+        CONSTANTS.currentFragment = "gameFragment";
         fb.child("levels").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
