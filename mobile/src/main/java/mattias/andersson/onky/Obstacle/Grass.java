@@ -20,6 +20,7 @@ public class Grass extends Obstacle {
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
     // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
     Bitmap bitmap = null;
+    int margin = 25;
     Bitmap scaledBitmap;
     DisplayMetrics dm = new DisplayMetrics();
     int screenWidth = dm.widthPixels;
@@ -47,8 +48,8 @@ public class Grass extends Obstacle {
     public void display(Canvas c) {
         //   c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         //c.drawBitmap(bitmap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
-        c.drawRect(coord.x, coord.y + 100, coord.x + size.x, coord.y + size.y + 100, new Paint(Color.rgb(128, 181, 113)));
-        c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
+        c.drawRect(coord.x, coord.y + 100 - margin, coord.x + size.x, coord.y + size.y + 100, new Paint(Color.rgb(128, 181, 113)));
+        c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y - margin, color);
 
     }
 
