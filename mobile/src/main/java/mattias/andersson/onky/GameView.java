@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -23,16 +24,18 @@ import mattias.andersson.onky.Obstacle.Point2D;
 import mattias.andersson.onky.Particle.Particle;
 import mattias.andersson.onky.Particle.TriangleParticle;
 import mattias.andersson.onky.powerup.PowerUp;
+import mattias.andersson.onky.projectile.LaserProjectile;
+import mattias.andersson.onky.projectile.Projectile;
 
 /**
  * Created by Alrik on 2015-07-15.
  */
 public class GameView extends SurfaceView {
     public static int width, height;
-    static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
-    static ArrayList<Particle>  particles = new ArrayList<Particle>();
-    static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
-
+    public static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
+    public static ArrayList<Particle>  particles = new ArrayList<Particle>();
+    public static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
+    public static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     private SurfaceHolder holder;
     private GameThread gameLoopThread;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
@@ -131,6 +134,7 @@ public class GameView extends SurfaceView {
 
 
     void addObstacle(Point2D coord){
+        projectiles. add( new  LaserProjectile (new Point2D(coord.x,coord.y),new Point2D(20,0)));
        obstacles. add(new Box(this.getContext(),new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
     void addparticle(Point2D coord){
@@ -165,6 +169,11 @@ public class GameView extends SurfaceView {
         for (int i = powerups.size() - 1; i >= 0; i--) {
             powerups.get(i).update();
             powerups.get(i).display(canvas);
+            //if(powerups.get(i).dead)obstacles.remove(obstacles.get(i));
+        }
+        for (int i = projectiles.size() - 1; i >= 0; i--) {
+            projectiles.get(i).update();
+            projectiles.get(i).display();
             //if(powerups.get(i).dead)obstacles.remove(obstacles.get(i));
         }
        // redP.setColor(Color.RED);
