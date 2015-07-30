@@ -50,7 +50,7 @@ public class ExitFragment extends Fragment {
 
     private void killOnky() {
         Log.i("killOnky called, ", "exiting app...");
-        new CountDownTimer(2000, 1000) {
+        new CountDownTimer(3000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 Log.i("seconds remaining: ", "" + millisUntilFinished / 1000);
@@ -62,7 +62,7 @@ public class ExitFragment extends Fragment {
                 System.exit(0);
 
             }
-        };
+        }.start();
 
     }
 
