@@ -13,6 +13,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import mattias.andersson.onky.helper.CONSTANTS;
+
 /**
  * Created by Mattias on 15-07-15.
  */

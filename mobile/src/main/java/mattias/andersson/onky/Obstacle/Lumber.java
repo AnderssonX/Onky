@@ -3,9 +3,10 @@ package mattias.andersson.onky.Obstacle;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 
+import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.R;
+import mattias.andersson.onky.helper.Point2D;
 
 /**
  * Created by Alrik on 2015-07-23.
@@ -38,10 +39,10 @@ public class Lumber extends Obstacle {
 
     }
 
-    public void display(Canvas c) {
+    public void display() {
         //c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
         //c.drawBitmap(bitmap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));
-        c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
+        GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
 
     }
 

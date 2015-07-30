@@ -8,7 +8,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 
+import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.R;
+import mattias.andersson.onky.helper.Point2D;
 
 /**
  * Created by Alrik on 2015-07-23.
@@ -42,13 +44,13 @@ public class Sign extends  Obstacle {
     public void update() {
     }
 
-    public void display(Canvas c){
+    public void display(){
         //c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
-        c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
+        GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
         //  c.drawPaint(textColor);
         textColor.setColor(Color.BLACK);
         textColor.setTextSize(20);
-        c.drawText(signText, coord.x + (size.x / 5), coord.y + (size.y / 3), textColor);
+        GameThread.c.drawText(signText, coord.x + (size.x / 5), coord.y + (size.y / 3), textColor);
 
 
        // c.drawBitmap(bMap, (int) coord.x, (int) coord.y, (int) (coord.x + size.x), (int) (coord.y + size.y), new Paint(Color.WHITE));

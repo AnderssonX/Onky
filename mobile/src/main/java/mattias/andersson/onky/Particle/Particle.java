@@ -1,15 +1,13 @@
 package mattias.andersson.onky.Particle;
 
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.media.Image;
 
 import java.util.Random;
 
 import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
-import mattias.andersson.onky.Obstacle.Point2D;
+import mattias.andersson.onky.helper.Point2D;
 
 /**
  * Created by Alrik on 2015-07-23.

@@ -1,15 +1,15 @@
 package mattias.andersson.onky.Obstacle;
 
 
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.Image;
-import android.view.View;
 
 import java.util.Random;
 
+import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
+import mattias.andersson.onky.helper.Point2D;
 
 /**
  * Created by Alrik on 2015-07-20.
@@ -50,9 +50,9 @@ public abstract class Obstacle {
         if(coord.y >GameView.height|| coord.y<0) velocity.y*=-1;
     }
 
-    public void display(Canvas c){
+    public void display(){
         //opacity
-        c.drawRect(coord.x,coord.y,size.x,size.y,color);
+       // GameThread.c.drawRect(coord.x,coord.y,size.x,size.y,color);
     }
 
 
@@ -84,5 +84,8 @@ public abstract class Obstacle {
 
     public void setSize(Point2D size) {
         this.size = size;
+    }
+
+    public void damage(int i) {
     }
 }

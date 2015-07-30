@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 
 import mattias.andersson.onky.GameThread;
-import mattias.andersson.onky.Obstacle.Point2D;
+import mattias.andersson.onky.helper.Point2D;
 
 /**
  * Created by Alrik on 2015-07-29.

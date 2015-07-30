@@ -1,26 +1,24 @@
 package mattias.andersson.onky;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.RelativeLayout;
+
+import com.google.android.gms.games.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
-import mattias.andersson.onky.Obstacle.Point2D;
+import mattias.andersson.onky.helper.CONSTANTS;
+import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.Particle.Particle;
 import mattias.andersson.onky.Particle.TriangleParticle;
 import mattias.andersson.onky.powerup.PowerUp;
@@ -36,6 +34,7 @@ public class GameView extends SurfaceView {
     public static ArrayList<Particle>  particles = new ArrayList<Particle>();
     public static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
     public static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+    public static ArrayList<Player> players = new ArrayList<Player>();
     private SurfaceHolder holder;
     private GameThread gameLoopThread;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
@@ -156,25 +155,26 @@ public class GameView extends SurfaceView {
        // barrel.display(canvas);
         Log.i("test", "obstacle size:"+particles.size() +"   particle size:"+particles.size() );
 
+  //--------------------obstacle
+        for(int i=obstacles.size()-1 ; i>=0 ;i--){
+            obstacles.get(i).update();
+            obstacles.get(i).display();
+            if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
+        }
+        for (int i = powerups.size() - 1; i >= 0; i--) {
+            powerups.get(i).update();
+            powerups.get(i).display();
+            if(powerups.get(i).dead)powerups.remove(powerups.get(i));
+        }
         for(int i=particles.size()-1 ; i>=0 ;i--){
             particles.get(i).update();
             particles.get(i).display();
             if(particles.get(i).dead)particles.remove(particles.get(i));
         }
-        for(int i=obstacles.size()-1 ; i>=0 ;i--){
-            obstacles.get(i).update();
-            obstacles.get(i).display(canvas);
-            if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
-        }
-        for (int i = powerups.size() - 1; i >= 0; i--) {
-            powerups.get(i).update();
-            powerups.get(i).display(canvas);
-            //if(powerups.get(i).dead)obstacles.remove(obstacles.get(i));
-        }
         for (int i = projectiles.size() - 1; i >= 0; i--) {
             projectiles.get(i).update();
             projectiles.get(i).display();
-            //if(powerups.get(i).dead)obstacles.remove(obstacles.get(i));
+            if(projectiles.get(i).dead)projectiles.remove(projectiles.get(i));
         }
        // redP.setColor(Color.RED);
        // canvas.drawCircle(x , y , 10, redP);

@@ -1,4 +1,4 @@
-package mattias.andersson.onky.Obstacle;
+package mattias.andersson.onky.helper;
 
 /**
  * Created by Alrik on 2015-07-22.

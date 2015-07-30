@@ -1,4 +1,4 @@
-package mattias.andersson.onky;
+package mattias.andersson.onky.helper;
 
 import com.firebase.client.Firebase;
 
