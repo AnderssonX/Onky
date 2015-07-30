@@ -87,5 +87,6 @@ public abstract class Obstacle {
     }
 
     public void damage(int i) {
+
     }
 }

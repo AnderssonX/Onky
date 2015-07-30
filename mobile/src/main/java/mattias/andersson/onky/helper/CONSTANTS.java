@@ -1,7 +1,6 @@
 package mattias.andersson.onky.helper;
 
 import com.firebase.client.Firebase;
-
 /**
  * Created by Mattias on 2015-06-16.
  */

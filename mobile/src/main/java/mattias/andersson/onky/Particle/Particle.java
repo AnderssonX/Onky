@@ -1,5 +1,4 @@
 package mattias.andersson.onky.Particle;
-
 import android.graphics.Color;
 import android.graphics.Paint;
 
@@ -8,7 +7,6 @@ import java.util.Random;
 import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
 import mattias.andersson.onky.helper.Point2D;
-
 /**
  * Created by Alrik on 2015-07-23.
  */
@@ -21,10 +19,8 @@ public class Particle {
     public String signText;
     int opacity=255;
     public boolean dead;
-
     public Particle() {
     }
-
     public Particle(Point2D coord, Point2D Size) {
         color.setColor(Color.rgb(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
         this.coord = coord;
@@ -33,14 +29,11 @@ public class Particle {
         velocity.y=r.nextInt(20)-10;
         opacity=255;
     }
-
     public Particle(Point2D coord, Point2D Size, String signText) {
         this.coord = coord;
         this.size = Size;
         this.signText = signText;
     }
-
-
     public void update(){
         if(opacity>0) {
             opacity--;
@@ -52,14 +45,10 @@ public class Particle {
         if(coord.x > GameView.width|| coord.x<0) velocity.x*=-1;
         if(coord.y >GameView.height|| coord.y<0) velocity.y*=-1;
     }
-
     public void display(){
-        //opacity
         GameThread.c.drawCircle(coord.x, coord.y, size.x, color);
     }
-
     public void death(){
         dead=true;
     }
 }
-
