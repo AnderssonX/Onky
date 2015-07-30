@@ -27,7 +27,7 @@ import mattias.andersson.onky.helper.CONSTANTS;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     public FragmentManager fragmentManager;
     public FragmentTransaction fragmentTransaction;
-    private Button createUser, play, playOffline;
+    private Button createUser, play, playOffline,storeButton;
     private FragmentManager fm;
     private String pw;
     private String currentUser;
@@ -55,7 +55,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         play.setOnClickListener(this);
         playOffline = (Button) view.findViewById(R.id.playOfflineButton);
         playOffline.setOnClickListener(this);
-
+        storeButton = (Button) view.findViewById(R.id.Store);
+        storeButton.setOnClickListener(this);
 
         return view;
 
@@ -65,7 +66,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(final View view) {
         switch (view.getId()) {
+            case R.id.Store:
+                Log.i("offline", "Store");
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new Store());
+                ft.commit();
 
+                break;
             case R.id.playOfflineButton:
                 Log.i("offline", "we're in case switch");
                 fm = getFragmentManager();

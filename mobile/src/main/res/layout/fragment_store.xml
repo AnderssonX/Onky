@@ -1,6 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="mattias.andersson.onky.Store">
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.Store"
+    android:background="@mipmap/onkyandroidbg">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -24,11 +25,13 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-            <Button
+            <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton1"
-                android:background="@drawable/selector_button"
+                android:background="@drawable/unlockicon"
+
+                android:src = "@drawable/slowpower"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -37,6 +40,8 @@
                 android:layout_height="100dp"
                 android:id="@+id/imageButton2"
                 android:background="@drawable/unlockicon"
+                android:src = "@drawable/slashpower"
+
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -45,6 +50,8 @@
                 android:layout_height="100dp"
                 android:id="@+id/imageButton3"
                 android:background="@drawable/unlockicon"
+                android:src = "@drawable/laserpower2"
+
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -53,6 +60,7 @@
                 android:layout_height="100dp"
                 android:id="@+id/imageButton4"
                 android:background="@drawable/unlockicon"
+                android:src = "@drawable/speedpower"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -61,6 +69,7 @@
                 android:layout_height="100dp"
                 android:id="@+id/imageButton5"
                 android:background="@drawable/unlockicon"
+                android:src = "@drawable/token2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -69,6 +78,7 @@
                 android:layout_height="100dp"
                 android:id="@+id/imageButton6"
                 android:background="@drawable/unlockicon"
+                android:src = "@drawable/magnet"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -116,8 +126,16 @@
             <ImageButton
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:id="@+id/achievementicon1"
+                android:background="@drawable/a1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:id="@+id/achievementicon2"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -125,7 +143,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon3"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a3"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -133,7 +151,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon4"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a4"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -141,7 +159,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon5"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a5"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -149,7 +167,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon6"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a6"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -157,7 +175,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon7"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a7"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -165,7 +183,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon8"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a8"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -173,7 +191,85 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon9"
-                android:background="@drawable/achievementicon"
+                android:background="@drawable/a9"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon10"
+                android:background="@drawable/a10"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon11"
+                android:background="@drawable/a11"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon12"
+                android:background="@drawable/a12"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon13"
+                android:background="@drawable/a13"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon14"
+                android:background="@drawable/a14"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon15"
+                android:background="@drawable/a15"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon16"
+                android:background="@drawable/a16"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon17"
+                android:background="@drawable/a17"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon18"
+                android:background="@drawable/a18"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon19"
+                android:background="@drawable/a19"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/achievementicon20"
+                android:background="@drawable/a20"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 

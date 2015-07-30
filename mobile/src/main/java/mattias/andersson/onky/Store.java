@@ -38,14 +38,9 @@ public class Store extends Fragment implements View.OnClickListener {
         return view;
     }
 
+
     @Override
     public void onClick(View v) {
 
-        Log.i("hej","hej");
-
-
     }
-
-
-
 }
