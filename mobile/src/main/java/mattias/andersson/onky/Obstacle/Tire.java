@@ -18,8 +18,8 @@ public class Tire extends Obstacle {
     // Drawable image;
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
     // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    Bitmap bitmap = null;
-    Bitmap scaledBitmap;
+  //  Bitmap bitmap = null;
+  //  Bitmap scaledBitmap;
     //  canvas.drawBitmap(bitmap, null, mRedPaddleRect, mPaint);
 
     public Tire(Context context, Point2D coord, Point2D Size) {

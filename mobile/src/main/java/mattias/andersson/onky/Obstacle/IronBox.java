@@ -16,8 +16,8 @@ public class IronBox extends  Obstacle {
    int defaultHealth,health=defaultHealth;
     Drawable image;
     Context context;
-    Bitmap bitmap = null;
-    Bitmap scaledBitmap;
+   // Bitmap bitmap = null;
+   // Bitmap scaledBitmap;
 
     public IronBox(Context context, Point2D coord, Point2D Size) {
        super(coord, Size);

@@ -18,10 +18,10 @@ public class Grass extends Obstacle {
     // Drawable image;
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
     // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    Bitmap bitmap = null;
+   // Bitmap bitmap = null;
     int margin = 25;
 
-    Bitmap scaledBitmap;
+   // Bitmap scaledBitmap;
     DisplayMetrics dm = new DisplayMetrics();
     int screenWidth = dm.widthPixels;
     int screenHeight = dm.heightPixels;
@@ -33,7 +33,6 @@ public class Grass extends Obstacle {
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.grasstile);
         scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) size.x, (int) size.y, false);
         color.setARGB(255, 128, 181, 113);
-
         //image=C:\Users\Alrik\AndroidStudioProjects\Onky\mobile\src\main\assets\woodenBox.png
         //Drawable d = Drawable.createFromStream(getAssets().open("woodenBox.png"), null);
         //image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);

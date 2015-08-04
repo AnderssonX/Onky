@@ -19,8 +19,8 @@ public class Sign extends  Obstacle {
    int defaultHealth,health=defaultHealth;
     Drawable image;
     Context context;
-    Bitmap bitmap = null;
-    Bitmap scaledBitmap;
+   // Bitmap bitmap = null;
+  //  Bitmap scaledBitmap;
     Paint textColor=new Paint(Color.BLACK);
   //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
    // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
