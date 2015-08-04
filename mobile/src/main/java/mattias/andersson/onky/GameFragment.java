@@ -53,7 +53,7 @@ public class GameFragment extends Fragment {
     Random r = new Random();
     private int randomPower;
     private String classId, type, text;
-    private Long x, y, id, xSize, ySize;
+    private Long x, y, id, xSize, ySize,xVel,yVel;
 
     private Firebase fb = CONSTANTS.fbRef;
     private String jsonArray;
@@ -143,7 +143,11 @@ public class GameFragment extends Fragment {
                 id = (Long) value.get("id");
                 xSize = (Long) value.get("xSize");
                 ySize = (Long) value.get("ySize");
-
+                try {
+                    xVel = (Long) value.get("xVel");
+                    yVel = (Long) value.get("xVel");
+                }catch(Exception e){
+                }
                 Log.i("levels", "class: " + classId);
                 Log.i("levels", "type: " + type);
 
@@ -180,6 +184,7 @@ public class GameFragment extends Fragment {
 
                     case "Bush":
                         GameView.obstacles.add(new Bush(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+
                         break;
 
                     case "Grass":

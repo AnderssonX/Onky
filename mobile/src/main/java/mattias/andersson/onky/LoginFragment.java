@@ -1,6 +1,4 @@
 package mattias.andersson.onky;
-
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -19,8 +17,6 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import mattias.andersson.onky.helper.CONSTANTS;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -35,12 +31,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private boolean match;
     private EditText eTUser;
     private EditText eTPW;
-
-
     public LoginFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +49,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         playOffline = (Button) view.findViewById(R.id.playOfflineButton);
         playOffline.setOnClickListener(this);
         CONSTANTS.currentFragment = "loginFragment";
-
         storeButton = (Button) view.findViewById(R.id.Store);
         storeButton.setOnClickListener(this);
 
