@@ -55,6 +55,7 @@ public class TriangleParticle extends Particle {
         endShape(CLOSE);
         popMatrix();*/
         //    float vertexes[] = {coord.x+0, coord.y-size.x,(float)(coord.x+size.x*0.5), coord.y+0,(float)(coord.x-size.x * 0.5), coord.y+0};
+        GameThread.c.save();
 
         GameThread.c.translate(coord.x, coord.y);
         GameThread.c.rotate(angle);
@@ -79,9 +80,10 @@ public class TriangleParticle extends Particle {
 
        color.setStrokeWidth((float) (size.x * 0.3));
         GameThread.c.drawLines(vertexes, color);
+        GameThread.c.restore();
 
-        GameThread.c.rotate(-angle);
-        GameThread.c.translate(-coord.x, -coord.y);
+       // GameThread.c.rotate(-angle);
+      //  GameThread.c.translate(-coord.x, -coord.y);
         //    GameThread.c.restore();
     }
 }

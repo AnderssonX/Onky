@@ -12,6 +12,7 @@ import java.util.Random;
 import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
 import mattias.andersson.onky.helper.Point2D;
+import mattias.andersson.onky.helper.StockMarket;
 
 /**
  * Created by Alrik on 2015-07-20.
@@ -31,14 +32,15 @@ public abstract class Obstacle {
 
     public Obstacle() {
         // super();
+
     }
 
     public Obstacle(Point2D coord, Point2D Size) {
         color.setColor(Color.rgb(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
         this.coord = coord;
         this.size = Size;
-        velocity.x = r.nextInt(20) - 10;
-        velocity.y = r.nextInt(20) - 10;
+     //   velocity.x = r.nextInt(20) - 10;
+     //   velocity.y = r.nextInt(20) - 10;
     }
 
     public Obstacle(Point2D coord, Point2D Size, String signText) {

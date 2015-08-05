@@ -14,10 +14,12 @@ import java.util.Random;
 
 import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
+import mattias.andersson.onky.Particle.PulseParticle;
 import mattias.andersson.onky.helper.CONSTANTS;
 import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.Particle.Particle;
 import mattias.andersson.onky.Particle.TriangleParticle;
+import mattias.andersson.onky.helper.StockMarket;
 import mattias.andersson.onky.player.Onky;
 import mattias.andersson.onky.player.Qwerty;
 import mattias.andersson.onky.powerup.PowerUp;
@@ -56,6 +58,7 @@ public class GameView extends SurfaceView {
                         for (int i = 0; i < pointerCount; i++) {
                             int x = (int) m.getX(i);
                             int y = (int) m.getY(i);
+                            Point2D  mouse= new Point2D(x,y);
                             int id = m.getPointerId(i);
                             int action = m.getActionMasked();
                             int actionIndex = m.getActionIndex();
@@ -63,23 +66,27 @@ public class GameView extends SurfaceView {
                             switch (action) {
                                 case MotionEvent.ACTION_DOWN:
                                     actionString = "DOWN";
-                                    addparticle(new Point2D(x, y));
-                                    addObstacle(new Point2D(x, y));
+                                    addparticle(mouse);
+                                    addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_UP:
+                                    StockMarket.getGlobalPrices();
                                     actionString = "UP";
+                                    addPulse(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_DOWN:
                                     actionString = "PNTR DOWN";
-                                    addparticle(new Point2D(x, y));
-                                    addObstacle(new Point2D(x, y));
+                                    addparticle(mouse);
+                                    addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_UP:
                                     actionString = "PNTR UP";
+                                    addPulse(mouse);
+
                                     break;
                                 case MotionEvent.ACTION_MOVE:
                                     actionString = "MOVE";
-                                    addparticle(new Point2D(x, y));
+                                    addparticle(mouse);
                                     break;
                                 default:
                                     actionString = "";
@@ -139,16 +146,25 @@ public class GameView extends SurfaceView {
         coord.div(scaleFactor);
         coord.sub(transCoord);
         projectiles. add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(20, 0)));
-        obstacles. add(new Box(this.getContext(),new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+       // obstacles. add(new Box(this.getContext(), new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
     void addparticle(Point2D coord){
         if(CONSTANTS.MAX_PARTICLES>particles.size()) {
             Random r = new Random();
             coord.div(scaleFactor);
             coord.sub(transCoord);
+            projectiles. add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(20, 0)));
             for (int i = 0; i < 2; i++)particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(60, 60), new Paint(Color.RED)));
         }
        // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+    }
+
+    void addPulse(Point2D coord){
+        if(CONSTANTS.MAX_PARTICLES>particles.size()) {
+            coord.div(scaleFactor);
+            coord.sub(transCoord);
+            particles.add(new PulseParticle(new Point2D(coord.x, coord.y), new Point2D(200,200), new Paint(Color.RED)));
+        }
     }
 
     @Override

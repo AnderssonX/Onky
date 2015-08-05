@@ -71,6 +71,23 @@ public class GameFragment extends Fragment {
         first = true;
         GameView gameView = new GameView(view.getContext());
         CONSTANTS.currentFragment = "gameFragment";
+
+        fb.child("prices/powerups").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                obstacleCourses = (int) dataSnapshot.getChildrenCount();
+                Log.i("levels ", "Box0 has" + obstacleCourses + " children");
+                Iterable<DataSnapshot> prices = dataSnapshot.getChildren();
+                for (DataSnapshot fbp : prices) {
+                    Log.i("prices","cost :" + fbp.getKey()+"  : " + fbp.getValue());
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+
         fb.child("levels").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -78,7 +95,6 @@ public class GameFragment extends Fragment {
                 Log.i("levels ", "Box0 has" + obstacleCourses + " children");
                 Iterable<DataSnapshot> firebaseLevels = dataSnapshot.getChildren();
                 for (DataSnapshot FBlevels : firebaseLevels) {
-
 
                     addLevel(FBlevels);
                 }
@@ -134,7 +150,6 @@ public class GameFragment extends Fragment {
                 Log.i("looping, ref is:", "" + FBlevels);
                 Log.i("levels", " current dataSnapshot is " + dataSnapshot);
 
-
                 classId = value.get("class").toString();
                 type = value.get("type").toString();
 
@@ -144,9 +159,12 @@ public class GameFragment extends Fragment {
                 xSize = (Long) value.get("xSize");
                 ySize = (Long) value.get("ySize");
                 try {
+                    Log.i("try","success");
                     xVel = (Long) value.get("xVel");
-                    yVel = (Long) value.get("xVel");
+                    yVel = (Long) value.get("yVel");
                 }catch(Exception e){
+                    Log.i("try","fail");
+
                 }
                 Log.i("levels", "class: " + classId);
                 Log.i("levels", "type: " + type);
@@ -179,7 +197,13 @@ public class GameFragment extends Fragment {
                         break;
 
                     case "Block":
-                        GameView.obstacles.add(new Block(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+
+                        Obstacle temp0=new Block(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize));
+                        if(xVel!=null)  temp0.velocity.x=xVel.intValue();
+                        if(yVel!=null)   temp0.velocity.y=yVel.intValue();
+                        GameView.obstacles.add(temp0);
+
+                       // GameView.obstacles.add(new Block(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Bush":
@@ -205,11 +229,19 @@ public class GameFragment extends Fragment {
                         break;
 
                     case "Snake":
-                        GameView.obstacles.add(new Snake(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        Obstacle temp1=new Snake(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize));
+                      if(xVel!=null)  temp1.velocity.x=xVel.intValue();
+                        if(yVel!=null)   temp1.velocity.y=yVel.intValue();
+                         GameView.obstacles.add(temp1);
+                       // GameView.obstacles.add(new Snake(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Barrel":
-                        GameView.obstacles.add(new Barrel(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
+                        Obstacle temp2=new Barrel(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize));
+                        if(xVel!=null)  temp2.velocity.x=xVel.intValue();
+                        if(yVel!=null)   temp2.velocity.y=yVel.intValue();
+                        GameView.obstacles.add(temp2);
+                       // GameView.obstacles.add(new Barrel(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
 
                     case "Rock":
