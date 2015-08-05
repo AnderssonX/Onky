@@ -2,8 +2,10 @@ package mattias.andersson.onky;
 
 
 import android.app.Fragment;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +71,16 @@ public class GameFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_game, container, false);
         //  GameView gameView=new GameView(this.getActivity());
         first = true;
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        CONSTANTS.screenWidth = size.x;
+        CONSTANTS.screenHeight = size.y;
+
+
+
         GameView gameView = new GameView(view.getContext());
+
         CONSTANTS.currentFragment = "gameFragment";
 
         fb.child("prices/powerups").addListenerForSingleValueEvent(new ValueEventListener() {

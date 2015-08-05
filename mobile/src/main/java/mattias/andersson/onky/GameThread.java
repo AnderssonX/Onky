@@ -36,6 +36,9 @@ public class GameThread extends Thread {
                 c = view.getHolder().lockCanvas();
                 synchronized (view.getHolder()) {
                     view.onDraw(c);
+                    GameView.width = c.getWidth();
+                    GameView.height = c.getHeight();
+                    //     Log.i("test", "canvaswidth= " + GameView.width);
                 }
             } finally {
                 if (c != null) {

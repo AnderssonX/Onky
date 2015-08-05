@@ -1,6 +1,8 @@
 package mattias.andersson.onky;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -9,23 +11,23 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-import mattias.andersson.onky.Obstacle.Box;
 import mattias.andersson.onky.Obstacle.Obstacle;
+import mattias.andersson.onky.Paralax.Paralax;
+import mattias.andersson.onky.Particle.Particle;
 import mattias.andersson.onky.Particle.PulseParticle;
+import mattias.andersson.onky.Particle.TriangleParticle;
 import mattias.andersson.onky.helper.CONSTANTS;
 import mattias.andersson.onky.helper.Point2D;
-import mattias.andersson.onky.Particle.Particle;
-import mattias.andersson.onky.Particle.TriangleParticle;
 import mattias.andersson.onky.helper.StockMarket;
-import mattias.andersson.onky.player.Onky;
+import mattias.andersson.onky.player.Player;
 import mattias.andersson.onky.player.Qwerty;
 import mattias.andersson.onky.powerup.PowerUp;
 import mattias.andersson.onky.projectile.LaserProjectile;
 import mattias.andersson.onky.projectile.Projectile;
-import mattias.andersson.onky.player.Player;
 
 /**
  * Created by Alrik on 2015-07-15.
@@ -37,14 +39,15 @@ public class GameView extends SurfaceView {
     public static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
     public static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     public static ArrayList<Player> players = new ArrayList<Player>();
-
+    public static ArrayList<Paralax> paralaxLayers = new ArrayList<Paralax>();
+    public static ArrayList<Entity> entities = new ArrayList<Entity>(); // all objects
     public static GameThread gameLoopThread;
+    public static Point2D offset = new Point2D(), transCoord = new Point2D(), scaleFactor = new Point2D(.5f, .5f);
+    public float screenAngle = -6;
     private SurfaceHolder holder;
-    public static Point2D offset = new Point2D(),transCoord= new Point2D(),scaleFactor= new Point2D(.5f,.5f);
-    public float screenAngle=-6;
     private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
     private Paint redP;
-
+    private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
 
     public GameView(Context context) {
         super(context);
@@ -106,9 +109,8 @@ public class GameView extends SurfaceView {
                     }
                 }
         );
+        paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
 
-
-        Log.i("test", "canvasdraw11");
 
         gameLoopThread = new GameThread(this);
         holder = getHolder();
@@ -121,7 +123,7 @@ public class GameView extends SurfaceView {
                     try {
                         gameLoopThread.join();
                         retry = false;
-                        Log.i("test","canvasdraw");
+                        Log.i("test", "canvasdraw");
                     } catch (InterruptedException e) {
                     }
                 }
@@ -135,7 +137,7 @@ public class GameView extends SurfaceView {
             }
 
             @Override
-            public void surfaceChanged(SurfaceHolder holder, int format,int width, int height) {
+            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             }
         });
       //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
@@ -156,6 +158,7 @@ public class GameView extends SurfaceView {
             projectiles. add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(20, 0)));
             for (int i = 0; i < 2; i++)particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(60, 60), new Paint(Color.RED)));
         }
+
        // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
 
@@ -163,7 +166,7 @@ public class GameView extends SurfaceView {
         if(CONSTANTS.MAX_PARTICLES>particles.size()) {
             coord.div(scaleFactor);
             coord.sub(transCoord);
-            particles.add(new PulseParticle(new Point2D(coord.x, coord.y), new Point2D(200,200), new Paint(Color.RED)));
+            particles.add(new PulseParticle(new Point2D(coord.x, coord.y), new Point2D(200, 200), new Paint(Color.RED)));
         }
     }
 
@@ -171,9 +174,15 @@ public class GameView extends SurfaceView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(Color.WHITE);
-        Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
+        //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
 
         transCoord.set(-players.get(0).coord.x, (float) (height*0.5));
+//--------------------background---------------------
+        for (int i = paralaxLayers.size() - 1; i >= 0; i--) {
+            paralaxLayers.get(i).update();
+            paralaxLayers.get(i).display();
+            //if(projectiles.get(i).dead)projectiles.remove(projectiles.get(i));
+        }
         canvas.scale(scaleFactor.x, scaleFactor.y);
         canvas.rotate(screenAngle);
         canvas.translate(transCoord.x, transCoord.y);
@@ -211,6 +220,7 @@ public class GameView extends SurfaceView {
             if(projectiles.get(i).dead)projectiles.remove(projectiles.get(i));
         }
 
+
     }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
@@ -218,6 +228,7 @@ public class GameView extends SurfaceView {
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
         this.setMeasuredDimension(width, height);
+
     }
 }
 

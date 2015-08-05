@@ -24,7 +24,6 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //  image= BitmapFactory.decodeResource(getResources(), R.drawable.woondenBox);
 
         setContentView(R.layout.activity_main);
