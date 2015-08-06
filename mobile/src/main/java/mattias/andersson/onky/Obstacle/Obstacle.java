@@ -20,7 +20,7 @@ import mattias.andersson.onky.helper.StockMarket;
 public abstract class Obstacle {
     Image image;
     Random r = new Random();
-    Paint color = new Paint(Color.RED);
+    public Paint color = new Paint(Color.RED);
     public Point2D coord;
     public Point2D size;
     public Point2D velocity = new Point2D();

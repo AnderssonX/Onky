@@ -11,16 +11,18 @@ import mattias.andersson.onky.helper.Point2D;
  */
 public class PulseParticle extends Particle {
     Paint color = new Paint(Color.RED);
+    float tSize;
     public PulseParticle() {
 
 
     }
 
     public PulseParticle(Point2D coord, Point2D size, Paint _particleColor) {
-        super(coord, size);
+        super(coord, new Point2D(0,0));
         color = _particleColor;
         color.setColor(Color.rgb(255, 0, 0));
-        color.setStrokeWidth(10);
+        tSize=size.x;
+      //  color.setStrokeWidth(10);
         color.setStyle(Paint.Style.STROKE);
         color.setColor(Color.rgb(255, 0, 0));
     }
@@ -28,15 +30,15 @@ public class PulseParticle extends Particle {
     public PulseParticle(Point2D coord, Point2D _velocity, Point2D size, Paint _particleColor) {
 
         this(coord, size, _particleColor);
-
         velocity = _velocity;
     }
 
     public void update() {
         //super.update();
+        color.setStrokeWidth((int)((tSize-size.x)*0.5));
         coord.add(velocity);
-        size.multi(1.1f);
-        if (size.x > 300) death();
+        size.add(15);
+        if (size.x > tSize) death();
     }
 
     public void display() {

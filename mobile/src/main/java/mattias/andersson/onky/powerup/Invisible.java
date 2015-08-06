@@ -19,8 +19,7 @@ public class Invisible extends PowerUp {
     // Drawable image;
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
     // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    Bitmap bitmap = null;
-    Bitmap scaledBitmap;
+
 
     //  canvas.drawBitmap(bitmap, null, mRedPaddleRect, mPaint);
     public Invisible(Context context, Point2D coord, Point2D Size) {
@@ -32,11 +31,14 @@ public class Invisible extends PowerUp {
     }
 
     public void update() {
+        super.update();
     }
 
     public void display(){
         // c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
-        GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
+        super.display();
+
+       // GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
     }
 
 

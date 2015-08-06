@@ -30,6 +30,10 @@ public class Point2D {
       this.x+=point.x;
       this.y+=point.y;
   }
+    public void add(float i) {
+        this.x+=i;
+        this.y+=i;
+    }
     public void multi(Point2D point){
         this.x*=point.x;
         this.y*=point.y;
@@ -55,4 +59,6 @@ public class Point2D {
         this.x/=factor;
         this.y/=factor;
     }
+
+
 }

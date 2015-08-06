@@ -80,7 +80,6 @@ public class GameFragment extends Fragment {
 
 
         GameView gameView = new GameView(view.getContext());
-
         CONSTANTS.currentFragment = "gameFragment";
 
         fb.child("prices/powerups").addListenerForSingleValueEvent(new ValueEventListener() {

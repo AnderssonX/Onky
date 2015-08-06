@@ -25,15 +25,12 @@ public class Particle {
         color.setColor(Color.rgb(r.nextInt(255),r.nextInt(255),r.nextInt(255)));
         this.coord = coord;
         this.size = Size;
-        velocity.x=r.nextInt(20)-10;
-        velocity.y=r.nextInt(20)-10;
+       // velocity.x=r.nextInt(20)-10;
+       // velocity.y=r.nextInt(20)-10;
         opacity=255;
+        color.setAntiAlias(false);
     }
-    public Particle(Point2D coord, Point2D Size, String signText) {
-        this.coord = coord;
-        this.size = Size;
-        this.signText = signText;
-    }
+
     public void update(){
         if(opacity>0) {
             opacity--;

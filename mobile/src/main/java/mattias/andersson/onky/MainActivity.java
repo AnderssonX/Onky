@@ -56,7 +56,9 @@ public class MainActivity extends Activity {
         }
         if (CONSTANTS.currentFragment == "gameFragment") {
             Log.i("currentFragment is ", "" + CONSTANTS.currentFragment);
-            GameView.gameLoopThread.setRunning(false);
+
+            GameView.gameLoopThread.setRunning(!GameView.gameLoopThread.isAlive());
+            if(!GameView.gameLoopThread.isAlive()) GameView.gameLoopThread.start();
             FragmentManager fm = getFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
             final Dialog dialog = new Dialog(this);

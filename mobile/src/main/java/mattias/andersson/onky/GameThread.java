@@ -10,7 +10,7 @@ import android.graphics.Canvas;
 public class GameThread extends Thread {
 
     static final long FPS = 30;
-   public static Canvas c = null;
+    public static Canvas c = null;
     private GameView view;
     private boolean running = false;
 
@@ -35,7 +35,8 @@ public class GameThread extends Thread {
             try {
                 c = view.getHolder().lockCanvas();
                 synchronized (view.getHolder()) {
-                    view.onDraw(c);
+                    //view.onDraw(c);
+                    view.draw(c);
                     GameView.width = c.getWidth();
                     GameView.height = c.getHeight();
                     //     Log.i("test", "canvaswidth= " + GameView.width);

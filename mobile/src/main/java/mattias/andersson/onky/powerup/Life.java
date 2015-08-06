@@ -18,9 +18,6 @@ public class Life extends PowerUp {
     Context context;
     // Drawable image;
     //  Bitmap bMap = BitmapFactory.decodeFile("main/assets/woodenBox.png");
-    // Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.woodenBox.png);
-    Bitmap bitmap = null;
-    Bitmap scaledBitmap;
 
     //  canvas.drawBitmap(bitmap, null, mRedPaddleRect, mPaint);
     public Life(Context context, Point2D coord, Point2D Size) {
@@ -31,12 +28,15 @@ public class Life extends PowerUp {
         color.setARGB(255, 180, 140, 50);
     }
 
+
     public void update() {
+        super.update();
     }
 
-    public void display() {
+    public void display(){
         // c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
-        GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
+        super.display();
+      //  GameThread.c.drawBitmap(scaledBitmap, (int) coord.x, (int) coord.y, color);
     }
 
 

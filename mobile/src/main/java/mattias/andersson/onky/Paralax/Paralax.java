@@ -26,8 +26,8 @@ public class Paralax extends Obstacle {
     public Paralax(Point2D coord, Point2D size, float _factor) {
         super(coord, size);
         GameView.paralaxLayers.add(this);
-
-
+        color.setAntiAlias(false);
+        color.setFilterBitmap(false);
         factor = _factor;
     }
 
@@ -59,7 +59,7 @@ public class Paralax extends Obstacle {
       if (bg!=null)image(bg,  int(x), int(y), int(w), int(h));
       else rect(x, y, w, h);*/
         // Log.i("bgDisplay", "we're in display()");
-        GameThread.c.drawBitmap(bg, coord.getX(), coord.getY(), new Paint(Color.RED));
+        GameThread.c.drawBitmap(bg, coord.getX(), coord.getY(), color);
     }
 }
 
