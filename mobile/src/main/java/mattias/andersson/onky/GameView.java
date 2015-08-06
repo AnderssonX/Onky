@@ -34,21 +34,21 @@ import mattias.andersson.onky.projectile.Projectile;
  */
 public class GameView extends SurfaceView {
     public static int width, height;
-    public static ArrayList<Obstacle>  obstacles = new ArrayList<Obstacle>();
-    public static ArrayList<Particle>  particles = new ArrayList<Particle>();
+    public static ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+    public static ArrayList<Particle> particles = new ArrayList<Particle>();
     public static ArrayList<PowerUp> powerups = new ArrayList<PowerUp>();
     public static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     public static ArrayList<Player> players = new ArrayList<Player>();
     public static ArrayList<Paralax> paralaxLayers = new ArrayList<Paralax>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>(); // all objects
     public static GameThread gameLoopThread;
-    public static Point2D offset = new Point2D(), transCoord = new Point2D(),shake = new Point2D(),shakeFactor= new Point2D(), scaleFactor = new Point2D(.5f, .5f);
-    public float screenAngle = 0,flashOpacity;
+    public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(.5f, .5f), defaultPlayerOffset = new Point2D(200, 200), playerOffset =  new Point2D(200, 200);
+    public float screenAngle = 0, flashOpacity;
     private SurfaceHolder holder;
-    private int x = 0,xSpeed = 10, y = 0,ySpeed = 10;
-    private Paint redP,flashColor = new Paint(Color.BLACK);
+    private int x = 0, xSpeed = 10, y = 0, ySpeed = 10;
+    private Paint redP, flashColor = new Paint(Color.BLACK);
     private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
-    Random r =new Random();
+    Random r = new Random();
 
     public GameView(Context context) {
         super(context);
@@ -82,13 +82,14 @@ public class GameView extends SurfaceView {
                                 case MotionEvent.ACTION_POINTER_DOWN:
                                     actionString = "PNTR DOWN";
                                     addparticle(mouse);
+                                    screenAngle = r.nextFloat() * 20 - 10;
                                     //addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_UP:
                                     actionString = "PNTR UP";
                                     addPulse(mouse);
-                                    flashOpacity=200;
-
+                                    flashOpacity = 200;
+                                    playerOffset.x+=100;
                                     break;
                                 case MotionEvent.ACTION_MOVE:
                                     actionString = "MOVE";
@@ -115,7 +116,7 @@ public class GameView extends SurfaceView {
         );
         paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
 
-         gameLoopThread = new GameThread(this);   // !!!
+        gameLoopThread = new GameThread(this);   // !!!
         holder = getHolder();
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
@@ -143,28 +144,29 @@ public class GameView extends SurfaceView {
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             }
         });
-      //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
+        //  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
     }
 
-    void addObstacle(Point2D coord){
+    void addObstacle(Point2D coord) {
         coord.div(scaleFactor);
         coord.sub(transCoord);
-       // projectiles. add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(20, 0)));
-       // obstacles. add(new Box(this.getContext(), new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+        // projectiles. add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(20, 0)));
+        // obstacles. add(new Box(this.getContext(), new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
-    void addparticle(Point2D coord){
-        if(CONSTANTS.MAX_PARTICLES>particles.size()) {
+
+    void addparticle(Point2D coord) {
+        if (CONSTANTS.MAX_PARTICLES > particles.size()) {
             Random r = new Random();
             coord.div(scaleFactor);
             coord.sub(transCoord);
             projectiles.add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(30, 0)));
             particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(10, 10), new Paint(Color.RED)));
         }
-       // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
+        // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
 
-    void addPulse(Point2D coord){
-        if(CONSTANTS.MAX_PARTICLES>particles.size()) {
+    void addPulse(Point2D coord) {
+        if (CONSTANTS.MAX_PARTICLES > particles.size()) {
             coord.div(scaleFactor);
             coord.sub(transCoord);
             particles.add(new PulseParticle(new Point2D(coord.x, coord.y), new Point2D(200, 200), new Paint(Color.RED)));
@@ -224,8 +226,9 @@ public class GameView extends SurfaceView {
 
 */
     }
+
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
@@ -239,7 +242,7 @@ public class GameView extends SurfaceView {
         canvas.drawColor(Color.WHITE);
         //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
 
-        transCoord.set(-players.get(0).coord.x, (float) (height*0.5));
+        transCoord.set(-players.get(0).coord.x + playerOffset.x, (float) (height * 0.5) + playerOffset.y);
         //--------------------background---------------------
         for (int i = paralaxLayers.size() - 1; i >= 0; i--) {
             paralaxLayers.get(i).update();
@@ -252,60 +255,84 @@ public class GameView extends SurfaceView {
         canvas.scale(scaleFactor.x, scaleFactor.y);
         canvas.rotate(screenAngle);
         canvas.translate(transCoord.x + shake.x, transCoord.y + shake.y);
+        smoothAngle();
+        smoothOffset();
         shake();
         //--------------------obstacle---------------------
-        for(int i=obstacles.size()-1 ; i>=0 ;i--){
+        for (int i = obstacles.size() - 1; i >= 0; i--) {
             obstacles.get(i).update();
             obstacles.get(i).display();
-            if(obstacles.get(i).dead)obstacles.remove(obstacles.get(i));
+            if (obstacles.get(i).dead) obstacles.remove(obstacles.get(i));
         }
         //--------------------player---------------------
-        for(int i=players.size()-1 ; i>=0 ;i--){
+        for (int i = players.size() - 1; i >= 0; i--) {
             players.get(i).update();
             players.get(i).display();
-            if(players.get(i).dead)players.remove(players.get(i));
+            if (players.get(i).dead) players.remove(players.get(i));
         }
         //--------------------powerup---------------------
         for (int i = powerups.size() - 1; i >= 0; i--) {
             powerups.get(i).update();
             powerups.get(i).display();
-            if(powerups.get(i).dead)powerups.remove(powerups.get(i));
+            if (powerups.get(i).dead) powerups.remove(powerups.get(i));
         }
         //--------------------particle---------------------
-        for(int i=particles.size()-1 ; i>=0 ;i--){
+        for (int i = particles.size() - 1; i >= 0; i--) {
             particles.get(i).update();
             particles.get(i).display();
-            if(particles.get(i).dead)particles.remove(particles.get(i));
+            if (particles.get(i).dead) particles.remove(particles.get(i));
         }
         //--------------------projectile---------------------
         for (int i = projectiles.size() - 1; i >= 0; i--) {
             projectiles.get(i).update();
             projectiles.get(i).display();
-            if(projectiles.get(i).dead)projectiles.remove(projectiles.get(i));
+            if (projectiles.get(i).dead) projectiles.remove(projectiles.get(i));
         }
         canvas.restore();
-    //------------restored
+        //------------restored
         displayFlash();
-        flashOpacity*=.9f;
+        flashOpacity *= .9f;
 
     }
 
     void displayFlash() {
-        if (flashOpacity>0) {
-            flashColor.setAlpha((int)flashOpacity);
+        if (flashOpacity > 0) {
+            flashColor.setAlpha((int) flashOpacity);
             //setARGB((int)flashOpacity,0,0,0);
             GameThread.c.drawRect(0, 0, width, height, flashColor);
         }
     }
 
     void shake() {
-        if (shakeFactor.x>0.5 && shakeFactor.y>0.5) {
-            Log.i("hej"," "+shakeFactor.x+" : "+shakeFactor.y);
-            if (CONSTANTS.MAX_SHAKE < shakeFactor.x) shakeFactor.x=CONSTANTS.MAX_SHAKE;
-            if (CONSTANTS.MAX_SHAKE < shakeFactor.y) shakeFactor.y=CONSTANTS.MAX_SHAKE;
+        if (shakeFactor.x > 0.5 && shakeFactor.y > 0.5) {
+            Log.i("hej", " " + shakeFactor.x + " : " + shakeFactor.y);
+            if (CONSTANTS.MAX_SHAKE < shakeFactor.x) shakeFactor.x = CONSTANTS.MAX_SHAKE;
+            if (CONSTANTS.MAX_SHAKE < shakeFactor.y) shakeFactor.y = CONSTANTS.MAX_SHAKE;
             shakeFactor.multi(CONSTANTS.SHAKE_DECAY);
-            shake.set( (float)((r.nextFloat()*shakeFactor.x)-shakeFactor.x*0.5),(float)((r.nextFloat()*shakeFactor.y)-shakeFactor.y*0.5));
-       }
+            shake.set((float) ((r.nextFloat() * shakeFactor.x) - shakeFactor.x * 0.5), (float) ((r.nextFloat() * shakeFactor.y) - shakeFactor.y * 0.5));
+        }
+    }
+
+    void smoothAngle() {
+        if (screenAngle != 0) {
+            if (screenAngle > -1 && screenAngle < 1) screenAngle = 0;
+            else screenAngle *= 0.9;
+        }
+    }
+
+    void smoothOffset() {
+        // if (defaultPlayerOffsetX != round(playerOffsetX)) {
+       Point2D offsetDiff= new Point2D((float)((defaultPlayerOffset.x - playerOffset.x )* 0.02),(float)((defaultPlayerOffset.y - playerOffset.y)* 0.02));
+        //float offsetXDiff = defaultPlayerOffset.x - playerOffset.x;
+      //  float offsetYDiff = defaultPlayerOffset.y - playerOffset.y;
+      //  playerOffset.x += offsetXDiff * 0.02;
+      //  playerOffset.y += offsetYDiff * 0.02;
+        playerOffset.add(offsetDiff);
+        Log.i("offsetDiff", " " + offsetDiff.x + " : " + offsetDiff.y);
+
+        Log.i("playerOffset", " " + playerOffset.x + " : " + playerOffset.y);
+
+        //  }
     }
 }
 
