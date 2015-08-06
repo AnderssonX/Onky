@@ -72,8 +72,11 @@ public class GameFragment extends Fragment {
         //  GameView gameView=new GameView(this.getActivity());
         first = true;
         Display display = getActivity().getWindowManager().getDefaultDisplay();
+        float scale = getResources().getDisplayMetrics().density;
+
         Point size = new Point();
         display.getSize(size);
+
         CONSTANTS.screenWidth = size.x;
         CONSTANTS.screenHeight = size.y;
 

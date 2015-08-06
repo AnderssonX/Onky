@@ -14,7 +14,6 @@ import mattias.andersson.onky.Particle.TriangleParticle;
 
 public class LaserProjectile extends Projectile {
     Paint coreColor = new Paint(255);
-
     public LaserProjectile(Point2D coord, Point2D vel) {
         super(coord, vel);
         // projectiles.add(this);
@@ -30,17 +29,14 @@ public class LaserProjectile extends Projectile {
     }
 
     public void display() {
-
         color.setStrokeWidth(12);
         GameThread.c.drawLine(coord.x, coord.y, (float) (coord.x - velocity.x * 3), (float) (coord.y - velocity.y * 3), color);
 
         coreColor.setStrokeWidth(5);
         GameThread.c.drawLine(coord.x, coord.y, (float) (coord.x - velocity.x * 2), (float) (coord.y - velocity.y * 2), coreColor);
-
     }
 
     void collision() {
-
         // if (!dead) {
         for (int i = GameView.obstacles.size() - 1; i >= 0; i--) {
             if (!GameView.obstacles.get(i).dead && GameView.obstacles.get(i).coord.x + GameView.obstacles.get(i).size.x > coord.x + velocity.x && GameView.obstacles.get(i).coord.x < coord.x + velocity.x && GameView.obstacles.get(i).coord.y + GameView.obstacles.get(i).size.y > coord.y + velocity.y && GameView.obstacles.get(i).coord.y < coord.y + size.y + velocity.y) {
@@ -48,7 +44,6 @@ public class LaserProjectile extends Projectile {
                 death();
             }
         }
-
         //  }
     }
 

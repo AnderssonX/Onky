@@ -1,6 +1,9 @@
 package mattias.andersson.onky.helper;
 
 import com.firebase.client.Firebase;
+
+import java.util.ArrayList;
+
 /**
  * Created by Mattias on 2015-06-16.
  */
@@ -11,5 +14,6 @@ public class CONSTANTS {
     public static String currentFragment;
     public static int screenWidth=0;
     public static int screenHeight=0;
+    public static    ArrayList<Upgrade> upgrades= new ArrayList<Upgrade>();
 
 }

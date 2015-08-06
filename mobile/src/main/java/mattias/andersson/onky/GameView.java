@@ -68,7 +68,8 @@ public class GameView extends SurfaceView {
                             int actionIndex = m.getActionIndex();
                             String actionString;
                             switch (action) {
-                                case MotionEvent.ACTION_DOWN:
+                                case
+                                    MotionEvent.ACTION_DOWN:
                                     actionString = "DOWN";
                                     addparticle(mouse);
                                     shakeFactor.add(25);
@@ -89,7 +90,7 @@ public class GameView extends SurfaceView {
                                     actionString = "PNTR UP";
                                     addPulse(mouse);
                                     flashOpacity = 200;
-                                    playerOffset.x+=100;
+                                    playerOffset.x += 50;
                                     break;
                                 case MotionEvent.ACTION_MOVE:
                                     actionString = "MOVE";
@@ -100,21 +101,21 @@ public class GameView extends SurfaceView {
                                     actionString = "";
                             }
 
-                            String touchStatus = "Action: " + actionString + " Index: " + actionIndex + " ID: " + id + " X: " + x + " Y: " + y;
-
-                            if (id == 0)
-                                Log.i("test", "touchStatus" + touchStatus);
-                            else
-                                Log.i("test", "nottouch" + touchStatus);
+//                            String touchStatus = "Action: " + actionString + " Index: " + actionIndex + " ID: " + id + " X: " + x + " Y: " + y;
+//
+//                            if (id == 0)
+//                                Log.i("test", "touchStatus" + touchStatus);
+//                            else
+//                                Log.i("test", "nottouch" + touchStatus);
                         }
 
-                        Log.i("test", "ok");
+                        //   Log.i("test", "ok");
 
                         return true;
                     }
                 }
         );
-        paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
+       // paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
 
         gameLoopThread = new GameThread(this);   // !!!
         holder = getHolder();
@@ -127,7 +128,7 @@ public class GameView extends SurfaceView {
                     try {
                         gameLoopThread.join();
                         retry = false;
-                        Log.i("test", "canvasdraw");
+                       // Log.i("test", "canvasdraw");
                     } catch (InterruptedException e) {
                     }
                 }
@@ -137,7 +138,7 @@ public class GameView extends SurfaceView {
             public void surfaceCreated(SurfaceHolder holder) {
                 gameLoopThread.setRunning(true);
                 gameLoopThread.start();
-                Log.i("test", "canvas start");
+           //     Log.i("test", "canvas start");
             }
 
             @Override
@@ -156,7 +157,7 @@ public class GameView extends SurfaceView {
 
     void addparticle(Point2D coord) {
         if (CONSTANTS.MAX_PARTICLES > particles.size()) {
-            Random r = new Random();
+            //Random r = new Random();
             coord.div(scaleFactor);
             coord.sub(transCoord);
             projectiles.add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(30, 0)));
@@ -241,7 +242,6 @@ public class GameView extends SurfaceView {
         super.draw(canvas);
         canvas.drawColor(Color.WHITE);
         //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
-
         transCoord.set(-players.get(0).coord.x + playerOffset.x, (float) (height * 0.5) + playerOffset.y);
         //--------------------background---------------------
         for (int i = paralaxLayers.size() - 1; i >= 0; i--) {
@@ -320,18 +320,24 @@ public class GameView extends SurfaceView {
         }
     }
 
+    void displaySign() {
+      /*  stroke(255);
+        strokeWeight(1);
+        int interval=100;
+        for (int i=0; i< width/scaleFactor; i+=interval)
+            line((i+playerOffsetX-p.x%interval)*(scaleFactor), 0, (i+playerOffsetX-p.x%interval)*(scaleFactor), height);*/
+    }
+
     void smoothOffset() {
         // if (defaultPlayerOffsetX != round(playerOffsetX)) {
        Point2D offsetDiff= new Point2D((float)((defaultPlayerOffset.x - playerOffset.x )* 0.02),(float)((defaultPlayerOffset.y - playerOffset.y)* 0.02));
         //float offsetXDiff = defaultPlayerOffset.x - playerOffset.x;
-      //  float offsetYDiff = defaultPlayerOffset.y - playerOffset.y;
-      //  playerOffset.x += offsetXDiff * 0.02;
-      //  playerOffset.y += offsetYDiff * 0.02;
+        //  float offsetYDiff = defaultPlayerOffset.y - playerOffset.y;
+        //  playerOffset.x += offsetXDiff * 0.02;
+        //  playerOffset.y += offsetYDiff * 0.02;
         playerOffset.add(offsetDiff);
-        Log.i("offsetDiff", " " + offsetDiff.x + " : " + offsetDiff.y);
-
-        Log.i("playerOffset", " " + playerOffset.x + " : " + playerOffset.y);
-
+        //  Log.i("offsetDiff", " " + offsetDiff.x + " : " + offsetDiff.y);
+        //   Log.i("playerOffset", " " + playerOffset.x + " : " + playerOffset.y);
         //  }
     }
 }
