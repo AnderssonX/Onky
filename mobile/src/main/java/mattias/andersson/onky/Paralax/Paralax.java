@@ -28,6 +28,7 @@ public class Paralax extends Obstacle {
         GameView.paralaxLayers.add(this);
 
         color.setAntiAlias(false);
+        color.setDither(true);
         color.setFilterBitmap(false);
 
         mPaint = new Paint(Paint.FILTER_BITMAP_FLAG);

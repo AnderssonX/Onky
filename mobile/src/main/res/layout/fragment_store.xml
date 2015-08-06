@@ -19,43 +19,47 @@
         android:id="@+id/horizontalScrollView"
         android:layout_gravity="center"
         android:scrollbars="none"
-        android:clickable="false">
+        android:clickable="false"
+        android:animationCache="true"
+        android:alwaysDrawnWithCache="true">
 
         <TableRow
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:id="@+id/Row">
 
             <ImageButton
+                android:tag="Slow"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton1"
                 android:background="@drawable/unlockicon"
-
                 android:src = "@drawable/slowpower"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="teleport"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton2"
                 android:background="@drawable/unlockicon"
                 android:src = "@drawable/slashpower"
-
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="Laser"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton3"
                 android:background="@drawable/unlockicon"
                 android:src = "@drawable/laserpower2"
-
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="Invis"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton4"
@@ -65,6 +69,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="Token"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton5"
@@ -74,6 +79,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="Magnet"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageButton6"
@@ -83,6 +89,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="divider"
                 android:layout_width="4dp"
                 android:layout_height="100dp"
                 android:id="@+id/seperator1"
@@ -92,6 +99,7 @@
                 android:focusable="true" />
 
             <ImageButton
+                android:tag="skin"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/skinsicon2"
@@ -100,6 +108,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="skin"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/skinsicon3"
@@ -108,6 +117,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="skin"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/skinsicon4"
@@ -116,6 +126,8 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="divider"
+
                 android:layout_width="4dp"
                 android:layout_height="100dp"
                 android:id="@+id/seperator"
@@ -124,6 +136,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon1"
@@ -132,6 +145,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon2"
@@ -140,6 +154,7 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon3"
@@ -148,6 +163,8 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon4"
@@ -156,6 +173,8 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon5"
@@ -164,6 +183,8 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon6"
@@ -172,6 +193,8 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon7"
@@ -180,14 +203,17 @@
                 android:layout_marginRight="20dp" />
 
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon8"
                 android:background="@drawable/a8"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
-
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon9"
@@ -195,14 +221,17 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon10"
                 android:background="@drawable/a10"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
-
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon11"
@@ -210,6 +239,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon12"
@@ -217,6 +248,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon13"
@@ -224,6 +257,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon14"
@@ -231,6 +266,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon15"
@@ -238,6 +275,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon16"
@@ -245,6 +284,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon17"
@@ -252,6 +293,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon18"
@@ -259,6 +302,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon19"
@@ -266,13 +311,14 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
             <ImageButton
+                android:tag="achievements"
+
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/achievementicon20"
                 android:background="@drawable/a20"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
-
         </TableRow>
     </HorizontalScrollView>
 

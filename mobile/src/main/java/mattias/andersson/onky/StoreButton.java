@@ -18,13 +18,16 @@ import mattias.andersson.onky.helper.CONSTANTS;
  */
 public class StoreButton extends ImageButton implements View.OnClickListener {
 
+    int mouse;
     public StoreButton(Context context) {
         super(context);
     }
 
     @Override
     public void onClick(View view) {
-
         Log.i("hej","hej");
     }
 }
+
+
+
