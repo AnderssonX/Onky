@@ -1,7 +1,6 @@
 package mattias.andersson.onky.Paralax;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.DisplayMetrics;
 
@@ -18,6 +17,7 @@ import mattias.andersson.onky.helper.Point2D;
 public class Paralax extends Obstacle {
     float angle, factor, heightLevel, opacity = 255;
     Bitmap bg;
+    Paint mPaint;
 
     Paralax() { // DUMMY
         //super( 0, 0, 0, 0);
@@ -26,9 +26,16 @@ public class Paralax extends Obstacle {
     public Paralax(Point2D coord, Point2D size, float _factor) {
         super(coord, size);
         GameView.paralaxLayers.add(this);
+
         color.setAntiAlias(false);
         color.setFilterBitmap(false);
+
+        mPaint = new Paint(Paint.FILTER_BITMAP_FLAG);
+        mPaint.setAntiAlias(false);
+        mPaint.setFilterBitmap(false);
+
         factor = _factor;
+
     }
 
     public Paralax(Point2D coord, Point2D size, float _factor, Bitmap _bg) {
@@ -37,9 +44,10 @@ public class Paralax extends Obstacle {
         DisplayMetrics displaymetrics = new DisplayMetrics();
 
         //bg=_bg;
+
         bg = Bitmap.createScaledBitmap(_bg, CONSTANTS.screenWidth * 3, (int) (CONSTANTS.screenHeight * 1.5), false);
-        //Log.i("paralax gameview X Y", " "+CONSTANTS.screenWidth+" " + GameView.height);
-        //bg = Bitmap.createScaledBitmap(_bg, (int) size.x, (int) size.y,false);
+
+
     }
 
 
@@ -59,7 +67,8 @@ public class Paralax extends Obstacle {
       if (bg!=null)image(bg,  int(x), int(y), int(w), int(h));
       else rect(x, y, w, h);*/
         // Log.i("bgDisplay", "we're in display()");
-        GameThread.c.drawBitmap(bg, coord.getX(), coord.getY(), color);
+        GameThread.c.drawBitmap(bg, coord.getX(), coord.getY(), mPaint);
+
     }
 }
 

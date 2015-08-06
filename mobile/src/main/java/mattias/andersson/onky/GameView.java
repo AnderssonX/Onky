@@ -44,11 +44,11 @@ public class GameView extends SurfaceView {
     public static GameThread gameLoopThread;
     public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(.5f, .5f), defaultPlayerOffset = new Point2D(200, 200), playerOffset =  new Point2D(200, 200);
     public float screenAngle = 0, flashOpacity;
+    Random r = new Random();
     private SurfaceHolder holder;
     private int x = 0, xSpeed = 10, y = 0, ySpeed = 10;
     private Paint redP, flashColor = new Paint(Color.BLACK);
     private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
-    Random r = new Random();
 
     public GameView(Context context) {
         super(context);
@@ -115,7 +115,7 @@ public class GameView extends SurfaceView {
                     }
                 }
         );
-       // paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
+        paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
 
         gameLoopThread = new GameThread(this);   // !!!
         holder = getHolder();
@@ -242,6 +242,7 @@ public class GameView extends SurfaceView {
         super.draw(canvas);
         canvas.drawColor(Color.WHITE);
         //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
+
         transCoord.set(-players.get(0).coord.x + playerOffset.x, (float) (height * 0.5) + playerOffset.y);
         //--------------------background---------------------
         for (int i = paralaxLayers.size() - 1; i >= 0; i--) {
