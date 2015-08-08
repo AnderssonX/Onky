@@ -1,12 +1,15 @@
 package mattias.andersson.onky;
 
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableRow;
 
@@ -24,6 +27,10 @@ public class Store extends Fragment implements View.OnClickListener {
 
     ImageButton image1, image2, image3, image4, image5, image6;
     int slowUpgrade, teleportUpgrade, shootUpgrade, invinceUpgrade, coinUpgrade, magnetUpgarde;
+    private Button backbutton;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+
     TableRow tableRow;
 
     public Store() {
@@ -43,11 +50,14 @@ public class Store extends Fragment implements View.OnClickListener {
         image3 = (ImageButton) view.findViewById(R.id.imageButton3);
         image3.setOnClickListener(this);
         image4 = (ImageButton) view.findViewById(R.id.imageButton4);
-        image4.setOnClickListener(this);
+        image4.setOnClickListener(this)
         image5 = (ImageButton) view.findViewById(R.id.imageButton5);
         image5.setOnClickListener(this);
         image6 = (ImageButton) view.findViewById(R.id.imageButton6);
         image6.setOnClickListener(this);*/
+        backbutton = (Button) view.findViewById(R.id.BackButton);
+
+        backbutton.setOnClickListener(this);
 
 
         tableRow = (TableRow) view.findViewById(R.id.Row);
@@ -57,9 +67,8 @@ public class Store extends Fragment implements View.OnClickListener {
 
             temp.setOnClickListener(this);
             CONSTANTS.upgrades.add(new Upgrade(temp.getTag().toString(), 3));
-            Log.i("Store", " row " + CONSTANTS.upgrades.get(i).name + " : "+ CONSTANTS.upgrades.get(i).level);
+            Log.i("Store", " row " + CONSTANTS.upgrades.get(i).name + " : " + CONSTANTS.upgrades.get(i).level);
         }
-
 
 
         //ImageButton laserButton = (ImageButton)view.findViewById(R.id.imageButton1);
@@ -71,12 +80,27 @@ public class Store extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ImageButton temp =(ImageButton)v;
-        if(!temp.getTag().equals("divider"))temp.setBackgroundResource(R.drawable.achievementiconclicked);
+        ImageButton temp = (ImageButton) v;
+        if (!temp.getTag().equals("divider"))
+            temp.setBackgroundResource(R.drawable.achievementiconclicked);
+
+
+        switch (v.getId()) {
+            case R.id.BackButton:
+                Log.i("offline", "Store");
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new MainMenu());
+                ft.commit();
+
+                break;
+
+
+
        /* for (int i = 0; i < tableRow.getChildCount(); i++) {
             ImageButton temp = (ImageButton) tableRow.getChildAt(i);
             temp.setBackgroundResource(R.drawable.achievementiconclicked);
-            Log.i("clicked", "Hope you)aasdw´re happy with your purchase");
+            Log.i("clicked", "Hope you)aasdwï¿½re happy with your purchase");
         }
 
         switch (v.getId()) {
@@ -84,40 +108,42 @@ public class Store extends Fragment implements View.OnClickListener {
                 image1.setBackgroundResource(R.drawable.achievementiconclicked);
                 slowUpgrade++;
                 if (slowUpgrade == 3)
-                    Log.i("clicked", "Hope you)aasdw´re happy with your purchase");
+                    Log.i("clicked", "Hope you)aasdwre happy with your purchase");
                 break;
 
             case R.id.imageButton2:
                 image2.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope you´re happy with your purchase");
+                Log.i("clicked", "Hope youre happy with your purchase");
 
 
                 break;
             case R.id.imageButton3:
                 image3.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope you´re happy with your purchase");
+                Log.i("clicked", "Hope youre happy with your purchase");
 
 
                 break;
             case R.id.imageButton4:
                 image4.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope you´re happy with your purchase");
+                Log.i("clicked", "Hope youre happy with your purchase");
 
 
                 break;
             case R.id.imageButton5:
                 image5.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope you´re happy with your purchase");
+                Log.i("clicked", "Hope youre happy with your purchase");
 
 
                 break;
             case R.id.imageButton6:
                 image6.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope you´re happy with your purchase");
+                Log.i("clicked", "Hope youre happy with your purchase");
 
 
                 break;
 
         }*/
+        }
+
     }
 }

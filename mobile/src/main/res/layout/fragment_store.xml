@@ -21,7 +21,8 @@
         android:scrollbars="none"
         android:clickable="false"
         android:animationCache="true"
-        android:alwaysDrawnWithCache="true">
+        android:alwaysDrawnWithCache="true"
+        android:layout_marginBottom="15dp">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -319,7 +320,70 @@
                 android:background="@drawable/a20"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
+
         </TableRow>
     </HorizontalScrollView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STORE"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@drawable/menubar"
+        android:layout_marginTop="20dp"
+        android:textSize="40dp"
+        android:paddingBottom="7dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:maxLength="9999999"
+        android:id="@+id/coins"
+        android:layout_gravity="right|top"
+        android:background="@drawable/coinmenu"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="10dp"
+        android:paddingRight="40dp"
+        android:textSize="20dp"
+        android:singleLine="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        android:layout_gravity="right|top"
+        android:background="@drawable/token2"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="11"
+        android:id="@+id/coinstext"
+        android:layout_gravity="right|top"
+        android:paddingTop="45dp"
+        android:paddingRight="65dp"
+        android:textSize="18dp" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/BackButton"
+        android:layout_gravity="left|top"
+        android:background="@drawable/backbutton"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="18dp" />
+
+    <ImageView
+        android:layout_width="585dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="@drawable/descriptivetext" />
+
 
 </FrameLayout>
