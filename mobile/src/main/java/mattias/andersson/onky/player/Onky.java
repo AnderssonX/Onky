@@ -19,9 +19,9 @@ public class Onky extends Player {
         velocity.set(1,0);
     }
     public void update() {
-        coord.add(velocity);
+        super.update();
     }
     public void display() {
-        GameThread.c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
+        super.display();
     }
 }
