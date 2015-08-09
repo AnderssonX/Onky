@@ -1,0 +1,71 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.MainMenu"
+    android:background="@drawable/backgroundfull">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="271dp"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:background="@drawable/onky"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Play"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/menubar"
+            android:text="PLAY"
+            android:textColor="@android:color/white"
+            android:textSize="40dp"
+            android:paddingBottom="7dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Highscore"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/menubar"
+            android:text="HIGHSCORE"
+            android:textColor="@android:color/white"
+            android:textSize="40dp"
+            android:textAlignment="center"
+            android:paddingBottom="7dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Options"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/menubar"
+            android:text="OPTIONS"
+            android:textColor="@android:color/white"
+            android:textSize="40dp"
+            android:textAlignment="center"
+            android:paddingBottom="7dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Store"
+            android:background="@drawable/menubar"
+            android:text="STORE"
+            android:textColor="@android:color/white"
+            android:textSize="40dp"
+            android:textAlignment="center"
+            android:paddingBottom="7dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
