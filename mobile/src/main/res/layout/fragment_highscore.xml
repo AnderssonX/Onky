@@ -1,9 +1,56 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="mattias.andersson.onky.Highscore">
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.Highscore"
+    android:background="@drawable/backgroundfull">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:id="@+id/horizontalScrollView2"
+        android:layout_gravity="center"
+        android:nestedScrollingEnabled="false"
+        android:scrollbars="none"
+        android:layout_marginTop="30dp">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:id="@+id/onkyscore"
+                android:background="@drawable/highscoremenu"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="65dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:id="@+id/onlinescore"
+                android:background="@drawable/highscoremenublue"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="70dp" />
+        </TableRow>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="250dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HIGHSCORE"
+            android:id="@+id/highscorehigh"
+            android:background="@drawable/menubar"
+            android:textSize="40dp"
+            android:paddingBottom="7dp" />
+    </RelativeLayout>
 
 </FrameLayout>

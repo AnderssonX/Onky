@@ -53,11 +53,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         eTPW = (EditText) view.findViewById(R.id.loginPw);
         play = (Button) view.findViewById(R.id.loginLogin);
         play.setOnClickListener(this);
-        //playOffline = (Button) view.findViewById(R.id.playOfflineButton);
-        playOffline.setOnClickListener(this);
+        //playOffline = (Button) view.findViewById(R.id.Play);
+        //playOffline.setOnClickListener(this);
         CONSTANTS.currentFragment = "loginFragment";
-        storeButton = (Button) view.findViewById(R.id.Store);
-        storeButton.setOnClickListener(this);
+  //      storeButton = (Button) view.findViewById(R.id.Store);
+//        storeButton.setOnClickListener(this);
 
         return view;
 
@@ -67,14 +67,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(final View view) {
         switch (view.getId()) {
-            case R.id.Store:
+            /*case R.id.Store:
                 Log.i("offline", "Store");
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
                 ft.replace(R.id.container, new Store());
                 ft.commit();
 
-                break;
+                break;*/
             /*case R.id.playOfflineButton:
                 Log.i("offline", "we're in case switch");
                 fm = getFragmentManager();
@@ -147,7 +147,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                             //  fm = getFragmentManager();
                             //  ft = fm.beginTransaction();
-                            //   ft.replace(R.id.container, new GameFragment());
+                            //   ft.replace(R.id.container, new Highscore());
                             //    ft.commit();
                         }
                         if (match == false) {
