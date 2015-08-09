@@ -36,15 +36,20 @@
         </TableRow>
     </HorizontalScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="HIGHSCORE"
-        android:id="@+id/highscorehigh"
-        android:background="@drawable/menubar"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="20dp"
-        android:textSize="40dp"
-        android:paddingBottom="7dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="250dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HIGHSCORE"
+            android:id="@+id/highscorehigh"
+            android:background="@drawable/menubar"
+            android:textSize="40dp"
+            android:paddingBottom="7dp" />
+    </RelativeLayout>
 
 </FrameLayout>
