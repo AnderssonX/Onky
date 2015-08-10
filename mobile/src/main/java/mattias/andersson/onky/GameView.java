@@ -43,12 +43,12 @@ public class GameView extends SurfaceView {
     public static ArrayList<Entity> entities = new ArrayList<Entity>(); // all objects
     public static GameThread gameLoopThread;
     public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(.5f, .5f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
-    public float screenAngle = 0, flashOpacity;
+    public static float screenAngle = 0, flashOpacity,speedLevel=10;
     private SurfaceHolder holder;
     private Paint flashColor = new Paint(Color.BLACK);
     private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
     Random r = new Random();
-    public static boolean jump, duck, attack,levelLoaded=false;
+    public static boolean jump, duck, attack,levelLoaded=false,imageLoaded;
 
     public GameView(Context context) {
         super(context);
@@ -58,7 +58,6 @@ public class GameView extends SurfaceView {
                 new OnTouchListener() {
                     public boolean onTouch(View v, MotionEvent m) {
                         int red = 0, green = 0, blue = 0;
-
                         int pointerCount = m.getPointerCount();
                         boolean jump = false, duck = false, attack = false;
                         for (int i = 0; i < pointerCount; i++) {
@@ -90,8 +89,6 @@ public class GameView extends SurfaceView {
                                     }
                                     addparticle(mouse);
                                     shakeFactor.add(25);
-
-
                                     // addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_UP:
@@ -115,7 +112,6 @@ public class GameView extends SurfaceView {
                                     }
                                     addparticle(mouse);
                                     screenAngle = r.nextFloat() * 20 - 10;
-
                                     //addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_UP:
@@ -129,7 +125,6 @@ public class GameView extends SurfaceView {
                                     addparticle(mouse);
                                     break;
                                 default:
-
                                     actionString = "";
                             }
                             flashColor.setARGB(255, red, green, blue);
@@ -330,10 +325,18 @@ public class GameView extends SurfaceView {
         //  float offsetYDiff = defaultPlayerOffset.y - playerOffset.y;
         //  playerOffset.x += offsetXDiff * 0.02;
         //  playerOffset.y += offsetYDiff * 0.02;
-        playerOffset.add(offsetDiff);
+        //  playerOffset.add(offsetDiff);
         //  Log.i("offsetDiff", " " + offsetDiff.x + " : " + offsetDiff.y);
         //   Log.i("playerOffset", " " + playerOffset.x + " : " + playerOffset.y);
         //  }
+    }
+    void loadImages(){
+
+
+    }
+    void soundImages(){
+
+
     }
 }
 

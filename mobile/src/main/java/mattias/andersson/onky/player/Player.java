@@ -161,10 +161,19 @@ public abstract class Player {
     public void update() {
         coord.add(velocity);
         velocity.add(acceleration);
+        checkFallen();
+        if (velocity.x<1 && velocity.x>-1) velocity.x=1;
+        if (velocity.x<GameView.speedLevel && velocity.x>0)velocity.x*=1+0.08;
+        if (velocity.x<0)velocity.x*= decayFactor;
+
+        if (punchTime<=0 && punchCooldown>0)punchCooldown--;
+        if (punching && punchCooldown<=0)checkAttack();
     }
 
     public void display() {
         GameThread.c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
+
+        if(punching)GameThread.c.drawRect(coord.x+punchRange, coord.y, coord.x + size.x+punchRange, coord.y + size.y, color);
 
     }
     public void checkJump(){
@@ -207,10 +216,88 @@ public abstract class Player {
             duckTime=50;
         }
     }
-    public void checkAttack(){
+    void checkFallen(){
+        if(coord.y>GameView.height){
+            respawn();
+        }
+    }
+    void respawn() {
+        usedPowerup.clear();
+        angle=0;
+        invis=100;
+        jumpCount=MAX_JUMP;
+        velocity.x*= -0.5;
+        //scaleFactor=0.1;
+        coord.x-=400;
+        coord.y=-50-size.x;
+       /* for (Obstacle o : obstacles) {
+            if (o.y+o.h > p.y && p.y +p.h > o.y &&  o.x > p.x-400 && o.x+o.w < p.x+p.w+800 ) {
+                o.impactForce=60;
+                o.health=0;
+                o.death();
+            }
+        }
+        entities.add(new slashParticle(int(x+400), int(y+h), 5, 400));
+        entities.add(new Lumber(int(x), int(floorHeight-700), 400, 25, true) );
+        */
+        respawning=false;
+        //UpdateGUILife(); // updateGUI
+    }
 
+    public void checkAttack(){
+        if (punchTime<=0) {
+            punching=false;
+            if (invincible)  punchCooldown=(int)(PUNCH_MAX_CD-attckSpeedReduction);
+            else punchCooldown=PUNCH_MAX_CD;
+        } else {
+            punchTime-= 1;
+            if (ducking) {
+            } else {
+                if ((int)(punchTime)==15 ) {
+                    //  entities.add(new slashParticle(int(x), int(y), 1));
+                    //  playSound(diceSound);
+                }
+                if (invincible && (int)(punchTime)==20) {
+                    //  entities.add(new slashParticle(int(x+120), int(y), 4));
+                    //playSound(sliceSound);
+                }
+            }
+        }
     }
     public void attack(){
+        if (punchCooldown<=0 && !punching) {
+            totalAttacks++;
+            //  playSound(sliceSound);
+            if (ducking && jumpCount<MAX_JUMP) {      // down dash attack
+             //   entities.add(new slashParticle(int(p.x), int(p.y), 4));
+                punchTime=30;
+            } else if (ducking) {    // slide attack
+              //  entities.add(new slashParticle(int(p.x), int(p.y), 2));
+                punchTime=20;
+            } else if ( jumpCount==0 ) {   // jump attack
+              //  entities.add(new slashParticle(int(p.x), int(p.y), 3));
+                punchTime=40;
+            } else {
+               /* if (jumpTime!=0 && jumpTime<=8) { // uppercut
+                    background(255);
+                    entities.add(new slashParticle(int(p.x), int(p.y), 6));
+                    for (Obstacle o : obstacles) {
+                        if (o.y+o.h > p.y-200 && p.y +p.h > o.y &&  o.x+o.w > p.x && o.x < p.x+p.w+200 ) {
+                            o.impactForce=60;
+                            o.hit();
+                            o.death();
+                        }
+                    }
+                } else {*/
+                  //  entities.add(new slashParticle(int(p.x), int(p.y), 0)); // normal attack
+            //    }
+                punchTime=30;
+            }
+            punching=true;
+        }
+            //   fill(255, 0, 0);  // hitbox
+            //  rect(x+w, y, punchRange, 75);
+
 
     }
   public   void checkIfObstacle(int top) {
@@ -232,6 +319,7 @@ public abstract class Player {
        // if (!tutorial) invis=100;
       // vx*= -0.5;
     }
+
     public void reduceLife() {
      //   if (tutorial) {
         //    tutorialRespawn();
