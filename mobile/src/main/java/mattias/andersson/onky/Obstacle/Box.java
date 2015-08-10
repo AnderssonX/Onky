@@ -34,7 +34,9 @@ public class Box extends Obstacle {
     }
 
     public void update() {
+        super.update();
     }
+
 
     public void display() {
         //c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);

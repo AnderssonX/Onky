@@ -46,6 +46,7 @@ public class Water extends Obstacle {
     }
 
     public void update() {
+        super.update();
         count++;
     }
 

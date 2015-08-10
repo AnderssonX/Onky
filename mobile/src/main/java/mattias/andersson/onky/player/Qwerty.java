@@ -7,7 +7,6 @@ import mattias.andersson.onky.GameThread;
  */
 public class Qwerty extends Player{
     public Qwerty() {
-        coord.set(0, 100);
         color.setARGB(255, 255, 200, 0);
         size.set(160, 130);
         velocity.set(1,0);

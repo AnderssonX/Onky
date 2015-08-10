@@ -36,7 +36,7 @@ public class Glass extends Obstacle {
     }
 
     public void update() {
-
+        super.update();
     }
 
     public void display() {

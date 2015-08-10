@@ -41,8 +41,9 @@ public class Snake extends Obstacle {
     }
 
     public void update() {
+        super.update();
         count++;
-        coord.add(velocity);
+       // coord.add(velocity);
     }
 
     public void display() {

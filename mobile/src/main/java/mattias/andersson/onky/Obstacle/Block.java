@@ -36,7 +36,8 @@ public class Block extends Obstacle {
     }
 
     public void update() {
-        coord.add(velocity);
+        super.update();
+    //    coord.add(velocity);
 
     }
 

@@ -315,8 +315,9 @@ public class GameFragment extends Fragment {
 
 
                 Log.i("Added ball! ", "obstacles.size is now " + GameView.obstacles.size());
-            }
 
+            }
+                GameView.levelLoaded=true;
         }
 
 

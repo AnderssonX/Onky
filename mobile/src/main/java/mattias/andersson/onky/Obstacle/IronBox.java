@@ -39,7 +39,7 @@ public class IronBox extends  Obstacle {
    }
 
     public void update(){
-
+        super.update();
     }
 
     public void display(){

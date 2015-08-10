@@ -13,6 +13,7 @@ import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
 import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.helper.StockMarket;
+import mattias.andersson.onky.player.Player;
 
 /**
  * Created by Alrik on 2015-07-20.
@@ -21,9 +22,7 @@ public abstract class Obstacle {
     Image image;
     Random r = new Random();
     public Paint color = new Paint(Color.RED);
-    public Point2D coord;
-    public Point2D size;
-    public Point2D velocity = new Point2D();
+    public Point2D coord,size,velocity = new Point2D(),impactForce= new Point2D();
     public String signText;
     public Bitmap bitmap = null;
     public Bitmap scaledBitmap;
@@ -52,15 +51,38 @@ public abstract class Obstacle {
 
     public void update() {
         coord.add(velocity);
-        if (coord.x > GameView.width || coord.x < 0) velocity.x *= -1;
-        if (coord.y > GameView.height || coord.y < 0) velocity.y *= -1;
+       // if (coord.x > GameView.width || coord.x < 0) velocity.x *= -1;
+       // if (coord.y > GameView.height || coord.y < 0) velocity.y *= -1;
+        collision();
     }
 
     public void display() {
         //opacity
         // GameThread.c.drawRect(coord.x,coord.y,size.x,size.y,color);
     }
-
+    void collision() {
+        for (Player p:GameView.players) {
+            if (p.coord.x + p.size.x >coord.x && p.coord.x < coord.x + size.x && p.coord.y + p.size.y + p.velocity.y > coord.y - 5 && p.coord.y + p.size.y - 5 - p.velocity.y < coord.y + 20) {
+                p.checkIfObstacle((int) coord.y - 5);
+          //      surface();
+                //println("onTop");
+            } else {
+                if (p.coord.x + p.size.x > coord.x && p.coord.x < coord.x + size.x && p.coord.y + p.size.y + p.velocity.y > coord.y && p.coord.y - p.velocity.y < coord.y + size.y) {
+                    // println("collision!!!!");
+                    if (p.invincible) {
+                        //death();
+                    } else {
+                        if (p.velocity.x > 5) {
+                           // knock();
+                        }
+                        impactForce= p.velocity;
+                        p.collision();
+                    }
+                    // death();
+                }
+            }
+        }
+    }
     public Bitmap[] cutSprite(Bitmap bitmap, int amount, int width, int height) {
 
         // final int imageWidth=width, imageheight=height;

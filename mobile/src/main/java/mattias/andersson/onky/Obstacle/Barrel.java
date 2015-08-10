@@ -37,7 +37,8 @@ public class Barrel extends Obstacle {
     }
 
     public void update() {
-        coord.add(velocity);
+        super.update();
+      //  coord.add(velocity);
         angle+=velocity.x*2;
     }
 

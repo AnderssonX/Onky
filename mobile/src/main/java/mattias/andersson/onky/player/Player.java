@@ -2,6 +2,7 @@ package mattias.andersson.onky.player;
 
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public abstract class Player {
     public ArrayList<PowerUp> usedPowerup = new ArrayList<PowerUp>();
     // PImage ONKYSpriteSheet,Life, cell; //setup
     public float angle, decayFactor= .95f,punchTime, jumpTime, invis, toSlow;
-    public Point2D coord= new Point2D(), velocity= new Point2D(), acceleration= new Point2D(), size= new Point2D();
+    public Point2D coord= new Point2D(0,-1000), velocity= new Point2D(), acceleration= new Point2D(0,.9f), size= new Point2D();
     public final int MAX_LIFE = 3, MAX_JUMP = 2, PUNCH_MAX_CD = 20, SMASH_MAX_CD = 50, defaultSpeed = 10, MAX_POWERUP_SIZE = 16;
     public int cooldown, collectCooldown, jumpHeight = 20, jumpCount = MAX_JUMP, downDashSpeed = 35, lives = MAX_LIFE,punchCooldown = PUNCH_MAX_CD, punchRange = 100, attractRange, stompRange = 150;
     public float duckTime, duckCooldown, duckHeight = 45, tauntTime, smashTime, smashCooldown = SMASH_MAX_CD, smashRange = 100, attckSpeedReduction;
@@ -31,7 +32,6 @@ public abstract class Player {
     //   int amountOfFrames=140;
 
     public void Player() {
-
 
     }
     /*void update() {
@@ -170,7 +170,6 @@ public abstract class Player {
     public void checkJump(){
 
 
-
     }
     public void jump(){
         if (jumpCount>0) {
@@ -188,28 +187,36 @@ public abstract class Player {
     }
     public void checkDuck(){
 
-
-
     }
     public void duck(){
+        if (!onGround) {
+            velocity.y=downDashSpeed;
 
+          //  if (punching) entities.add(new slashParticle(int(x), int(y), 4)); // downdash Attack
+        }
+        if (attckSpeedReduction<30)attckSpeedReduction=30;  // redused attack cooldown when ducking
 
+        //if (jumpCount<MAX_JUMP && !ducking)entities.add(new LineParticle(int(x+w), int(y+h*2), 60, 80));
 
+        if (!ducking) {
+            duckTime=50;
+            totalDucks++;
+            ducking=true;
+           //( coord.y+=duckHeight;
+        } else if (ducking && duckTime>0) {
+            duckTime=50;
+        }
     }
     public void checkAttack(){
-
-
 
     }
     public void attack(){
 
-
-
     }
-
-    void checkIfObstacle(int top) {
+  public   void checkIfObstacle(int top) {
         if (top<coord.y+size.y) {
           //  if (punching && ducking && !onGround && jumpCount<MAX_JUMP) stomp(); // stomp attack
+            Log.i("player","surface!!!");
             jumpCount=MAX_JUMP;
             onGround=true;
             jumpTime=0;
@@ -218,14 +225,14 @@ public abstract class Player {
             angle=0;
         }
     }
-    void collision() {
+    public void collision() {
         if (invis==0) {
             reduceLife();
         }
        // if (!tutorial) invis=100;
       // vx*= -0.5;
     }
-    void reduceLife() {
+    public void reduceLife() {
      //   if (tutorial) {
         //    tutorialRespawn();
      //   } else {

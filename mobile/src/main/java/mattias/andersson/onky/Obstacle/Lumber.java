@@ -36,7 +36,7 @@ public class Lumber extends Obstacle {
     }
 
     public void update() {
-
+    super.update();
     }
 
     public void display() {

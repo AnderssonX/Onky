@@ -13,7 +13,6 @@ import mattias.andersson.onky.powerup.PowerUp;
  */
 public class Onky extends Player {
     public Onky() {
-        coord.set(0, 100);
         color.setARGB(255, 255, 0, 0);
         size.set(160, 130);
         velocity.set(1,0);
