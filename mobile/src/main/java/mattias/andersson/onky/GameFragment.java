@@ -299,18 +299,12 @@ public class GameFragment extends Fragment {
                         /*for (int i=0; i<1; i++){
                             randomPower = r.nextInt(5);
                             switch (randomPower) {
-
-
                                 case 0:
-
-
                         }*/
                         break;
                     case "PoisonPowerdown":
                         GameView.powerups.add(new Poison(view.getContext(), new Point2D(x, y), new Point2D(xSize, ySize)));
                         break;
-
-
                 }
 
 

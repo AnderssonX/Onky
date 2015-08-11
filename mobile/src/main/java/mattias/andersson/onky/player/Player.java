@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import mattias.andersson.onky.GameThread;
 import mattias.andersson.onky.GameView;
+import mattias.andersson.onky.Particle.SpinParticle;
 import mattias.andersson.onky.helper.Point2D;
 import mattias.andersson.onky.powerup.PowerUp;
 
@@ -190,7 +191,7 @@ public abstract class Player {
                 //   entities.add(new LineParticle(int(x+w*0.5), int(y+h), 15, 0));
             }
             //  playSound(jumpSound);
-            //   if (jumpCount<MAX_JUMP) entities.add( new SpinParticle( true));
+               if (jumpCount<MAX_JUMP) GameView.particles.add( new SpinParticle( coord, new Point2D(100,100), new Paint(Color.WHITE)));
             jumpCount--;
             velocity.y=-jumpHeight;
         }

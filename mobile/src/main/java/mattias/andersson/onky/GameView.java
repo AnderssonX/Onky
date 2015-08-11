@@ -315,13 +315,13 @@ public class GameView extends SurfaceView {
         strokeWeight(1);
         int interval=100;
         for (int i=0; i< width/scaleFactor; i+=interval)
-            line((i+playerOffsetX-p.x%interval)*(scaleFactor), 0, (i+playerOffsetX-p.x%interval)*(scaleFactor), height);*/
+        line((i+playerOffsetX-p.x%interval)*(scaleFactor), 0, (i+playerOffsetX-p.x%interval)*(scaleFactor), height);*/
     }
 
     void smoothOffset() {
-        // if (defaultPlayerOffsetX != round(playerOffsetX)) {
+        //  if (defaultPlayerOffsetX != round(playerOffsetX)) {
         Point2D offsetDiff = new Point2D((float) ((defaultPlayerOffset.x - playerOffset.x) * 0.02), (float) ((defaultPlayerOffset.y - playerOffset.y) * 0.02));
-        //float offsetXDiff = defaultPlayerOffset.x - playerOffset.x;
+        //  float offsetXDiff = defaultPlayerOffset.x - playerOffset.x;
         //  float offsetYDiff = defaultPlayerOffset.y - playerOffset.y;
         //  playerOffset.x += offsetXDiff * 0.02;
         //  playerOffset.y += offsetYDiff * 0.02;
@@ -332,10 +332,8 @@ public class GameView extends SurfaceView {
     }
     void loadImages(){
 
-
     }
     void soundImages(){
-
 
     }
 }
