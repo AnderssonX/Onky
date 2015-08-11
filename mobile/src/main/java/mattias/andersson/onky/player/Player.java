@@ -165,6 +165,7 @@ public abstract class Player {
         if (velocity.x<1 && velocity.x>-1) velocity.x=1;
         if (velocity.x<GameView.speedLevel && velocity.x>0)velocity.x*=1+0.08;
         if (velocity.x<0)velocity.x*= decayFactor;
+        if (invincible|| 0<invis)recover();
 
         if (punchTime<=0 && punchCooldown>0)punchCooldown--;
         if (punching && punchCooldown<=0)checkAttack();
@@ -173,7 +174,7 @@ public abstract class Player {
     public void display() {
         GameThread.c.drawRect(coord.x, coord.y, coord.x + size.x, coord.y + size.y, color);
 
-        if(punching)GameThread.c.drawRect(coord.x+punchRange, coord.y, coord.x + size.x+punchRange, coord.y + size.y, color);
+        if (punching) GameThread.c.drawRect(coord.x + punchRange, coord.y, coord.x + size.x+punchRange, coord.y + size.y, color);
 
     }
     public void checkJump(){
@@ -219,6 +220,17 @@ public abstract class Player {
     void checkFallen(){
         if(coord.y>GameView.height){
             respawn();
+        }
+    }
+    void recover() {
+        invis-=1;
+        if (invis<1) {
+            invis=0;
+            if (invincible) { // super
+                velocity.x=GameView.speedLevel;
+                //changeMusic(regularSong);
+            }
+            invincible=false;
         }
     }
     void respawn() {
@@ -295,14 +307,14 @@ public abstract class Player {
             }
             punching=true;
         }
-            //   fill(255, 0, 0);  // hitbox
-            //  rect(x+w, y, punchRange, 75);
+        //fill(255, 0, 0);  // hitbox
+        // rect(x+w, y, punchRange, 75);
 
 
     }
   public   void checkIfObstacle(int top) {
         if (top<coord.y+size.y) {
-          //  if (punching && ducking && !onGround && jumpCount<MAX_JUMP) stomp(); // stomp attack
+          //if (punching && ducking && !onGround && jumpCount<MAX_JUMP) stomp(); // stomp attack
             Log.i("player","surface!!!");
             jumpCount=MAX_JUMP;
             onGround=true;
@@ -317,7 +329,7 @@ public abstract class Player {
             reduceLife();
         }
        // if (!tutorial) invis=100;
-      // vx*= -0.5;
+      velocity.x*=-0.5f;
     }
 
     public void reduceLife() {
@@ -326,8 +338,9 @@ public abstract class Player {
      //   } else {
             lives--;
             //playSound(ughSound);
-          //  GameView.screenAngle=-10;
-         //   background(255, 0, 0);
+            GameView.screenAngle=-10;
+        GameView.flashColor.setARGB(255,255,0,0);
+        GameView.flashOpacity=200;
           //  UpdateGUILife(); // updateGUI
       //  }
     }

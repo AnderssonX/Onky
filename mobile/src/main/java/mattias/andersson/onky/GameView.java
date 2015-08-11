@@ -45,7 +45,7 @@ public class GameView extends SurfaceView {
     public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(.5f, .5f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
     public static float screenAngle = 0, flashOpacity,speedLevel=10;
     private SurfaceHolder holder;
-    private Paint flashColor = new Paint(Color.BLACK);
+    public static Paint flashColor = new Paint(Color.BLACK);
     private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
     Random r = new Random();
     public static boolean jump, duck, attack,levelLoaded=false,imageLoaded;
