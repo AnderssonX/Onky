@@ -14,7 +14,6 @@ public class LineParticle extends Particle {
     float tSize;
     public LineParticle() {
 
-
     }
 
     public LineParticle(Point2D coord, Point2D size, Paint _particleColor) {
@@ -28,7 +27,6 @@ public class LineParticle extends Particle {
     }
 
     public LineParticle(Point2D coord, Point2D _velocity, Point2D size, Paint _particleColor) {
-
         this(coord, size, _particleColor);
         velocity = _velocity;
     }
@@ -42,9 +40,8 @@ public class LineParticle extends Particle {
     }
 
     public void display() {
-    //   color.setStrokeWidth((float) (size.x * 0.3));
-
-        GameThread.c.drawCircle(coord.x, coord.y, size.x, color);
-
+    //   color.setStrokeWidth((float) (size.x * 0.3))
+    //  GameThread.c.drawCircle(coord.x, coord.y, size.x, color);
+      //  GameThread.c.drawLine();
     }
 }
