@@ -1,3 +1,15 @@
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.Highscore"
+
+
+
+    >
+
+
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/loginfragment"
@@ -27,11 +39,10 @@
 
     <EditText
         android:id="@+id/signupUser"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Pick a name"
-        android:inputType="textPassword"
+        android:hint="@string/signupUser"
         android:paddingTop="18dp"
         android:textColor="#ffffffff"
         android:textColorHint="#ffffffff"
@@ -42,10 +53,10 @@
 
     <EditText
         android:id="@+id/signupPw"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Choose a password"
+        android:hint="@string/choosepassword"
         android:inputType="textPassword"
         android:paddingTop="18dp"
         android:textColor="#ffffffff"
@@ -54,33 +65,45 @@
         android:typeface="serif"
         android:layout_below="@+id/signupUser"
         android:layout_alignStart="@+id/signupUser"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:password="true" />
 
-    <Button
-        android:id="@+id/signupCreate"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/menubar"
-        android:text="@string/signupRegister"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        android:layout_toStartOf="@+id/signupHeader"
+        android:id="@+id/Relative2"
+        android:layout_below="@+id/signupPw"
+        android:layout_alignParentEnd="true"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/signupCreate"
-        android:background="@drawable/menubar"
-        android:text="Go back"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/signupCreate"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/menubar"
+            android:text="@string/signupRegister"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 
 
 </RelativeLayout>
+
+    <Button
+        android:id="@+id/SignupBackButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/backbutton"
+        android:textColor="#ffffffff"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="23dp" />
+
+</FrameLayout>

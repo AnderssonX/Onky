@@ -6,6 +6,7 @@
     <string name="loginPw">Password</string>
     <string name="loginSignup">Signup</string>
     <string name="signupUser">Pick a name</string>
+    <string name="choosepassword">Choose a password</string>
     <string name="logo">ONKY</string>
     <string name="loginLogin">Play!</string>
     <string name="createUser">Create User</string>

@@ -39,9 +39,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginBottom="250dp">
+        android:layout_height="85dp"
+        android:gravity="center">
 
         <Button
             android:layout_width="wrap_content"
@@ -50,7 +49,20 @@
             android:id="@+id/highscorehigh"
             android:background="@drawable/menubar"
             android:textSize="40dp"
-            android:paddingBottom="7dp" />
+            android:paddingBottom="7dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginLeft="0dp" />
+
     </RelativeLayout>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/HighBackButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/backbutton"
+        android:layout_marginLeft="15dp" />
 
 </FrameLayout>

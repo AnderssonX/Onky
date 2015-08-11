@@ -68,7 +68,7 @@ public class MainMenu extends Fragment implements View.OnClickListener {
                 Log.i("offline", "Highscore");
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
-                ft.replace(R.id.container, new Highscore());
+                ft.replace(R.id.container, new LoginFragment());
                 ft.commit();
 
                 break;

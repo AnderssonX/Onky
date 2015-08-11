@@ -1,127 +1,126 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/onkyandroidbg"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context=".MainActivity$PlaceholderFragment">
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.Highscore"
+    android:background="@drawable/backgroundfull">
 
 
-    <EditText
-        android:id="@+id/loginUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:gravity="center">
 
-        android:ems="10"
-        android:hint="@string/loginUser"
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HIGHSCORE"
+            android:id="@+id/LoginHighscore"
+            android:background="@drawable/menubar"
+            android:textSize="40dp"
+            android:paddingBottom="7dp"
+            android:layout_marginTop="17dp" />
 
-        android:inputType="textPersonName"
-        android:textColor="#ffffffff"
-        android:textColorHint="#ffffffff"
-        android:textStyle="bold"
-        android:typeface="normal"
-        android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+    </RelativeLayout>
 
-    <EditText
-        android:id="@+id/loginPw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textColor="#ffffffff"
-        android:textColorHint="#ffffffff"
-        android:textStyle="bold"
-        android:typeface="normal"
-        android:text="Password"
-        android:layout_below="@+id/loginUser"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:editable="false" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="right|bottom">
 
-    <Button
-        android:id="@+id/loginLogin"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/loginLogin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
 
-        android:layout_alignParentBottom="true"
+            android:layout_alignParentBottom="true"
 
-        android:layout_alignParentRight="true"
-        android:background="@drawable/menubar"
-        android:scaleType="fitStart"
-        android:text="Login and check!"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingBottom="10dp" />
+            android:layout_alignParentRight="true"
+            android:background="@drawable/menubar"
+            android:scaleType="fitStart"
+            android:text="Login and check!"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp" />
 
-    Button
-        android:id="@+id/playOfflineButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Skip"
+            android:id="@+id/HighSkipButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingBottom="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|bottom" />
 
-        android:layout_alignParentTop="true"
-        android:background="@null"
-        android:paddingTop="18dp"
-        android:scaleType="fitCenter"
-        android:text="Play offline"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/loginSignup"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
 
-    <Button
-        android:id="@+id/loginSignup"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/menubar"
+            android:scaleType="fitStart"
+            android:text="Signup"
+            android:textColor="#ffffffff"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:paddingBottom="10dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp" />
 
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:background="@drawable/menubar"
-        android:scaleType="fitStart"
-        android:text="Signup"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:paddingBottom="10dp" />
+        <EditText
+            android:id="@+id/loginPw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffffffff"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:layout_below="@+id/loginUser"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:editable="false"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_gravity="center_horizontal|bottom" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:background="@drawable/menubar"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="HIGHSCORE"
-        android:textSize="40dp"
-        android:paddingBottom="10dp" />
+        <EditText
+            android:id="@+id/loginUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:ems="10"
+            android:hint="@string/loginUser"
+
+            android:inputType="textPersonName"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffffffff"
+            android:textStyle="bold"
+            android:typeface="normal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal|bottom" />
+    </RelativeLayout>
 
     <Button
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/back"
+        android:id="@+id/LoginBackButton"
         android:background="@drawable/backbutton"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/LoginHighscore"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp" />
 
-    Button
-        android:id="@+id/Store"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:paddingTop="18dp"
-        android:scaleType="fitCenter"
-        android:text="Store"
-        android:textColor="#ffffffff"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="left"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-
-</RelativeLayout>
+</FrameLayout>

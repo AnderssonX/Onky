@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.DataSnapshot;
@@ -27,7 +28,8 @@ import mattias.andersson.onky.helper.CONSTANTS;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     public FragmentManager fragmentManager;
     public FragmentTransaction fragmentTransaction;
-    private Button createUser, play, playOffline,storeButton;
+    private Button createUser, play, playOffline,storeButton, backbutton;
+    private TextView skip;
     private FragmentManager fm;
     private String pw;
     private String currentUser;
@@ -48,11 +50,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_main, container, false);
         createUser = (Button) view.findViewById(R.id.loginSignup);
+        skip = (TextView) view.findViewById(R.id.HighSkipButton);
+        backbutton = (Button) view.findViewById(R.id.LoginBackButton);
         createUser.setOnClickListener(this);
         eTUser = (EditText) view.findViewById(R.id.loginUser);
         eTPW = (EditText) view.findViewById(R.id.loginPw);
         play = (Button) view.findViewById(R.id.loginLogin);
         play.setOnClickListener(this);
+        skip.setOnClickListener(this);
+        backbutton.setOnClickListener(this);
         //playOffline = (Button) view.findViewById(R.id.Play);
         //playOffline.setOnClickListener(this);
         CONSTANTS.currentFragment = "loginFragment";
@@ -91,6 +97,25 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
                 ft.replace(R.id.container, new SignupFragment());
+                ft.commit();
+
+                break;
+            case R.id.LoginBackButton:
+
+
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new MainMenu());
+                ft.commit();
+
+                break;
+
+            case R.id.HighSkipButton:
+
+
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new Highscore());
                 ft.commit();
 
                 break;

@@ -327,42 +327,6 @@
     <RelativeLayout
         android:layout_width="200dp"
         android:layout_height="80dp"
-        android:layout_gravity="left|top">
-
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/BackButton"
-            android:layout_gravity="left|top"
-            android:background="@drawable/backbutton"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="18dp" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal|top"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="STORE"
-            android:id="@+id/button2"
-            android:layout_gravity="center_horizontal|top"
-            android:background="@drawable/menubar"
-            android:layout_marginTop="20dp"
-            android:textSize="40dp"
-            android:paddingBottom="7dp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="200dp"
-        android:layout_height="80dp"
         android:layout_gravity="right|top"
         android:gravity="right"
         android:layout_marginRight="14dp">
@@ -397,6 +361,34 @@
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal|bottom"
         android:background="@drawable/descriptivetext" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:id="@+id/RelativeLayout"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STORE"
+            android:id="@+id/button"
+            android:background="@drawable/menubar"
+            android:textSize="40dp"
+            android:paddingBottom="7dp"
+            android:layout_marginTop="17dp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/BackButton"
+        android:background="@drawable/backbutton"
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp" />
 
 
 </FrameLayout>
