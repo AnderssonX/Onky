@@ -87,14 +87,14 @@ public class GameView extends SurfaceView {
                                             blue = 255;
                                         }
                                     }
-                                    addparticle(mouse);
+                                    //addparticle(mouse);
                                     shakeFactor.add(25);
                                     // addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_UP:
-                                    StockMarket.getGlobalPrices();
+                                   // StockMarket.getGlobalPrices();
                                     actionString = "UP";
-                                    addPulse(mouse);
+                                    //addPulse(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_DOWN:
                                     actionString = "PNTR DOWN";
@@ -110,13 +110,13 @@ public class GameView extends SurfaceView {
                                             blue = 255;
                                         }
                                     }
-                                    addparticle(mouse);
+                                    //addparticle(mouse);
                                     screenAngle = r.nextFloat() * 20 - 10;
                                     //addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_UP:
                                     actionString = "PNTR UP";
-                                    addPulse(mouse);
+                                    //addPulse(mouse);
                                     //  flashOpacity = 200;
                                     playerOffset.x += 50;
                                     break;
@@ -127,8 +127,10 @@ public class GameView extends SurfaceView {
                                 default:
                                     actionString = "";
                             }
-                            flashColor.setARGB(255, red, green, blue);
-                            flashOpacity = 200;
+
+                                flashColor.setARGB(255, red, green, blue);
+                            if(flashOpacity <10) flashOpacity = 200;
+
                             //    GameView.jump = jump;
                             //    GameView.duck = duck;
                             //    GameView.attack = attack;
@@ -232,7 +234,7 @@ public class GameView extends SurfaceView {
         super.draw(canvas);
         if (levelLoaded) {
 
-            canvas.drawColor(Color.WHITE);
+            //canvas.drawColor(Color.WHITE);
             //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
 
             transCoord.set(-players.get(0).coord.x + playerOffset.x, (float) (height * 0.3 /scaleFactor.y) + playerOffset.y);
@@ -254,7 +256,7 @@ public class GameView extends SurfaceView {
             //--------------------obstacle---------------------
             for (int i = obstacles.size() - 1; i >= 0; i--) {
                 obstacles.get(i).update();
-                obstacles.get(i).display();
+                if(obstacles.get(i).coord.x>100 )obstacles.get(i).display();
                 if (obstacles.get(i).dead) obstacles.remove(obstacles.get(i));
             }
             //--------------------player---------------------
@@ -281,19 +283,20 @@ public class GameView extends SurfaceView {
                 projectiles.get(i).display();
                 if (projectiles.get(i).dead) projectiles.remove(projectiles.get(i));
             }
-            canvas.restore();
-            //------------restored
 
-            displayFlash();
+            canvas.restore();            //------------restored
+
+         ///   displayFlash();
+
         }
     }
 
     void displayFlash() {
-        if (flashOpacity > 0) {
-            flashOpacity *= .9f;
+        if ((int)flashOpacity > 10) {
+            flashOpacity *= .8f;
             flashColor.setAlpha((int) flashOpacity);
-            //setARGB((int)flashOpacity,0,0,0);
-            GameThread.c.drawRect(0, 0, width, height, flashColor);
+            GameThread.c.drawRect(0, 0, width, height, flashColor); // untransformed
+           // GameThread.c.drawRect(transCoord.x, transCoord.y, width/scaleFactor.x, height/scaleFactor.y, flashColor);
             //GameThread.c.drawColor(flashColor.getColor());
         }
     }

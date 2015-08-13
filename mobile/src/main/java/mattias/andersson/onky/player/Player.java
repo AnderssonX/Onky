@@ -1,5 +1,6 @@
 package mattias.andersson.onky.player;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
@@ -30,6 +31,7 @@ public abstract class Player {
     public Paint color = new Paint(Color.WHITE);
     public Paint defaultWeaponColor = new Paint(Color.WHITE);
     public Paint weaponColor = defaultWeaponColor;
+    public Bitmap flash;
     //   int amountOfFrames=140;
 
     public void Player() {

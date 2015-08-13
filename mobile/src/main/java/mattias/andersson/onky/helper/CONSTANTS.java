@@ -16,6 +16,7 @@ public class CONSTANTS {
     public static int screenHeight=0;
     public static int density=0;
     public static float dpi=0;
+    public static boolean login=false;
     public static    ArrayList<Upgrade> upgrades= new ArrayList<Upgrade>();
 
 }
