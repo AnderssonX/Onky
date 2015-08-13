@@ -80,11 +80,6 @@ public class Store extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        ImageButton temp = (ImageButton) v;
-        if (!temp.getTag().equals("divider"))
-            temp.setBackgroundResource(R.drawable.achievementiconclicked);
-
-
         switch (v.getId()) {
             case R.id.BackButton:
                 Log.i("offline", "Store");
@@ -92,57 +87,12 @@ public class Store extends Fragment implements View.OnClickListener {
                 ft = fm.beginTransaction();
                 ft.replace(R.id.container, new MainMenu());
                 ft.commit();
-
                 break;
+            default:
+                ImageButton temp = (ImageButton) v;
+                if (!temp.getTag().equals("divider"))
+                    temp.setBackgroundResource(R.drawable.achievementiconclicked);
 
-
-
-       /* for (int i = 0; i < tableRow.getChildCount(); i++) {
-            ImageButton temp = (ImageButton) tableRow.getChildAt(i);
-            temp.setBackgroundResource(R.drawable.achievementiconclicked);
-            Log.i("clicked", "Hope you)aasdw�re happy with your purchase");
-        }
-
-        switch (v.getId()) {
-            case R.id.imageButton1:
-                image1.setBackgroundResource(R.drawable.achievementiconclicked);
-                slowUpgrade++;
-                if (slowUpgrade == 3)
-                    Log.i("clicked", "Hope you)aasdwre happy with your purchase");
-                break;
-
-            case R.id.imageButton2:
-                image2.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope youre happy with your purchase");
-
-
-                break;
-            case R.id.imageButton3:
-                image3.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope youre happy with your purchase");
-
-
-                break;
-            case R.id.imageButton4:
-                image4.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope youre happy with your purchase");
-
-
-                break;
-            case R.id.imageButton5:
-                image5.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope youre happy with your purchase");
-
-
-                break;
-            case R.id.imageButton6:
-                image6.setBackgroundResource(R.drawable.achievementiconclicked);
-                Log.i("clicked", "Hope youre happy with your purchase");
-
-
-                break;
-
-        }*/
         }
 
     }

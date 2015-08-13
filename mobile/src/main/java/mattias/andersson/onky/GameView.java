@@ -42,13 +42,13 @@ public class GameView extends SurfaceView {
     public static ArrayList<Paralax> paralaxLayers = new ArrayList<Paralax>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>(); // all objects
     public static GameThread gameLoopThread;
-    public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(.5f, .5f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
-    public static float screenAngle = 0, flashOpacity,speedLevel=10;
+    public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(0.9f, 0.9f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
+    public static float screenAngle = 0, flashOpacity, speedLevel = 10;
     private SurfaceHolder holder;
     public static Paint flashColor = new Paint(Color.BLACK);
     private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
     Random r = new Random();
-    public static boolean jump, duck, attack,levelLoaded=false,imageLoaded;
+    public static boolean jump, duck, attack, levelLoaded = false, imageLoaded;
 
     public GameView(Context context) {
         super(context);
@@ -117,7 +117,7 @@ public class GameView extends SurfaceView {
                                 case MotionEvent.ACTION_POINTER_UP:
                                     actionString = "PNTR UP";
                                     addPulse(mouse);
-                                  //  flashOpacity = 200;
+                                    //  flashOpacity = 200;
                                     playerOffset.x += 50;
                                     break;
                                 case MotionEvent.ACTION_MOVE:
@@ -129,12 +129,12 @@ public class GameView extends SurfaceView {
                             }
                             flashColor.setARGB(255, red, green, blue);
                             flashOpacity = 200;
-                            GameView.jump = jump;
-                            GameView.duck = duck;
-                            GameView.attack = attack;
-                            if(jump)players.get(0).jump();
-                            if(duck)players.get(0).duck();
-                            if(attack)players.get(0).attack();
+                            //    GameView.jump = jump;
+                            //    GameView.duck = duck;
+                            //    GameView.attack = attack;
+                            if (jump) players.get(0).jump();
+                            if (duck) players.get(0).duck();
+                            if (attack) players.get(0).attack();
 //                            String touchStatus = "Action: " + actionString + " Index: " + actionIndex + " ID: " + id + " X: " + x + " Y: " + y;
 //
 //                            if (id == 0)
@@ -192,19 +192,19 @@ public class GameView extends SurfaceView {
     void addparticle(Point2D coord) {
         if (CONSTANTS.MAX_PARTICLES > particles.size()) {
             //Random r = new Random();
-            coord.div(scaleFactor);
-            coord.sub(transCoord);
-            projectiles.add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(30, 0)));
-            particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(10, 10), new Paint(Color.RED)));
+            // coord.div(scaleFactor);
+            // coord.sub(transCoord);
+            // projectiles.add(new LaserProjectile(new Point2D(coord.x, coord.y), new Point2D(30, 0)));
+            // particles.add(new TriangleParticle(new Point2D(coord.x, coord.y), new Point2D(r.nextInt(12) - 6, r.nextInt(12) - 6), new Point2D(10, 10), new Paint(Color.RED)));
         }
         // for(int i=0; i<5;i++)particles. add(new Particle(new Point2D(coord.x, coord.y), new Point2D(20, 20)));
     }
 
     void addPulse(Point2D coord) {
         if (CONSTANTS.MAX_PARTICLES > particles.size()) {
-            coord.div(scaleFactor);
-            coord.sub(transCoord);
-            particles.add(new PulseParticle(new Point2D(coord.x, coord.y), new Point2D(200, 200), new Paint(Color.RED)));
+            // coord.div(scaleFactor);
+            // coord.sub(transCoord);
+            // particles.add(new PulseParticle(new Point2D(coord.x, coord.y), new Point2D(200, 200), new Paint(Color.RED)));
         }
     }
 
@@ -213,6 +213,11 @@ public class GameView extends SurfaceView {
         super.onDraw(canvas);
         width = canvas.getWidth();
         height = canvas.getHeight();
+        flashColor.setStyle(Paint.Style.FILL);
+      Log.i("density ", " "+canvas.getDensity());
+
+
+     // scaleFactor= new Poin2D();
     }
 
     @Override
@@ -227,7 +232,8 @@ public class GameView extends SurfaceView {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        if(levelLoaded) {
+        if (levelLoaded) {
+
             canvas.drawColor(Color.WHITE);
             //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
 
@@ -281,15 +287,16 @@ public class GameView extends SurfaceView {
             //------------restored
 
             displayFlash();
-            flashOpacity *= .9f;
         }
     }
 
     void displayFlash() {
         if (flashOpacity > 0) {
+            flashOpacity *= .9f;
             flashColor.setAlpha((int) flashOpacity);
             //setARGB((int)flashOpacity,0,0,0);
             GameThread.c.drawRect(0, 0, width, height, flashColor);
+            //GameThread.c.drawColor(flashColor.getColor());
         }
     }
 
@@ -330,10 +337,12 @@ public class GameView extends SurfaceView {
         //   Log.i("playerOffset", " " + playerOffset.x + " : " + playerOffset.y);
         //  }
     }
-    void loadImages(){
+
+    void loadImages() {
 
     }
-    void soundImages(){
+
+    void soundImages() {
 
     }
 }
