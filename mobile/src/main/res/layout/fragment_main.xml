@@ -35,7 +35,7 @@
             android:layout_alignParentBottom="true"
 
             android:layout_alignParentRight="true"
-            android:background="@drawable/menubar"
+            android:background="@drawable/selector_button"
             android:scaleType="fitStart"
             android:text="Login and check!"
             android:textColor="#ffffffff"
@@ -67,7 +67,7 @@
 
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/menubar"
+            android:background="@drawable/selector_button"
             android:scaleType="fitStart"
             android:text="Signup"
             android:textColor="#ffffffff"
@@ -93,7 +93,8 @@
             android:editable="false"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/loginUser"
@@ -110,7 +111,8 @@
             android:typeface="normal"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:gravity="center" />
     </RelativeLayout>
 
     <Button

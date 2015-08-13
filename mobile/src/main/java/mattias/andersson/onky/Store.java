@@ -58,6 +58,7 @@ public class Store extends Fragment implements View.OnClickListener {
         backbutton = (Button) view.findViewById(R.id.BackButton);
 
         backbutton.setOnClickListener(this);
+        backbutton.setSelected(false);
 
 
         tableRow = (TableRow) view.findViewById(R.id.Row);
@@ -82,6 +83,7 @@ public class Store extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.BackButton:
+                backbutton.setSelected(true);
                 Log.i("offline", "Store");
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();

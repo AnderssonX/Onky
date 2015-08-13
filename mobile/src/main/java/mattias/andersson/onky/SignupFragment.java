@@ -53,6 +53,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         backButton.setOnClickListener(this);
         backButton.setSelected(false);
         createUser.setOnClickListener(this);
+        createUser.setSelected(false);
         Firebase.setAndroidContext(view.getContext());
         return view;
     }
@@ -71,6 +72,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.signupCreate:
+                createUser.setSelected(true);
                 final Firebase fbCheck = CONSTANTS.fbRef;
 
                 fbCheck.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
