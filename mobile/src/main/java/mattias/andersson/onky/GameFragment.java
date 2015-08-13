@@ -4,6 +4,7 @@ package mattias.andersson.onky;
 import android.app.Fragment;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -79,10 +80,12 @@ public class GameFragment extends Fragment {
 
         CONSTANTS.screenWidth = size.x;
         CONSTANTS.screenHeight = size.y;
-
-
+        CONSTANTS.density =(int)getResources().getDisplayMetrics().scaledDensity;
+        CONSTANTS.dpi =getResources().getDisplayMetrics().densityDpi;
 
         GameView gameView = new GameView(view.getContext());
+        gameView.scaleFactor.set((float) (CONSTANTS.dpi / 480));
+         Log.i("density", ""+    CONSTANTS.density +" firstdpi: "+ CONSTANTS.dpi +"   scale " +CONSTANTS.dpi / 480);
         CONSTANTS.currentFragment = "gameFragment";
 
         fb.child("prices/powerups").addListenerForSingleValueEvent(new ValueEventListener() {

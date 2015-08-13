@@ -42,7 +42,7 @@ public class GameView extends SurfaceView {
     public static ArrayList<Paralax> paralaxLayers = new ArrayList<Paralax>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>(); // all objects
     public static GameThread gameLoopThread;
-    public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(0.9f, 0.9f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
+    public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(1f, 1f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
     public static float screenAngle = 0, flashOpacity, speedLevel = 10;
     private SurfaceHolder holder;
     public static Paint flashColor = new Paint(Color.BLACK);
@@ -149,7 +149,7 @@ public class GameView extends SurfaceView {
                     }
                 }
         );
-        paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 5, bg));
+        paralaxLayers.add(new Paralax(new Point2D(0, (int) -(height * 1.5) - 300), new Point2D(width * 3, (height * 3)), (float) 0.1, bg));
 
         gameLoopThread = new GameThread(this);   // !!!
         holder = getHolder();
@@ -211,13 +211,12 @@ public class GameView extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {  // setup function
         super.onDraw(canvas);
-        width = canvas.getWidth();
-        height = canvas.getHeight();
-        flashColor.setStyle(Paint.Style.FILL);
-      Log.i("density ", " "+canvas.getDensity());
+      //  width = canvas.getWidth();
+       // height = canvas.getHeight();
+        // flashColor.setStyle(Paint.Style.FILL);
 
-
-     // scaleFactor= new Poin2D();
+        Log.i("density ", " "+CONSTANTS.density+"  dpi:"+CONSTANTS.dpi);
+        // scaleFactor= new Poin2D();
     }
 
     @Override
@@ -226,7 +225,6 @@ public class GameView extends SurfaceView {
         width = MeasureSpec.getSize(widthMeasureSpec);
         height = MeasureSpec.getSize(heightMeasureSpec);
         this.setMeasuredDimension(width, height);
-
     }
 
     @Override
@@ -237,7 +235,7 @@ public class GameView extends SurfaceView {
             canvas.drawColor(Color.WHITE);
             //  Log.i("test", "obstacle size:" + particles.size() + "   particle size:" + particles.size() + "   projectile size:" + projectiles.size() );
 
-            transCoord.set(-players.get(0).coord.x + playerOffset.x, (float) (height * 0.5) + playerOffset.y);
+            transCoord.set(-players.get(0).coord.x + playerOffset.x, (float) (height * 0.3 /scaleFactor.y) + playerOffset.y);
             //--------------------background---------------------
             for (int i = paralaxLayers.size() - 1; i >= 0; i--) {
                 paralaxLayers.get(i).update();

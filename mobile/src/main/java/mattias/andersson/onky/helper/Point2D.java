@@ -22,6 +22,10 @@ public class Point2D {
         this.x=x;
         this.y=y;
     }
+    public void set(float i){
+        this.x=i;
+        this.y=i;
+    }
     public float getX(){return x; }
     public float getY(){
         return y;
