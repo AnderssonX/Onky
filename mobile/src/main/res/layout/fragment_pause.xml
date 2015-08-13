@@ -1,61 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="mattias.andersson.onky.MainMenu"
+    android:addStatesFromChildren="false"
+    android:animateLayoutChanges="true"
+    android:alpha="100"
+
+    android:background="@android:color/transparent"
+
+    >
+
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
-    android:layout_margin="18dp"
-    android:background="#ffc32134"
-    tools:context="mattias.andersson.onky.PauseFragment">
+    tools:context="mattias.andersson.onky.PauseFragment"
+    android:gravity="center_vertical"
+    android:background="@android:color/transparent"
+    android:alwaysDrawnWithCache="true"
+    android:animateLayoutChanges="false">
 
     <LinearLayout
+
+        android:alpha="100"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/pause"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="18dp"
-        android:orientation="vertical">
-
-        <TextView
-
-            android:id="@+id/twScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Score"
-
-            android:textColor="#ffffffff"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/twSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Settings"
-            android:textColor="#ffffffff"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/twRestart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Restart Game"
-            android:textColor="#ffffffff"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/TwQuit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Quit to main menu"
-            android:textColor="#ffffffff"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/linear"
+        android:focusable="false">
 
         <TextView
             android:id="@+id/TwResume"
@@ -65,6 +46,44 @@
             android:text="Resume Game"
             android:textColor="#ffffffff"
             android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginBottom="3dp" />
+
+        <TextView
+            android:id="@+id/twSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Settings"
+            android:textColor="#ffffffff"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="3dp" />
+
+        <TextView
+            android:id="@+id/TwQuit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Quit to main menu"
+            android:textColor="#ffffffff"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="3dp" />
+
+        <TextView
+            android:id="@+id/twRestart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Restart Game"
+            android:textColor="#ffffffff"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="3dp" />
+
     </LinearLayout>
+
 </RelativeLayout>
+
+    </FrameLayout>

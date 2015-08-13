@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="HIGHSCORE"
             android:id="@+id/highscorehigh"
-            android:background="@drawable/menubar"
+            android:background="@drawable/menubarpressed"
             android:textSize="40dp"
             android:paddingBottom="7dp"
             android:layout_marginTop="17dp"
@@ -62,7 +62,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp"
-        android:background="@drawable/backbutton"
+        android:background="@drawable/backbutton_selector"
         android:layout_marginLeft="15dp" />
 
 </FrameLayout>

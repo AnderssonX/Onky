@@ -22,7 +22,7 @@
         android:clickable="false"
         android:animationCache="true"
         android:alwaysDrawnWithCache="true"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="30dp">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -34,17 +34,31 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/slowpower"
-                android:background="@drawable/unlockicon"
+
                 android:src = "@drawable/slowpower"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+
+            />
+
+            <ImageButton
+                android:tag="Slow"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/oneup"
+
+                android:src = "@drawable/oneup"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+
+                />
 
             <ImageButton
                 android:tag="teleport"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/slashpower"
-                android:background="@drawable/unlockicon"
+
                 android:src = "@drawable/slashpower"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -54,7 +68,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/laserpower"
-                android:background="@drawable/unlockicon"
+
                 android:src = "@drawable/laserpower2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -64,7 +78,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/speedpower"
-                android:background="@drawable/unlockicon"
+
                 android:src = "@drawable/speedpower"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -74,7 +88,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/token"
-                android:background="@drawable/unlockicon"
+
                 android:src = "@drawable/token2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -84,7 +98,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/magnetpower"
-                android:background="@drawable/unlockicon"
+
                 android:src = "@drawable/magnet"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
@@ -357,7 +371,7 @@
 
     <ImageView
         android:layout_width="585dp"
-        android:layout_height="wrap_content"
+        android:layout_height="110dp"
         android:id="@+id/imageView"
         android:layout_gravity="center_horizontal|bottom"
         android:background="@drawable/descriptivetext" />
@@ -373,7 +387,7 @@
             android:layout_height="wrap_content"
             android:text="STORE"
             android:id="@+id/button"
-            android:background="@drawable/menubar"
+            android:background="@drawable/menubarpressed"
             android:textSize="40dp"
             android:paddingBottom="7dp"
             android:layout_marginTop="17dp" />
@@ -384,7 +398,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/BackButton"
-        android:background="@drawable/backbutton"
+        android:background="@drawable/backbutton_selector"
         android:layout_alignTop="@+id/button"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="15dp"

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import mattias.andersson.onky.helper.CONSTANTS;
 
@@ -24,6 +25,8 @@ public class MainMenu extends Fragment implements View.OnClickListener {
     private Button highscore;
     private Button options;
     private Button store;
+
+
 
 
     public MainMenu() {
@@ -43,10 +46,15 @@ public class MainMenu extends Fragment implements View.OnClickListener {
         options = (Button) view.findViewById(R.id.Options);
         store = (Button) view.findViewById(R.id.Store);
 
+
         play.setOnClickListener(this);
         highscore.setOnClickListener(this);
         options.setOnClickListener(this);
         store.setOnClickListener(this);
+
+
+        highscore.setSelected(false);
+
 
 
         return view;
@@ -57,6 +65,7 @@ public class MainMenu extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.Play:
+
                 Log.i("offline", "Store");
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
@@ -65,6 +74,7 @@ public class MainMenu extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.Highscore:
+                highscore.setSelected(true);
                 Log.i("offline", "Highscore");
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
@@ -85,6 +95,15 @@ public class MainMenu extends Fragment implements View.OnClickListener {
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
                 ft.replace(R.id.container, new Store());
+                ft.commit();
+
+                break;
+
+            case R.id.TwQuit:
+                Log.i("offline", "Highscore");
+                fm = getFragmentManager();
+                ft = fm.beginTransaction();
+                ft.replace(R.id.container, new MainMenu());
                 ft.commit();
 
                 break;

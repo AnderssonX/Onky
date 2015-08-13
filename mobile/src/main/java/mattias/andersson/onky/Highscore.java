@@ -36,6 +36,8 @@ public class Highscore extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         backbutton = (Button) view.findViewById(R.id.HighBackButton);
         backbutton.setOnClickListener(this);
+        backbutton.setSelected(false);
+
 
 
 
@@ -53,6 +55,8 @@ public class Highscore extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.HighBackButton:
+
+                backbutton.setSelected(true);
                 Log.i("offline", "Store");
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();

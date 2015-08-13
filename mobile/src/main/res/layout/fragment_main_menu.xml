@@ -24,10 +24,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/Play"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/menubar"
+            android:background="@drawable/selector_button"
             android:text="PLAY"
             android:textColor="@android:color/white"
-            android:textSize="40dp"
+            android:textSize="36dp"
             android:paddingBottom="7dp" />
 
         <Button
@@ -35,10 +35,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/Highscore"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/menubar"
+            android:background="@drawable/selector_button"
             android:text="HIGHSCORE"
             android:textColor="@android:color/white"
-            android:textSize="40dp"
+            android:textSize="36dp"
             android:textAlignment="center"
             android:paddingBottom="7dp" />
 
@@ -47,10 +47,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/Options"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/menubar"
+            android:background="@drawable/selector_button"
             android:text="OPTIONS"
             android:textColor="@android:color/white"
-            android:textSize="40dp"
+            android:textSize="36dp"
             android:textAlignment="center"
             android:paddingBottom="7dp" />
 
@@ -58,10 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Store"
-            android:background="@drawable/menubar"
+            android:background="@drawable/selector_button"
             android:text="STORE"
             android:textColor="@android:color/white"
-            android:textSize="40dp"
+            android:textSize="36dp"
             android:textAlignment="center"
             android:paddingBottom="7dp" />
 

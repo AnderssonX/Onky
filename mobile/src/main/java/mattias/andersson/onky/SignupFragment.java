@@ -51,6 +51,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
         eTPW = (EditText) view.findViewById(R.id.signupPw);
         backButton = (Button) view.findViewById(R.id.SignupBackButton);
         backButton.setOnClickListener(this);
+        backButton.setSelected(false);
         createUser.setOnClickListener(this);
         Firebase.setAndroidContext(view.getContext());
         return view;
@@ -61,6 +62,7 @@ public class SignupFragment extends Fragment implements View.OnClickListener {
     public void onClick(final View view) {
         switch (view.getId()) {
             case R.id.SignupBackButton:
+                backButton.setSelected(true);
 
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();

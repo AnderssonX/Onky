@@ -59,6 +59,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         play.setOnClickListener(this);
         skip.setOnClickListener(this);
         backbutton.setOnClickListener(this);
+        backbutton.setSelected(false);
         //playOffline = (Button) view.findViewById(R.id.Play);
         //playOffline.setOnClickListener(this);
         CONSTANTS.currentFragment = "loginFragment";
@@ -101,7 +102,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.LoginBackButton:
-
+                backbutton.setSelected(true);
 
                 fm = getFragmentManager();
                 ft = fm.beginTransaction();
