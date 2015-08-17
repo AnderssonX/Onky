@@ -29,16 +29,17 @@ public class GameThread extends Thread {
       //  long ticksPS = 1000 / FPS;
       //  long startTime;
       //  long sleepTime;
-        while (running) {
+        while (running&& !Thread.interrupted()) {
             // Log.i("test", "loop");
 
             try {
+
                 c = view.getHolder().lockCanvas();
                 synchronized (view.getHolder()) {
                     //view.onDraw(c);
                     view.draw(c);
-                    GameView.width = c.getWidth();
-                    GameView.height = c.getHeight();
+                    //GameView.width = c.getWidth();
+                    //GameView.height = c.getHeight();
                     //     Log.i("test", "canvaswidth= " + GameView.width);
                 }
             } finally {

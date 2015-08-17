@@ -43,15 +43,19 @@ public class GameView extends SurfaceView {
     public static ArrayList<Entity> entities = new ArrayList<Entity>(); // all objects
     public static GameThread gameLoopThread;
     public static Point2D offset = new Point2D(), transCoord = new Point2D(), shake = new Point2D(), shakeFactor = new Point2D(), scaleFactor = new Point2D(1f, 1f), defaultPlayerOffset = new Point2D(200, 200), playerOffset = new Point2D(200, 200);
-    public static float screenAngle = 0, flashOpacity, speedLevel = 10;
+    public static float screenAngle = 0, flashOpacity;
     private SurfaceHolder holder;
+    public static int  defaultSpeedLevel=12, speedLevel=defaultSpeedLevel; // default speed level
+    public  static int score, tokensTaken, obstacleDestroyed, totalTokens, totalObstacle;
+    public static long runTime, deathTime;
     public static Paint flashColor = new Paint(Color.BLACK);
     private Bitmap bg = BitmapFactory.decodeResource(this.getResources(), R.drawable.backgroundfull);
     Random r = new Random();
-    public static boolean jump, duck, attack, levelLoaded = false, imageLoaded;
+    public static boolean jump, duck, attack, levelLoaded = false, imageLoaded,soundLoaded;
 
     public GameView(Context context) {
         super(context);
+
         players.add(new Qwerty());
 
         this.setOnTouchListener(
@@ -92,7 +96,7 @@ public class GameView extends SurfaceView {
                                     // addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_UP:
-                                   // StockMarket.getGlobalPrices();
+                                    // StockMarket.getGlobalPrices();
                                     actionString = "UP";
                                     //addPulse(mouse);
                                     break;
@@ -115,21 +119,21 @@ public class GameView extends SurfaceView {
                                     //addObstacle(mouse);
                                     break;
                                 case MotionEvent.ACTION_POINTER_UP:
-                                    actionString = "PNTR UP";
+                                    // actionString = "PNTR UP";
                                     //addPulse(mouse);
                                     //  flashOpacity = 200;
                                     playerOffset.x += 50;
                                     break;
                                 case MotionEvent.ACTION_MOVE:
-                                    actionString = "MOVE";
+                                    //actionString = "MOVE";
                                     addparticle(mouse);
                                     break;
                                 default:
                                     actionString = "";
                             }
 
-                                flashColor.setARGB(255, red, green, blue);
-                            if(flashOpacity <10) flashOpacity = 200;
+                            flashColor.setARGB(255, red, green, blue);
+                            if (flashOpacity < 10) flashOpacity = 200;
 
                             //    GameView.jump = jump;
                             //    GameView.duck = duck;
@@ -155,6 +159,8 @@ public class GameView extends SurfaceView {
 
         gameLoopThread = new GameThread(this);   // !!!
         holder = getHolder();
+        setLayerType(LAYER_TYPE_HARDWARE,null);
+
         holder.addCallback(new SurfaceHolder.Callback() {
             @Override
             public void surfaceDestroyed(SurfaceHolder holder) {
@@ -213,11 +219,12 @@ public class GameView extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {  // setup function
         super.onDraw(canvas);
+        Log.i("Hard accel : " ," ondraw: "+canvas.isHardwareAccelerated()+" : "+ this.isHardwareAccelerated());
       //  width = canvas.getWidth();
        // height = canvas.getHeight();
         // flashColor.setStyle(Paint.Style.FILL);
 
-        Log.i("density ", " "+CONSTANTS.density+"  dpi:"+CONSTANTS.dpi);
+       // Log.i("density ", " "+CONSTANTS.density+"  dpi:"+CONSTANTS.dpi);
         // scaleFactor= new Poin2D();
     }
 
@@ -232,6 +239,8 @@ public class GameView extends SurfaceView {
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
+        Log.i("Hard accel : ", " draw: " + canvas.isHardwareAccelerated() + " : " + this.isHardwareAccelerated());
+
         if (levelLoaded) {
 
             //canvas.drawColor(Color.WHITE);
@@ -286,8 +295,7 @@ public class GameView extends SurfaceView {
 
             canvas.restore();            //------------restored
 
-         ///   displayFlash();
-
+         //   displayFlash();
         }
     }
 
@@ -303,7 +311,7 @@ public class GameView extends SurfaceView {
 
     void shake() {
         if (shakeFactor.x > 0.5 && shakeFactor.y > 0.5) {
-            Log.i("hej", " " + shakeFactor.x + " : " + shakeFactor.y);
+        //    Log.i("hej", " " + shakeFactor.x + " : " + shakeFactor.y);
             if (CONSTANTS.MAX_SHAKE < shakeFactor.x) shakeFactor.x = CONSTANTS.MAX_SHAKE;
             if (CONSTANTS.MAX_SHAKE < shakeFactor.y) shakeFactor.y = CONSTANTS.MAX_SHAKE;
             shakeFactor.multi(CONSTANTS.SHAKE_DECAY);
@@ -331,9 +339,9 @@ public class GameView extends SurfaceView {
         Point2D offsetDiff = new Point2D((float) ((defaultPlayerOffset.x - playerOffset.x) * 0.02), (float) ((defaultPlayerOffset.y - playerOffset.y) * 0.02));
         //  float offsetXDiff = defaultPlayerOffset.x - playerOffset.x;
         //  float offsetYDiff = defaultPlayerOffset.y - playerOffset.y;
-        //  playerOffset.x += offsetXDiff * 0.02;
-        //  playerOffset.y += offsetYDiff * 0.02;
-        //  playerOffset.add(offsetDiff);
+          playerOffset.x += offsetDiff.x * 0.02;
+          playerOffset.y += offsetDiff.y * 0.02;
+          playerOffset.add(offsetDiff);
         //  Log.i("offsetDiff", " " + offsetDiff.x + " : " + offsetDiff.y);
         //   Log.i("playerOffset", " " + playerOffset.x + " : " + playerOffset.y);
         //  }
@@ -345,6 +353,15 @@ public class GameView extends SurfaceView {
 
     void soundImages() {
 
+    }
+    void resetScore() {
+        score=0;
+        tokensTaken=100;
+        obstacleDestroyed=0;
+        runTime=System.currentTimeMillis();
+
+        totalTokens=0;
+        totalObstacle=0;
     }
 }
 

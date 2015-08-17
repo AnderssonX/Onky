@@ -21,7 +21,8 @@ import mattias.andersson.onky.helper.CONSTANTS;
  */
 public class StoreButton extends ImageButton implements View.OnClickListener {
 
-    int mouse;
+    int mouse,upgradeLvl,maxLvl;
+    String toolTip;
     public StoreButton(Context context) {
         super(context);
     }
@@ -29,7 +30,6 @@ public class StoreButton extends ImageButton implements View.OnClickListener {
     @Override
     protected void onDraw(Canvas canvas)
     {
-        // TODO Auto-generated method stub
         super.onDraw(canvas);
         System.out.println("Painting content");
         Paint paint  = new Paint(Paint.LINEAR_TEXT_FLAG);
@@ -42,7 +42,6 @@ public class StoreButton extends ImageButton implements View.OnClickListener {
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
-        // TODO Auto-generated method stub
         Log.d("Hello Android", "Got a touch event: " + event.getAction());
         return super.onTouchEvent(event);
 
@@ -51,9 +50,6 @@ public class StoreButton extends ImageButton implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-
     }
 }
-
-
 
