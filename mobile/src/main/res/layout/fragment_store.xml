@@ -27,13 +27,15 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/Row">
+            android:id="@+id/Row"
+            android:touchscreenBlocksFocus="false">
 
             <ImageButton
                 android:tag="Slow"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/slowpower"
+
 
                 android:src = "@drawable/slowpower"
                 android:layout_marginLeft="20dp"
