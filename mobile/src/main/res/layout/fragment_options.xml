@@ -38,7 +38,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_gravity="center_horizontal|bottom">
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center_vertical">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -47,5 +48,200 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:background="@drawable/highscoremenu" />
+
+        <ScrollView
+            android:layout_width="408dp"
+            android:layout_height="240dp"
+            android:id="@+id/scrollView"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/imageView2"
+            android:layout_marginTop="15dp">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linear2"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Sound"
+                        android:id="@+id/textView3"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch2"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp"
+                        android:switchPadding="190dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linearLayout"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Tutorial"
+                        android:id="@+id/textView2"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch1"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linearLayout2"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Antialiasing"
+                        android:id="@+id/textView4"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch3"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linearLayout3"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Shaky cam"
+                        android:id="@+id/textView5"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch4"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linearLayout4"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Show boxes destroyed"
+                        android:id="@+id/textView6"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch5"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linearLayout5"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Show collected coins"
+                        android:id="@+id/textView7"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch6"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="395dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignEnd="@+id/scrollView"
+                    android:id="@+id/linearLayout6"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Medium Text"
+                        android:id="@+id/textView8"
+                        android:layout_gravity="left" />
+
+                    <Switch
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/switch7"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="-23dp" />
+                </LinearLayout>
+            </GridLayout>
+        </ScrollView>
+
     </RelativeLayout>
 </FrameLayout>

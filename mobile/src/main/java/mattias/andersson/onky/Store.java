@@ -117,7 +117,7 @@ public class Store extends Fragment implements View.OnClickListener {
             ImageButton temp = (ImageButton) tableRow.getChildAt(i);
             temp.setBackgroundResource(R.drawable.woodenbox);
 
-            temp.setOnClickListener(this);
+            temp.setOnTouchListener(hej);
             CONSTANTS.upgrades.add(new Upgrade(temp.getTag().toString(), 3));
             Log.i("Store", " row " + CONSTANTS.upgrades.get(i).name + " : " + CONSTANTS.upgrades.get(i).level);
         }

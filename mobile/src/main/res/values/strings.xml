@@ -12,6 +12,19 @@
     <string name="createUser">Create User</string>
     <string name="signupRegister">Create!</string>
     <string name="thanks">Thanks for playing!</string>
+    <string name="Option">Sound                  on \n Sound                  on \n Sound                  on \n
+    Sound                  on \nSound                  on \nSound                  on \nSound                  on \n
+        Sound                  on \nSound                  on \nSound                  on \nSound                  on \n
+        Sound                  on \nSound                  on \nSound                  on \nSound                  on \n
+        Sound                  on \nSound                  on \nSound                  on \nSound                  on \n
+
+
+
+
+    </string>
+
+
+
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Welcome to the game fragment!</string>
 </resources>
