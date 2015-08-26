@@ -91,7 +91,7 @@
                 android:layout_height="100dp"
                 android:id="@+id/token"
 
-                android:src = "@drawable/token2"
+                android:src = "@drawable/tokenstore2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp" />
 
@@ -371,12 +371,14 @@
             android:layout_marginLeft="90dp" />
     </RelativeLayout>
 
-    <ImageView
+    <TextView
         android:layout_width="585dp"
         android:layout_height="110dp"
-        android:id="@+id/imageView"
+        android:id="@+id/descriptivetext"
         android:layout_gravity="center_horizontal|bottom"
-        android:background="@drawable/descriptivetext" />
+        android:background="@drawable/descriptivetext"
+        android:textSize="20dp"
+        android:paddingLeft="20dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

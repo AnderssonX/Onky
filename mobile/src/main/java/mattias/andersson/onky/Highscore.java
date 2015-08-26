@@ -110,7 +110,7 @@ public class Highscore extends Fragment implements View.OnClickListener {
                 ft.replace(R.id.container, new LoginFragment());
                 ft.commit();
 
-                break;
+            break;
 
 
 

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,8 @@ public class Store extends Fragment implements View.OnClickListener {
     private Button backbutton;
     private FragmentManager fm;
     private FragmentTransaction ft;
-
+    int upgrade =0;
+     private  TextView descriptivetext;
     TableRow tableRow;
 
 
@@ -64,9 +66,39 @@ public class Store extends Fragment implements View.OnClickListener {
                                 break;
                             default:
                                 ImageButton temp = (ImageButton) v;
-                                if (!temp.getTag().equals("divider"))
-                                    temp.setBackgroundResource(R.drawable.achievementiconclicked);
+                                if (!temp.getTag().equals("divider")) {
+                                    temp.setBackgroundResource(R.drawable.woodenboxupgrade1);
 
+                                    upgrade ++;
+                                    if(upgrade== 0) {
+                                 descriptivetext.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius dictum felis, sit amet bibendum nisl tristique ut. Aenean quis ipsum dignissim, rhoncus justo eget, feugiat odio." );
+
+
+                                    }
+                                    if(upgrade==1){
+
+                                        temp.setBackgroundResource(R.drawable.woodenboxupgrade1);
+                                        descriptivetext.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius dictum felis, sit amet bibendum nisl tristique ut. Aenean quis ipsum dignissim, rhoncus justo eget, feugiat odio." );
+
+
+                                    }   if(upgrade==2){
+
+                                        temp.setBackgroundResource(R.drawable.woodenboxupgrade2);
+
+
+                                    }   if(upgrade==3){
+
+                                        temp.setBackgroundResource(R.drawable.woodenboxupgrade3);
+
+
+                                    }   if(upgrade==4){
+
+                                        temp.setBackgroundResource(R.drawable.woodenboxupgrade4);
+
+
+                                    }
+
+                                }
 
 
                         }
@@ -110,6 +142,7 @@ public class Store extends Fragment implements View.OnClickListener {
 
         backbutton.setOnTouchListener(hej);
         backbutton.setSelected(false);
+        descriptivetext = (TextView) view.findViewById(R.id.descriptivetext);
 
 
         tableRow = (TableRow) view.findViewById(R.id.Row);

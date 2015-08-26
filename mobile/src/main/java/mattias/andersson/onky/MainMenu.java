@@ -28,7 +28,7 @@ public class MainMenu extends Fragment implements View.OnClickListener {
     private Button options;
     private Button store;
 
-    public View.OnTouchListener hej = new View.OnTouchListener() {
+public View.OnTouchListener hej = new View.OnTouchListener() {
         Rect rect = new Rect();
         @Override
         public boolean onTouch(final View v, MotionEvent event) {
@@ -80,7 +80,6 @@ public class MainMenu extends Fragment implements View.OnClickListener {
 
                                 break;
 
-
                         }
 
                     } else {
@@ -130,10 +129,9 @@ public class MainMenu extends Fragment implements View.OnClickListener {
         options.setSelected(false);
         store.setSelected(false);
 
-
-
         return view;
-    }
+
+   }
 
 
 
